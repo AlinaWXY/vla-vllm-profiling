@@ -4,6 +4,8 @@
 
 - Cloned vLLM into the requested workspace.
 - Fetched fixed π0.5 optimized and functional-reference vLLM-Omni revisions.
+- Registered vLLM and both Omni revisions as Git submodules, visible in the
+  repository root and available through a recursive clone.
 - Verified the model repository revision and availability using its public API;
   weights have not yet been downloaded.
 - Implemented the real-checkpoint pipeline benchmark, isolated expert graph/direct

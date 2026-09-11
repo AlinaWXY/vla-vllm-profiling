@@ -11,9 +11,9 @@ Roofline。本仓库先保存现有代码与实验方法，待 Thor 恢复后补
 
 | 目录 | 用途 | 固定版本 |
 | --- | --- | --- |
-| `vllm/` | vLLM 框架源码；运行时版本兼容性待 Thor 验证 | `69db1c26b4fe4474ab4c9df1c9701efac8bedde1` |
-| `vllm-omni/` | π0.5 `realtime_triton_prefix` 优化实现 | `1826509403bfa3d378d3476a4a341b78640165ea` |
-| `vllm-omni-reference/` | 新 π0.5 功能实现及 LeRobot 对齐 oracle | `41a6da68fcb2da7c2717dda32069ef9541797bbe` |
+| [vllm/](https://github.com/vllm-project/vllm/tree/69db1c26b4fe4474ab4c9df1c9701efac8bedde1) | vLLM 框架源码；运行时版本兼容性待 Thor 验证 | `69db1c26b4fe4474ab4c9df1c9701efac8bedde1` |
+| [vllm-omni/](https://github.com/vllm-project/vllm-omni/tree/1826509403bfa3d378d3476a4a341b78640165ea) | π0.5 `realtime_triton_prefix` 优化实现 | `1826509403bfa3d378d3476a4a341b78640165ea` |
+| [vllm-omni-reference/](https://github.com/vllm-project/vllm-omni/tree/41a6da68fcb2da7c2717dda32069ef9541797bbe) | 新 π0.5 功能实现及 LeRobot 对齐 oracle | `41a6da68fcb2da7c2717dda32069ef9541797bbe` |
 
 优化实现来自已关闭、未合并的 [PR #4419](https://github.com/vllm-project/vllm-omni/pull/4419)，
 不能称为 vLLM 主线正式支持。新的 [PR #6950](https://github.com/vllm-project/vllm-omni/pull/6950)
@@ -25,14 +25,24 @@ Roofline。本仓库先保存现有代码与实验方法，待 Thor 恢复后补
 采用真实权重与可复现的合成观测，默认 batch=1、3 路 224×224 图像、10 次去噪、
 输出 `[50, 32]`。这用于性能分析；不构成机器人任务成功率验证。
 
-源码依赖和权重版本记录在 `sources.lock.json`。源码重建入口：
+这三个源码目录作为 **Git 子模块** 保存在仓库根目录，点击即可查看对应固定版本的
+完整上游源码。首次克隆时一并获取：
+
+```bash
+git clone --recurse-submodules --shallow-submodules https://github.com/AlinaWXY/vla-vllm-profiling.git
+```
+
+已有克隆可在项目目录中执行 `git submodule update --init --depth 1` 补齐源码。
+GitHub 的 Download ZIP 不包含子模块内容，获取完整源码请使用上述克隆命令。
+
+源码依赖和权重版本同时记录在 `sources.lock.json`。也可使用重建与版本校验入口：
 
 ```bash
 python3 scripts/bootstrap_sources.py
 ```
 
-该脚本校验已有目录，遇到本地修改或不同版本时会停止。上游源码目录未并入
-项目 Git 历史；固定版本引用与重建脚本随本项目代码一并保存。
+该脚本初始化缺失的子模块并校验已有目录，遇到本地修改或不同版本时会停止。
+子模块提交与 `sources.lock.json` 中记录的版本必须一致。
 
 ## Thor 环境准备
 

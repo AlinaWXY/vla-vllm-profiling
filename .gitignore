@@ -3,9 +3,6 @@ __pycache__/
 .venv*/
 .pytest_cache/
 .DS_Store
-vllm/
-vllm-omni/
-vllm-omni-reference/
 slurm-task-dispatch/
 results/raw/
 logs/

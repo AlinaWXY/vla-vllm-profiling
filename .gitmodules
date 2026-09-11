@@ -1,0 +1,12 @@
+[submodule "vllm"]
+	path = vllm
+	url = https://github.com/vllm-project/vllm.git
+	shallow = true
+[submodule "vllm-omni"]
+	path = vllm-omni
+	url = https://github.com/vllm-project/vllm-omni.git
+	shallow = true
+[submodule "vllm-omni-reference"]
+	path = vllm-omni-reference
+	url = https://github.com/vllm-project/vllm-omni.git
+	shallow = true
