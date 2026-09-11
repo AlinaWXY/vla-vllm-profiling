@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-09-11",
+  "vllm": {
+    "url": "https://github.com/vllm-project/vllm.git",
+    "commit": "69db1c26b4fe4474ab4c9df1c9701efac8bedde1",
+    "role": "Framework source checkout; runtime compatibility with the experimental Omni branch is not yet validated."
+  },
+  "vllm-omni": {
+    "url": "https://github.com/vllm-project/vllm-omni.git",
+    "ref": "refs/pull/4419/head",
+    "commit": "1826509403bfa3d378d3476a4a341b78640165ea",
+    "role": "Experimental realtime_triton_prefix optimization, closed and unmerged PR 4419."
+  },
+  "vllm-omni-reference": {
+    "url": "https://github.com/vllm-project/vllm-omni.git",
+    "ref": "refs/pull/6950/head",
+    "commit": "41a6da68fcb2da7c2717dda32069ef9541797bbe",
+    "role": "Functional pi05 reference, open and unmerged PR 6950; use a separate environment."
+  },
+  "checkpoint": {
+    "repo_id": "lerobot/pi05_base",
+    "revision": "b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+    "parameters": 3616757520,
+    "download_bytes_weights": 14467030080,
+    "license": "gemma",
+    "role": "Real model weights; download only into a scratch cache; do not commit weights."
+  }
+}
