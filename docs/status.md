@@ -13,37 +13,41 @@
   CSV analysis and roofline plotting.
 - Implemented scratch cache configuration, exact source reconstruction, a read-only
   Thor inventory and indicative roof calibration.
-- All 16 CPU tests pass on Thor's existing Python 3.12, including CSV/math,
+- All 18 CPU tests pass on Thor's existing Python 3.12, including CSV/math,
   offline assets, cache preservation, memory guards and the Thor execution rule.
   Python syntax and shell syntax checks pass.
   PNG/PDF rendering passed using disposable synthetic test input, which was
-  removed after the check. No GPU runner has been executed.
+  removed after the check. The VLA GPU runner has not been executed.
 
-## Current blocker
+## Shared ARM64 runtime ready
 
-Thor SSH is restored. CUDA 13.2 and NCU 2026.1.1 are already installed, and shared
-framework sources are readable. The default Python has no PyTorch/vLLM package
-metadata; the known shared `chia_env` is x86-64, incompatible with Thor's aarch64
-CPU. Docker inventory is inaccessible to the current user; sudo is unavailable.
-An existing, accessible ARM runtime and local model/tokenizer paths remain to be
-identified. No dependency install, model download or GPU workload has been run.
+The user explicitly authorized off-host ARM64 environment preparation for Thor.
+`deep-space` prepared 209 isolated Python 3.12 ARM64 packages in the shared
+project directory. Version and native ELF architecture audits passed. Thor
+validated BF16 matmul, a Triton add with `.target sm_110a`, native vLLM extension
+loading, and the optimized Pi05Pipeline / Pi05RealtimeTritonDecoder imports. No packages are installed or upgraded on Thor.
+The vLLM source pin is now v0.22.0, matching the optimized Omni Docker base.
 
-## Next steps using the existing environment
+The complete runtime validation is recorded in `runtime.json`; the standalone
+L2 calibration entry point also ran successfully and produced provisional
+reference rates in `ceilings_l2.json`. Its pre-run clock query was unavailable,
+so these values are not final model-run ceilings.
 
-1. Locate an existing accessible aarch64 Python/PyTorch/vLLM environment and local
-   checkpoint/tokenizer. Do not install or upgrade dependencies or download assets.
-2. Validate existing versions against the pinned experimental source; retain any
-   incompatibility as a finding instead of automatically replacing packages.
-3. Run directly on Thor, as explicitly authorized on 2026-09-12; other hosts still
-   require Slurm. Keep the initial workload to one process and one configuration.
-4. Run real-weight inference and numerical checks; fix compatibility defects.
-5. Collect uninstrumented timing, NCU operator metrics and documented ceilings.
-6. Inspect every category's counter coverage, draw measured rooflines and write a
-   concise report with limitations and bottleneck candidates.
-7. Add reviewed results and the measured environment to the `vla-vllm-profiling`
-   repository; retain the original NCU reports with checksums.
+An x86-built `sm_110a` cubin has passed on Thor: all 1024 float outputs matched,
+with 4096 bytes of explicit device data allocation. Build and execution records
+are in `results/processed/environment_sm110a/`. This is a deployment probe, not
+pi0.5 inference or a performance measurement.
+
+## Remaining work
+
+1. Identify existing local checkpoint/tokenizer files; runtime loading is offline.
+2. Run real-weight inference and numerical checks using one process/configuration.
+3. Collect uninstrumented timing, NCU operator metrics and documented ceilings.
+4. Review counter coverage and publish measured rooflines, commands and limits.
 
 ## Claims not yet supported
 
-No successful Thor deployment, latency value, speedup, NCU counter, kernel
-bottleneck, roofline point or external numerical-parity result is claimed.
+No successful pi0.5 deployment, VLA latency, speedup, Action Expert NCU result,
+kernel bottleneck, VLA roofline point or external numerical-parity result is
+claimed. The successful toy-kernel deployment and NCU access checks are separately
+labeled environment validation.

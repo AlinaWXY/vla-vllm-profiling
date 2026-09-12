@@ -95,3 +95,23 @@ experimental and correctness as unverified beyond the observed gates.
 - [Experimental π0.5 optimized implementation, PR 4419](https://github.com/vllm-project/vllm-omni/pull/4419)
 - [Functional π0.5 integration and numerical oracle, PR 6950](https://github.com/vllm-project/vllm-omni/pull/6950)
 - [π0.5 checkpoint and license](https://huggingface.co/lerobot/pi05_base)
+
+
+## Thor memory-level finding (2026-09-12)
+
+The installed NCU 2026.1.1 metric inventory for NVIDIA Thor (GB10B) contains no
+`dram__bytes*` counters. `lts__t_bytes.sum` is present and was collected on the
+small deployment probe, along with timing and FP32 instruction counts. Therefore
+Thor collection explicitly uses `--memory-level l2`; it does not substitute L2
+bytes into a DRAM arithmetic intensity. The metric contract, output table, axis
+label and bandwidth ceiling all retain the selected level. DRAM remains available
+for targets that actually expose its counters.
+
+For the L2 reference, `profiling.calibrate --memory-level l2` uses Triton copy
+kernels with `.cg` loads to bypass L1 and `.wb` stores. The two buffers together
+must fit in half the device-reported L2 cache (the deployment probe reported
+32 MiB on this Thor). The achieved copy rate is an empirical reference, not an
+absolute hardware peak. This calibration ran successfully in the shared runtime. Its provisional results
+and missing pre-run clock observation are recorded in
+`results/processed/environment_sm110a/`; final model-run ceilings need matching
+clock observations and instruction-path checks.

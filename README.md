@@ -1,18 +1,19 @@
 # vla-vllm-profiling
 
 在 NVIDIA Thor 上部署 vLLM-Omni π0.5，采集 Action Expert 的逐 kernel timing、
-FLOP 与 DRAM 流量，并生成可追溯的 Roofline 图。
+FLOP 与内存层级流量，并生成可追溯的 Roofline 图。
 
-**当前状态（2026-09-12）：Thor SSH 已恢复。已只读确认 CUDA 13.2、NCU 2026.1.1
-和共享源码目录；尚未定位到当前账号可用的 ARM PyTorch/vLLM 运行环境。
-按用户要求不安装、升级或下载，只复用已有环境与本地模型。尚无 GPU 推理或实测
-Roofline。环境检查及脚本精简记录见 [Thor 环境审查](docs/thor_environment.md)。**
+**当前状态（2026-09-12）：按用户新授权，在其他机器准备 ARM64 环境，放入共享
+目录供 Thor 运行；不在 Thor 安装依赖。vLLM 已对齐到 π0.5 优化分支使用的 0.22.0。
+共享环境已准备完成，Thor 上的 BF16/Triton 运算及 π0.5 入口导入验证通过。
+尚未加载模型权重，尚无 VLA 推理或 Action Expert 实测 Roofline。
+参见 [环境准备](docs/offhost_environment.md) 和 [Thor 环境审查](docs/thor_environment.md)。**
 
 ## 代码来源与实验边界
 
 | 目录 | 用途 | 固定版本 |
 | --- | --- | --- |
-| [vllm/](https://github.com/vllm-project/vllm/tree/69db1c26b4fe4474ab4c9df1c9701efac8bedde1) | vLLM 框架源码；运行时版本兼容性待 Thor 验证 | `69db1c26b4fe4474ab4c9df1c9701efac8bedde1` |
+| [vllm/](https://github.com/vllm-project/vllm/tree/0b3ba88f165976e77ca5e6a7a3f5bba4562b80af) | vLLM 0.22.0 框架源码，与优化分支 Docker 基础版本一致 | `0b3ba88f165976e77ca5e6a7a3f5bba4562b80af` |
 | [vllm-omni/](https://github.com/vllm-project/vllm-omni/tree/1826509403bfa3d378d3476a4a341b78640165ea) | π0.5 `realtime_triton_prefix` 优化实现 | `1826509403bfa3d378d3476a4a341b78640165ea` |
 | [vllm-omni-reference/](https://github.com/vllm-project/vllm-omni/tree/41a6da68fcb2da7c2717dda32069ef9541797bbe) | 新 π0.5 功能实现及 LeRobot 对齐 oracle | `41a6da68fcb2da7c2717dda32069ef9541797bbe` |
 
@@ -60,7 +61,9 @@ ssh thor0 'bash -s' < scripts/inspect_thor.sh
 **Thor 可直接运行，不需要 Slurm。** 用户已明确授权 `thor0`（hostname `fact-thor`）
 作为例外，规则见 `AGENTS.md`。其他机器仍要求 Slurm；脚本按主机名检查此边界。
 
-共享源码及结果放在 `/fact_data`，先定位已有的模型、tokenizer 和 ARM Python 环境。
+共享源码、隔离运行环境及结果放在 `/fact_data`，模型和 tokenizer 仍需已有本地路径。
+在其他机器执行 `bash scripts/prepare_thor_env.sh` 准备环境；在 Thor 通过
+`bash scripts/thor_python.sh ...` 使用它，详见 [环境准备](docs/offhost_environment.md)。
 已有缓存路径会保留；未设置的运行缓存才采用 `/scratch` 默认值：
 
 ```bash
@@ -76,17 +79,18 @@ python scripts/resolve_checkpoint.py
 ## 采集流程
 
 以下命令可在 **Thor 上直接运行**；须先完成已有运行环境的兼容性验证。
-`$CHECKPOINT` 和 `$TOKENIZER` 指向已就绪的真实模型、tokenizer。运行前 source
-`scripts/cache_env.sh`。所有 `results/` 相对路径以本项目的 `/fact_data` 目录为根。
+`$CHECKPOINT` 和 `$TOKENIZER` 指向已就绪的真实模型、tokenizer。推荐通过 `bash scripts/thor_python.sh -m ...` 调用下述模块；
+如手动设置环境，在 Bash 中 source `scripts/cache_env.sh`。所有 `results/` 相对路径以本项目的 `/fact_data` 目录为根。
 
 1. 查询 Thor 上实际支持的 NCU 指标：
 
    ```bash
    python -m profiling.ncu --ncu /opt/nvidia/nsight-compute/2026.1.1/ncu \
-       discover --output results/raw/ncu_inventory
+       discover --memory-level l2 --output results/raw/ncu_inventory
    ```
 
-   如果 Thor 没有脚本认识的 BF16 Tensor 计数器，入口会报错并保留完整查询输出。
+   实机 NCU 未提供 DRAM 流量计数器，Thor 使用显式 L2 合同；L2 数据不作为 DRAM 数据。
+   如果目标没有脚本认识的 BF16 Tensor 计数器，入口会报错并保留查询输出。
    此时需对照该 NCU 安装中的 Tensor Roofline section 更新指标约定，不能用 0 代替。
 
 2. 独立测量不受 NCU 插桩影响的延迟：
@@ -120,12 +124,13 @@ python scripts/resolve_checkpoint.py
 4. 在同一硬件状态下测量参考带宽/算力：
 
    ```bash
-   python -m profiling.calibrate --output results/raw/ceilings.json \
+   python -m profiling.calibrate --memory-level l2 --output results/raw/ceilings.json \
        --power-clock-note '填写实际记录的 Thor 功耗模式、频率及记录文件位置'
    ```
 
-   这些是 GEMM/流式 copy 达到的经验参考值，不是经过证明的硬件最大上限。
-   也可提供有出处且精度匹配的硬件理论值；不能把 FP4 TOPS 当成 BF16 TFLOP/s。
+   这些是 GEMM / L2 copy 达到的经验参考值，不是经过证明的硬件最大上限。
+   L2 校准使用绕过 L1 的 Triton copy，并限制两缓冲区合计不超过 L2 容量的一半。
+   也可提供有出处且精度、内存层级匹配的硬件理论值；不能把 FP4 TOPS 当成 BF16 TFLOP/s。
    校准是独立的可选作业，同一硬件/功耗配置可复用已有结果，不随每次 profiling 重跑。
 
 5. 生成逐 kernel 表和图：
@@ -138,7 +143,7 @@ python scripts/resolve_checkpoint.py
    ```
 
    输出 `kernels.csv`、`summary.json`、`roofline.png` 和 `roofline.pdf`。
-   缺失计数器、零 DRAM 流量或零浮点运算的 kernel 保留在表中并注明原因，不绘制虚假点。
+   缺失计数器、所选层级零流量或零浮点运算的 kernel 保留在表中并注明原因，不绘制虚假点。
    FP32 与 BF16 的点按精度分开；同一 kernel 可出现在多个精度面板，耗时不能重复求和。
 
 ## 校验与后续发布
@@ -153,7 +158,7 @@ python3 -m unittest discover -s tests -v
 这是启动前检查，不是硬内存限额；上游的图捕获、权重打包及 NCU 重放仍占用额外内存，
 实际峰值尚未验证。首次实测应单进程、单配置运行。
 
-运行环境依赖复用 Thor 的既有安装。分析/绘图只需要 Python、NumPy 和 Matplotlib；
+运行环境使用共享目录中的 ARM64 包及 Thor 现有解释器/驱动。分析/绘图只需要 Python、NumPy 和 Matplotlib；
 NCU CSV 解析本身只使用标准库。方法、结果口径及当前待办见 `docs/methodology.md`
 和 `docs/status.md`。
 

@@ -7,6 +7,8 @@ slurm-task-dispatch/
 results/raw/
 logs/
 *.ncu-rep
+!results/processed/environment_sm110a/probe_sm110a.ncu-rep
+!results/processed/environment_sm110a/probe_sm110a_l2.ncu-rep
 *.pt
 *.safetensors
 .env

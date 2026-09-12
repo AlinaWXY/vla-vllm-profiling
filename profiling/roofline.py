@@ -1,4 +1,4 @@
-"""Parse NCU long-form CSV without silently treating missing counters as zero.
+"""Parse NCU long or wide raw CSV without treating missing counters as zero.
 
 Each invocation stays separate. Precision domains stay separate as well: a BF16
 Tensor operation and an FP32 instruction do not share a hardware compute roof.
@@ -25,14 +25,26 @@ def load_ncu(path):
     # NCU may prepend connection/progress messages and repeat its CSV header.
     lines = Path(path).read_text(encoding="utf-8-sig").splitlines()
     start = next((i for i, line in enumerate(lines)
-                  if "Metric Name" in line and "Metric Value" in line
+                  if ("Metric Name" in line and "Metric Value" in line
+                      or "Kernel Name" in line and "gpu__" in line)
                   and "ID" in next(csv.reader([line]), [])), None)
     if start is None:
         raise ValueError("No NCU raw CSV header; export with --page raw --csv.")
     kernels = {}
-    for row in csv.DictReader(io.StringIO("\n".join(lines[start:]))):
-        if not row.get("ID") or row["ID"] == "ID" or not row.get("Metric Name"):
+    reader = csv.DictReader(io.StringIO("\n".join(lines[start:])))
+    wide = "Metric Name" not in reader.fieldnames
+    units = None
+    for row in reader:
+        if row.get("ID") == "ID":
             continue
+        if not row.get("ID"):
+            if wide:
+                units = row
+            continue
+        if not wide and not row.get("Metric Name"):
+            continue
+        if wide and units is None:
+            raise ValueError("Wide NCU CSV is missing its units row.")
         key = (row.get("Process ID", ""), row.get("Device", ""),
                row.get("Context", ""), row.get("Stream", ""), row["ID"])
         entry = kernels.setdefault(key, {
@@ -42,12 +54,15 @@ def load_ncu(path):
             "grid": row.get("Grid Size", ""), "block": row.get("Block Size", ""),
             "metrics": {},
         })
-        metric = (number(row["Metric Value"]), (row.get("Metric Unit") or "").strip())
-        name = row["Metric Name"]
-        old = entry["metrics"].get(name)
-        if old is not None and old != metric:
-            raise ValueError(f"Conflicting duplicate metric {name} for kernel {key}")
-        entry["metrics"][name] = metric
+        values = ((name, row[name], units.get(name, ""))
+                  for name in reader.fieldnames if "__" in name) if wide else [
+                      (row["Metric Name"], row["Metric Value"], row.get("Metric Unit"))]
+        for name, value, unit in values:
+            metric = (number(value), (unit or "").strip())
+            old = entry["metrics"].get(name)
+            if old is not None and old != metric:
+                raise ValueError(f"Conflicting duplicate metric {name} for kernel {key}")
+            entry["metrics"][name] = metric
     if not kernels:
         raise ValueError("The report contains no kernel metrics.")
     return list(kernels.values())
@@ -82,15 +97,31 @@ def analyze(kernels, contract):
         if any(number(t["weight"]) is None or t["weight"] <= 0
                or not t["metric"].endswith(".sum") for t in terms):
             raise ValueError(f"Use positive weights and absolute .sum counters in {domain}")
+    memory = contract.get("memory", {"level": "dram"})
+    level = memory["level"]
+    if level not in {"dram", "l2"}:
+        raise ValueError("Memory level must be dram or l2.")
+    traffic_metrics = memory.get("metrics")
+    if traffic_metrics is not None and (not traffic_metrics
+            or len(set(traffic_metrics)) != len(traffic_metrics)
+            or any(not metric.endswith(".sum") for metric in traffic_metrics)):
+        raise ValueError("Memory metrics must be unique absolute .sum counters.")
+    if level == "l2" and traffic_metrics != ["lts__t_bytes.sum"]:
+        raise ValueError("L2 roof requires the reviewed lts__t_bytes.sum metric.")
+    if level == "dram" and traffic_metrics and any(not m.startswith("dram__") for m in traffic_metrics):
+        raise ValueError("L2 traffic must not be labeled DRAM.")
     rows = []
     for kernel in kernels:
         duration = metric_value(kernel, "gpu__time_duration.sum", "time")
-        dram = metric_value(kernel, "dram__bytes.sum", "bytes")
-        if dram is None:
+        traffic = metric_value(kernel, "dram__bytes.sum", "bytes")
+        if traffic_metrics:
+            values = [metric_value(kernel, name, "bytes") for name in traffic_metrics]
+            traffic = sum(values) if all(value is not None for value in values) else None
+        elif traffic is None:
             read = metric_value(kernel, "dram__bytes_read.sum", "bytes")
             write = metric_value(kernel, "dram__bytes_write.sum", "bytes")
             if read is not None and write is not None:
-                dram = read + write
+                traffic = read + write
         for domain, spec in contract["domains"].items():
             missing = []
             flops = 0.0
@@ -103,8 +134,8 @@ def analyze(kernels, contract):
             issues = []
             if duration is None or duration <= 0:
                 issues.append("missing_or_nonpositive_duration")
-            if dram is None or dram <= 0:
-                issues.append("missing_or_zero_dram_traffic")
+            if traffic is None or traffic <= 0:
+                issues.append(f"missing_or_zero_{level}_traffic")
             if missing:
                 issues.append("missing_flop_metrics:" + ";".join(missing))
             if not missing and flops == 0:
@@ -113,8 +144,9 @@ def analyze(kernels, contract):
             rows.append({
                 **{k: v for k, v in kernel.items() if k != "metrics"},
                 "domain": domain, "duration_ns": None if duration is None else duration * 1e9,
-                "dram_bytes": dram, "flops": complete_flops,
-                "ai_flops_per_byte": flops / dram if not issues else None,
+                "memory_level": level, "memory_bytes": traffic,
+                "dram_bytes": traffic if level == "dram" else None, "flops": complete_flops,
+                "ai_flops_per_byte": flops / traffic if not issues else None,
                 "performance_tflops": flops / duration / 1e12 if not issues else None,
                 "status": "ok" if not issues else "|".join(issues),
             })
@@ -142,6 +174,10 @@ def plot(rows, ceilings, output):
 
     if not ceilings.get("provenance"):
         raise ValueError("Ceilings need provenance (device, power/clock state, method/source).")
+    levels = {row.get("memory_level", "dram") for row in rows}
+    level = ceilings.get("memory_level", "dram")
+    if levels != {level}:
+        raise ValueError("Traffic and bandwidth ceiling must use the same memory level.")
     domains = list(ceilings["compute_tflops"])
     if not domains:
         raise ValueError("No compute ceilings supplied.")
@@ -149,7 +185,7 @@ def plot(rows, ceilings, output):
     for ax, domain in zip(axes[0], domains):
         points = [r for r in rows if r["domain"] == domain and r["status"] == "ok"]
         peak = ceilings["compute_tflops"][domain]
-        bandwidth = ceilings["dram_bandwidth_gbps"]
+        bandwidth = ceilings[f"{level}_bandwidth_gbps"]
         if peak <= 0 or bandwidth <= 0:
             raise ValueError("Ceilings must be positive, in TFLOP/s and decimal GB/s.")
         intensities = [r["ai_flops_per_byte"] for r in points]
@@ -166,7 +202,7 @@ def plot(rows, ceilings, output):
             fig.colorbar(scatter, ax=ax, label="NCU replay duration (µs)")
         else:
             ax.text(.5, .5, "No valid measured points", transform=ax.transAxes, ha="center")
-        ax.set(xlabel="DRAM arithmetic intensity (FLOP/byte)",
+        ax.set(xlabel=f"{level.upper()} arithmetic intensity (FLOP/byte)",
                ylabel="Counted arithmetic throughput (TFLOP/s)", title=domain)
         ax.grid(True, which="both", alpha=.18)
         ax.legend(fontsize=8)
@@ -198,6 +234,7 @@ def main():
     summary = {"kernel_invocations": len(kernels), "precision_rows": len(rows),
                "valid_precision_rows": sum(r["status"] == "ok" for r in rows),
                "domains": list(contract["domains"]),
+               "memory_level": contract.get("memory", {}).get("level", "dram"),
                "note": "One kernel can appear in multiple precision domains; do not sum their durations."}
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     if args.ceilings:

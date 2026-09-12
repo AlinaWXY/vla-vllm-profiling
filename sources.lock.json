@@ -1,9 +1,10 @@
 {
-  "checked_at": "2026-09-11",
+  "checked_at": "2026-09-12",
   "vllm": {
     "url": "https://github.com/vllm-project/vllm.git",
-    "commit": "69db1c26b4fe4474ab4c9df1c9701efac8bedde1",
-    "role": "Framework source checkout; runtime compatibility with the experimental Omni branch is not yet validated."
+    "commit": "0b3ba88f165976e77ca5e6a7a3f5bba4562b80af",
+    "role": "v0.22.0 matches the optimized Omni revision Docker base; Thor runtime validation pending.",
+    "ref": "refs/tags/v0.22.0"
   },
   "vllm-omni": {
     "url": "https://github.com/vllm-project/vllm-omni.git",

@@ -94,3 +94,26 @@ Validation: all 16 CPU unit tests passed on Thor's existing Python 3.12.3; the
 direct-execution guard and host/cgroup memory query also succeeded on the actual
 host. No Torch/CUDA model or kernel benchmark was executed. The full read-only
 inventory is retained locally under `results/raw/thor_inventory_20260912.txt`.
+
+
+## Later off-host preparation and device probes
+
+The user subsequently authorized a separate ARM64 environment prepared on another
+machine and shared with Thor. See `offhost_environment.md`; the observations above
+are the earlier read-only inventory, not a claim that no later GPU work occurred.
+
+An x86-built `sm_110a` cubin passed on Thor. Nsight Compute also successfully
+captured its timing and FP32 add instructions using the current account. This
+establishes basic profiling access without sudo; it does not establish VLA model
+correctness or performance.
+
+The actual NCU 2026.1.1 output exposed two collection issues which are fixed:
+`suffix` metric queries require explicit metric bases, and `--page raw --csv`
+exports a wide table (with a units row), which the original long-only parser
+rejected. Discovery now queries only supported candidate suffixes, and analysis
+accepts both formats. The actual toy-kernel CSV is a regression fixture.
+
+The Thor inventory contains no `dram__bytes*` counters. It does expose
+`lts__t_bytes.sum` and `sm__ops_path_tensor_src_bf16_dst_fp32.sum`. The collector
+therefore offers an explicit `--memory-level l2` contract. L2 bytes are never
+relabeled as DRAM bytes; plotting requires a bandwidth ceiling for the same level.

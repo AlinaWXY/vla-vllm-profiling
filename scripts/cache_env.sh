@@ -17,6 +17,10 @@ vla_cache_environment() {
         [TORCH_HOME]="${TORCH_HOME:-$scratch_root/torch}"
         [TORCHINDUCTOR_CACHE_DIR]="${TORCHINDUCTOR_CACHE_DIR:-$scratch_root/inductor}"
         [MPLCONFIGDIR]="${MPLCONFIGDIR:-$scratch_root/matplotlib}"
+        [CUDA_CACHE_PATH]="${CUDA_CACHE_PATH:-$scratch_root/cuda}"
+        [CUTE_DSL_CACHE_DIR]="${CUTE_DSL_CACHE_DIR:-$scratch_root/cute}"
+        [FLASHINFER_WORKSPACE_BASE]="${FLASHINFER_WORKSPACE_BASE:-$scratch_root/flashinfer}"
+        [TVM_FFI_CACHE_DIR]="${TVM_FFI_CACHE_DIR:-$scratch_root/tvm-ffi}"
     )
     # Validate every destination before creating any directory or changing paths.
     for key in "${!paths[@]}"; do

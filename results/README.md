@@ -1,7 +1,9 @@
 # Results
 
-No hardware measurements yet. Do not put synthetic data in this directory as if
-it were measured output.
+No VLA hardware measurements yet. `processed/environment_sm110a/` contains a real
+Thor deployment/NCU probe for a 1024-element toy kernel compiled off-host, runtime
+import/operation checks and provisional GEMM/L2 calibration. This material is
+explicitly separate from pi0.5 measurements and must not be used as a VLA result.
 
 - `raw/`: environment inventory, uninstrumented benchmark JSON/NPZ, NCU reports,
   CSV exports, metric contracts and calibration samples (ignored by Git).

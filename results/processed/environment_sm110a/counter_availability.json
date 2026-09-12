@@ -1,0 +1,10 @@
+{
+  "ncu_version": "2026.1.1",
+  "device": "NVIDIA Thor (GB10B)",
+  "query_mode": "all",
+  "dram_read_present": false,
+  "dram_write_present": false,
+  "l2_bytes_present": true,
+  "bf16_tensor_present": true,
+  "note": "L2 traffic must not be described as DRAM traffic. Actual VLA collection has not run."
+}

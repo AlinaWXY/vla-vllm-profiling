@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "test": "external sm_110a cubin, 1024 float outputs",
+  "gpu": "NVIDIA Thor",
+  "host_arch": "aarch64",
+  "cubin_sha256": "c1c4759a53899c6029fb8cd9d5cae60e7560dde93f14b5181bc4e3c373de22c6",
+  "device_allocation_bytes": 4096,
+  "vla_benchmark": false
+}

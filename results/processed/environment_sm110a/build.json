@@ -1,0 +1,16 @@
+{
+  "builder_host": "deep-space",
+  "builder_cpu": "x86_64",
+  "ptxas_version": "13.2.86",
+  "gpu_target": "sm_110a",
+  "command": [
+    "ptxas",
+    "-arch=sm_110a",
+    "profiling/sm110a_probe.ptx",
+    "-o",
+    "results/processed/environment_sm110a/probe.cubin"
+  ],
+  "ptx_sha256": "109471b4c86c0e08955ee9ce3bf7bbbf7e46a3ae817f0de3c1043a96876384ef",
+  "cubin_sha256": "c1c4759a53899c6029fb8cd9d5cae60e7560dde93f14b5181bc4e3c373de22c6",
+  "vla_benchmark": false
+}

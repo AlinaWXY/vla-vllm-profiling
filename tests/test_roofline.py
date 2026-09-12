@@ -71,6 +71,15 @@ class RooflineTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Conflicting duplicate"):
                 load_ncu(path)
 
+    def test_actual_thor_ncu_wide_export(self):
+        path = Path(__file__).parents[1] / "results/processed/environment_sm110a/ncu_probe.csv"
+        kernels = load_ncu(path)
+        self.assertEqual(len(kernels), 1)
+        self.assertEqual(kernels[0]["kernel"], "write_indices")
+        self.assertEqual(kernels[0]["metrics"]["gpu__time_duration.sum"], (2496, "ns"))
+        self.assertEqual(kernels[0]["metrics"]["smsp__sass_thread_inst_executed_op_fadd_pred_on.sum"],
+                         (1024, "inst"))
+
     def test_no_double_count_tensor_parent_and_sparse_child(self):
         query = "\n".join(["gpu__time_duration.sum", "dram__bytes_read.sum", "dram__bytes_write.sum",
                             *FP32_METRICS, "sm__ops_path_tensor_src_bf16_dst_fp32.sum",
@@ -82,6 +91,22 @@ class RooflineTests(unittest.TestCase):
     def test_unknown_architecture_requires_review(self):
         with self.assertRaisesRegex(ValueError, "manual review"):
             select_contract("gpu__time_duration.sum")
+
+    def test_l2_is_explicit_and_never_labeled_dram(self):
+        query = "\n".join(["gpu__time_duration.sum", "lts__t_bytes.sum", *FP32_METRICS,
+                           "sm__ops_path_tensor_src_bf16_dst_fp32.sum"])
+        with self.assertRaisesRegex(ValueError, "manual review"):
+            select_contract(query)
+        contract = select_contract(query, "l2")
+        kernel = self.kernel(**{"lts__t_bytes.sum": (2000, "byte"),
+                              "sm__ops_path_tensor_src_bf16_dst_fp32.sum": (4000, "op")})
+        row = analyze([kernel], contract)[0]
+        self.assertEqual(row["memory_level"], "l2")
+        self.assertEqual(row["ai_flops_per_byte"], 2)
+        self.assertIsNone(row["dram_bytes"])
+        contract["memory"]["level"] = "dram"
+        with self.assertRaisesRegex(ValueError, "must not be labeled DRAM"):
+            analyze([kernel], contract)
 
     def test_operator_join_rejects_different_reports(self):
         kernel = self.kernel()
