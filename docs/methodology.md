@@ -25,7 +25,9 @@ operations. Each Triton launch gets its denoising step, decoder layer, kernel na
 and source line. Copies and metadata kernels remain visible under the outer scope.
 
 Instrumentation is installed only for diagnostic direct launches, after the
-production CUDA Graph is warmed and measured. The launch arguments and Triton
+production CUDA Graph is warmed. Measure latency and graph/direct parity in the
+separate uninstrumented benchmark; profile mode skips those repeated sweeps and
+the additional expert timing graph. The launch arguments and Triton
 specializations are unchanged; graph launch overhead is different. The profile
 must be labeled accordingly. Validate direct-launch vs decoder-graph action
 agreement. A later graph-node collection may corroborate the mapping, but no such
@@ -61,7 +63,7 @@ including repeated names; their cache states and shapes can differ.
 ## Thor conditions
 
 Record device model, compute capability, CUDA/driver/PyTorch/Triton/NCU versions,
-Slurm allocation, power mode and observed frequencies. Thor uses a different
+execution host (and Slurm allocation on other hosts), power mode and observed frequencies. Thor uses a different
 memory/clock environment from datacenter GPUs. NCU does not support clock control
 on Thor in the same way as desktop GPUs. The initial command uses
 `--clock-control none`; no automatic system clock or power changes are made.

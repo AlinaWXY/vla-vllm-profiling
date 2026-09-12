@@ -7,8 +7,8 @@ import os
 from pathlib import Path
 import re
 import shlex
+import socket
 import subprocess
-import sys
 
 
 FP32_METRICS = [f"smsp__sass_thread_inst_executed_op_f{op}_pred_on.sum"
@@ -17,9 +17,12 @@ BF16_METRICS = ["sm__ops_path_tensor_src_bf16_dst_fp32.sum",
                 "sm__ops_path_tensor_src_bf16_dst_fp32_sparsity_off.sum"]
 
 
-def require_slurm():
+def require_gpu_execution():
+    """Direct execution is explicitly authorized on Thor, Slurm elsewhere."""
+    if socket.gethostname().split(".")[0] in {"thor0", "fact-thor"}:
+        return
     if not os.environ.get("SLURM_JOB_ID"):
-        raise RuntimeError("GPU work must run inside a Slurm allocation (SLURM_JOB_ID is absent).")
+        raise RuntimeError("Direct GPU execution is authorized only on thor0/fact-thor; other hosts require Slurm.")
 
 
 def select_contract(query):
@@ -44,7 +47,7 @@ def select_contract(query):
 
 
 def discover(ncu, output):
-    require_slurm()
+    require_gpu_execution()
     output.mkdir(parents=True, exist_ok=True)
     for name, args in (("version.txt", ["--version"]),
                        ("sections.txt", ["--list-sections"]),
@@ -56,7 +59,7 @@ def discover(ncu, output):
 
 
 def capture(args):
-    require_slurm()
+    require_gpu_execution()
     if not args.command:
         raise ValueError("Pass the benchmark command after --.")
     command = args.command[1:] if args.command[0] == "--" else args.command
@@ -69,7 +72,8 @@ def capture(args):
            "--clock-control", "none", "--cache-control", "all",
            "--metrics", ",".join(contract["metrics"]), "--export", str(report), *command]
     manifest = {
-        "command": cmd, "slurm_job_id": os.environ["SLURM_JOB_ID"],
+        "command": cmd, "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
+        "host": socket.gethostname(),
         "collection": "Isolated kernel replay, caches flushed; no NCU clock locking on Thor.",
         "scope": "Action Expert diagnostic replay of the optimized Triton kernels; CUDA Graph disabled for attribution.",
         "metrics_contract": contract,

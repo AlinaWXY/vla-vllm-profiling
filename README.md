@@ -3,9 +3,10 @@
 在 NVIDIA Thor 上部署 vLLM-Omni π0.5，采集 Action Expert 的逐 kernel timing、
 FLOP 与 DRAM 流量，并生成可追溯的 Roofline 图。
 
-**当前状态（2026-09-11）：准备阶段。源码和采集/分析脚本已就绪；Thor 当前故障，
-实测暂停。尚未安装 Thor 运行环境、执行 GPU 推理、获得 NCU 数据或生成实测
-Roofline。本仓库先保存现有代码与实验方法，待 Thor 恢复后补充实测结果。**
+**当前状态（2026-09-12）：Thor SSH 已恢复。已只读确认 CUDA 13.2、NCU 2026.1.1
+和共享源码目录；尚未定位到当前账号可用的 ARM PyTorch/vLLM 运行环境。
+按用户要求不安装、升级或下载，只复用已有环境与本地模型。尚无 GPU 推理或实测
+Roofline。环境检查及脚本精简记录见 [Thor 环境审查](docs/thor_environment.md)。**
 
 ## 代码来源与实验边界
 
@@ -52,34 +53,37 @@ python3 scripts/bootstrap_sources.py
 ssh thor0 'bash -s' < scripts/inspect_thor.sh
 ```
 
-根据返回的操作系统、Python、CUDA、PyTorch、vLLM、Triton、NCU 和 Slurm 配置，
-确定安装与资源申请参数。不要把 x86 CUDA wheel 装到 ARM Thor 上，也不要默认当前
-vLLM main 与旧 Omni PR 可直接搭配。**尚未给出已验证的安装命令或 Slurm 分区。**
+只查询版本、包元数据和权限，不导入 Torch、不初始化 CUDA、不安装任何东西。
+如已有环境使用不同的 Python，可通过 `VLA_INSPECT_PYTHON=/已有环境/bin/python`
+指定该解释器。不要执行共享目录中的 x86-64 Python；它不能在 ARM Thor 上运行。
 
-所有 GPU 作业均须在 Slurm allocation 内执行。以下 GPU 入口会检查 `SLURM_JOB_ID`。
-当前没有提交任何作业，也没有编写未经确认的 Slurm 任务脚本。
+**Thor 可直接运行，不需要 Slurm。** 用户已明确授权 `thor0`（hostname `fact-thor`）
+作为例外，规则见 `AGENTS.md`。其他机器仍要求 Slurm；脚本按主机名检查此边界。
 
-源码、虚拟环境和结果放在 `/fact_data`；可重建缓存和权重放在用户自己的 `/scratch`：
+共享源码及结果放在 `/fact_data`，先定位已有的模型、tokenizer 和 ARM Python 环境。
+已有缓存路径会保留；未设置的运行缓存才采用 `/scratch` 默认值：
 
 ```bash
 source scripts/cache_env.sh
-# 在依赖安装完成后的 Python 环境中：
-python scripts/download_checkpoint.py
+# 可选：仅从已有 HF_HUB_CACHE 解析固定版本，不联网、不下载。
+python scripts/resolve_checkpoint.py
 ```
 
-需要 PaliGemma tokenizer 的本地目录或可访问的模型 ID；如果 tokenizer 需要 Hugging Face
-访问授权，使用已有正常认证流程。不要把凭据、权重或缓存提交到 GitHub。
+模型与 tokenizer 均须提供已有的本地目录。缺失文件直接报错，不自动补装或下载。
+缓存脚本开启离线模式，不覆盖已有的合法缓存路径，也不设置 pip/uv 安装缓存。
+不要把凭据、权重或缓存提交到 GitHub。
 
 ## 采集流程
 
-以下命令是 **Slurm allocation 内部的工作负载命令**；须先完成 Thor 环境验证。
+以下命令可在 **Thor 上直接运行**；须先完成已有运行环境的兼容性验证。
 `$CHECKPOINT` 和 `$TOKENIZER` 指向已就绪的真实模型、tokenizer。运行前 source
 `scripts/cache_env.sh`。所有 `results/` 相对路径以本项目的 `/fact_data` 目录为根。
 
 1. 查询 Thor 上实际支持的 NCU 指标：
 
    ```bash
-   python -m profiling.ncu discover --output results/raw/ncu_inventory
+   python -m profiling.ncu --ncu /opt/nvidia/nsight-compute/2026.1.1/ncu \
+       discover --output results/raw/ncu_inventory
    ```
 
    如果 Thor 没有脚本认识的 BF16 Tensor 计数器，入口会报错并保留完整查询输出。
@@ -99,16 +103,19 @@ python scripts/download_checkpoint.py
 3. 采集同一优化实现的 Action Expert kernel：
 
    ```bash
-   python -m profiling.ncu capture --contract results/raw/ncu_inventory/metrics.json \
+   python -m profiling.ncu --ncu /opt/nvidia/nsight-compute/2026.1.1/ncu \
+       capture --contract results/raw/ncu_inventory/metrics.json \
        --output results/raw/ncu_expert -- \
        python -m profiling.bench_pi05 --checkpoint "$CHECKPOINT" --tokenizer "$TOKENIZER" \
-       --output results/raw/profile_workload --cameras 3 --steps 10 --iterations 3 --profile
+       --output results/raw/profile_workload --cameras 3 --steps 10 --profile
    ```
 
    使用真实前缀 KV 和预计算 AdaRMS；NVTX 定位去噪步、层号与 kernel 源码位置。
    为逐算子归因，诊断阶段关闭 CUDA Graph launch，但不更换优化后的 Triton kernel。
    初次 NCU 采集是逐 kernel replay、清缓存、`clock-control none`。
    **NCU 下产生的 benchmark timing 不用于部署性能结论。**
+   NCU 模式只保留优化 pipeline 的必要预热和一次专家采集，跳过 safe 基线、延迟循环
+   及额外的独立专家 CUDA Graph；数值对比从第 2 步的独立运行获取。
 
 4. 在同一硬件状态下测量参考带宽/算力：
 
@@ -119,6 +126,7 @@ python scripts/download_checkpoint.py
 
    这些是 GEMM/流式 copy 达到的经验参考值，不是经过证明的硬件最大上限。
    也可提供有出处且精度匹配的硬件理论值；不能把 FP4 TOPS 当成 BF16 TFLOP/s。
+   校准是独立的可选作业，同一硬件/功耗配置可复用已有结果，不随每次 profiling 重跑。
 
 5. 生成逐 kernel 表和图：
 
@@ -141,7 +149,11 @@ python scripts/download_checkpoint.py
 python3 -m unittest discover -s tests -v
 ```
 
-运行环境依赖由 Thor 的实际安装决定。分析/绘图只需要 Python、NumPy 和 Matplotlib；
+模型加载前默认检查至少 32 GiB 主机/可见 cgroup 可用内存，并逐张量读取权重。
+这是启动前检查，不是硬内存限额；上游的图捕获、权重打包及 NCU 重放仍占用额外内存，
+实际峰值尚未验证。首次实测应单进程、单配置运行。
+
+运行环境依赖复用 Thor 的既有安装。分析/绘图只需要 Python、NumPy 和 Matplotlib；
 NCU CSV 解析本身只使用标准库。方法、结果口径及当前待办见 `docs/methodology.md`
 和 `docs/status.md`。
 

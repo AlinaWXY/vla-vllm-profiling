@@ -1,4 +1,4 @@
-"""Measure indicative roofline reference ceilings, inside the target Slurm job.
+"""Measure indicative roofline reference ceilings; direct on Thor, Slurm elsewhere.
 
 These are achieved GEMM and streaming-copy rates, NOT claims of absolute hardware
 peak. Repeat under matching power/clocks. Cache-flushed NCU kernel replay can have
@@ -13,7 +13,7 @@ from pathlib import Path
 import platform
 import statistics
 
-from profiling.ncu import require_slurm
+from profiling.ncu import require_gpu_execution
 
 
 def main():
@@ -25,7 +25,7 @@ def main():
     p.add_argument("--power-clock-note", required=True,
                    help="Observed power mode/clock state and how it was recorded")
     args = p.parse_args()
-    require_slurm()
+    require_gpu_execution()
     if min(args.iterations, args.matrix_size, args.copy_mib) < 1:
         p.error("sizes and iteration count must be positive")
     import torch
@@ -69,7 +69,7 @@ def main():
         "label": "Measured GEMM / streaming-copy reference",
         "compute_tflops": compute, "dram_bandwidth_gbps": bandwidth,
         "provenance": {"host": platform.node(), "gpu": torch.cuda.get_device_name(),
-                       "slurm_job_id": os.environ["SLURM_JOB_ID"],
+                       "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
                        "power_clock_note": args.power_clock_note,
                        "matrix_size": args.matrix_size, "copy_buffer_mib": args.copy_mib,
                        "torch": torch.__version__, "cuda": torch.version.cuda,
