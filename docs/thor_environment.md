@@ -28,6 +28,31 @@ machine. Shared framework source can be reused, but does not supply an ARM Torch
 binary or its runtime dependencies. No broad filesystem or home-directory scan was
 used to look for another environment.
 
+### Follow-up: what is inspectable without sudo
+
+A second read-only pass checked known system installation directories, system and
+login startup configuration files, the current user's Conda registry, selected
+process names, and Docker service/storage configuration. No shell configuration
+was executed, and no home directory tree was enumerated.
+
+- The current user's Conda registry lists only the already checked x86-64
+  `chia_env`. System/login configuration did not reveal another Python runtime.
+- Python's user site is enabled, so the default-interpreter package check also
+  covered packages exposed through that user site.
+- Docker and containerd daemons are present. No Python/vLLM inference worker was
+  visible in the process-name check; that does not establish whether an offline
+  environment or stopped container is installed.
+- Docker uses `/var/lib/docker`. Both its management socket and storage directory
+  are inaccessible to this account, so container/image contents cannot be listed.
+- Exact startup configuration files for other local login accounts were also
+  unreadable. No permission changes or privilege escalation were attempted in
+  this follow-up.
+
+The conclusion is **partial visibility, not proof that PyTorch/vLLM is absent**.
+Any readable existing environment can be checked by its exact interpreter or
+package path without installation. Private container or account environments
+require their owner to provide a usable path/access or an inventory.
+
 ## Script changes
 
 | Finding | Change |
