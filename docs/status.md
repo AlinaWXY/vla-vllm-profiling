@@ -20,7 +20,7 @@
   Python syntax and shell syntax checks pass.
   PNG/PDF rendering passed using disposable synthetic test input, which was
   removed after the check. Real-weight inference subsequently completed on Thor.
-  The expanded 21-test CPU suite, including exact launch-coverage and
+  The expanded 22-test CPU suite, including exact launch-coverage and
   precision-duration de-duplication checks, and operator-group rendering pass locally.
 
 ## Shared ARM64 runtime ready
@@ -64,24 +64,34 @@ CUDA Graph p50 34.725 ms and direct-launch expert p50 35.594 ms. Graph/direct
 expert outputs agree exactly for this input. Peak Torch allocated memory is
 14.48 GiB; the sampled minimum host headroom is 99.11 GiB.
 
-**Numerical equivalence failed:** safe versus optimized max absolute error is
+**Large numerical discrepancy:** safe versus optimized max absolute error is
 0.191869 and relative RMSE is 1.03704. These normalized-space synthetic-input
 outputs are not a robot success test. The cause is not isolated, and the latency
 ratio is not a validated equivalent-model speedup. Outputs, individual timing
 samples and memory observations are in `results/processed/thor_pi05_20260913/`.
 
-NCU is collecting the actual optimized Action Expert with per-launch NVTX labels.
-Its result is pending; no measured model roofline or bottleneck claim is made yet.
+NCU completed 1,654 kernel invocations: 1,650 instrumented Triton launches exactly
+match the source manifest, plus four framework fill/copy/conversion kernels.
+All ten steps have 165 Triton launches, and all 18 decoder layers are covered.
+All six requested counters are present. The 16 operator groups, raw and annotated
+NCU CSVs, original 35,045,925-byte report and PNG/PDF figures are published in the
+same result directory. Baseline and NCU workload optimized outputs agree exactly.
 
-## Remaining work
+The NCU duration sum is 57.699 ms, separate from uninstrumented expert latency.
+FFN gate/up and down account for 49.114% of this replay duration. L2 traffic totals
+17.822 GB; counted operations are 417.155 GFLOP BF16 Tensor and 1.251 GFLOP FP32 SIMT.
+The matching empirical L2 roof is explicitly labeled; no DRAM roof is inferred.
+NCU-phase memory sampling retained at least 79.65 GiB host headroom.
 
-1. Finish NCU operator collection and review counter/label coverage.
-2. Publish measured rooflines, raw reports, commands and limitations.
-3. Separately isolate the safe/optimized numerical discrepancy and run an external oracle.
+## Follow-up beyond this initial profiling result
+
+1. Isolate the safe/optimized numerical discrepancy and run an external oracle.
+2. If optimizing further, remeasure after numerical validation and use additional
+   utilization/stall counters to investigate the measured FFN hotspots.
 
 ## Claims not yet supported
 
-No numerically equivalent speedup, Action Expert NCU result, kernel bottleneck,
-VLA roofline point, robot success rate or external numerical-parity result is
-claimed yet. Environment probes and calibration remain separate from the
-successful real-checkpoint experimental inference measurements.
+No numerically equivalent speedup, definitive DRAM bottleneck, robot success rate
+or external numerical-parity result is claimed. Measured hotspots and L2 rooflines
+describe this experimental implementation under the documented replay conditions.
+Environment probes and calibration remain distinct from real-model measurements.

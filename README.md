@@ -8,10 +8,16 @@ FLOP 与内存层级流量，并生成可追溯的 Roofline 图。
 BF16/FP32 计算量计数器和 L2 参考带宽已在 Thor 实测验证。
 真实权重推理已完成：优化 pipeline p50 为 72.46 ms，Action Expert CUDA Graph
 p50 为 34.72 ms。safe 与优化实现的相对 RMSE 为 103.7%，尚未数值对齐，
-不能将延迟差称为等价模型的加速。Action Expert NCU 逐算子采集中。参见
+不能将延迟差称为等价模型的加速。Action Expert 已完成 1,654 次 kernel 采集，
+生成 16 个算子组的 L2 Roofline、逐调用 CSV 和热点图，原始 NCU 报告一并保存。参见
 [真实模型结果](results/processed/thor_pi05_20260913/)、
 [模型文件](docs/model_assets.md)、[计数器校验](results/processed/compute_counter_validation/)
 和 [执行状态](docs/status.md)。**
+
+![Thor Action Expert L2 Roofline](results/processed/thor_pi05_20260913/roofline_by_operator.png)
+
+本轮 FFN gate/up 与 down 两个融合算子合计占 NCU 重放耗时的 **49.1%**。
+NCU kernel 耗时之和为 57.70 ms，属于清缓存的诊断重放，不能当作原始请求延迟。
 
 ## 代码来源与实验边界
 
@@ -160,12 +166,12 @@ Thor 推理时模型与 tokenizer 均须提供本地目录。运行入口遇到�
    python -m profiling.audit_profile --raw results/raw/ncu_expert/raw.csv \
        --annotated results/raw/ncu_expert/operators.csv \
        --benchmark results/raw/profile_workload/benchmark.json \
-       --contract results/raw/ncu_inventory/metrics.json --output results/processed/thor_pi05
+       --contract results/raw/ncu_inventory/metrics.json --output results/processed/thor_pi05 --plot
    ```
 
    `coverage.json` 核对 NVTX 标签与实际 launch 清单完全一致、每个去噪步均有记录，
    并检查所有请求计数器均已返回。`hotspots.csv` 按 NCU 总耗时排序，每次 launch
-   仅计时一次；它的耗时比例仍属于 NCU 重放条件。
+   仅计时一次；`--plot` 同时生成热点条形图。它们的耗时比例仍属于 NCU 重放条件。
 
 ## 校验与后续发布
 
@@ -184,6 +190,7 @@ python3 -m unittest discover -s tests -v
 NCU CSV 解析本身只使用标准库。方法、结果口径及当前待办见 `docs/methodology.md`
 和 `docs/status.md`。
 
-`vla-vllm-profiling` 仓库先保存本项目完整代码、固定上游版本与实验方法。
-完成实测后补充环境信息、命令、算子 CSV、图和结论。原始 `.ncu-rep` 如超过 GitHub 单文件限制则作为
-Release 附件保存，并在结果文档中记录链接及校验和。
+本仓库已包含完整采集/分析代码、固定上游源码子模块、环境与模型校验记录，
+以及本次真实模型的原始 NCU 报告（35.05 MB）、CSV、PNG/PDF 和结果说明。
+权重通过固定版本的下载脚本重建，不提交到 Git。后续原始报告如超过 GitHub 单文件限制，
+则作为 Release 附件保存，并记录链接及校验和。

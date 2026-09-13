@@ -137,6 +137,15 @@ class RooflineTests(unittest.TestCase):
         rows[0]["flops"] = None
         self.assertIsNone(aggregate_operators(rows)[0]["ai_flops_per_byte"])
 
+    def test_outer_nvtx_scope_does_not_merge_different_framework_kernels(self):
+        first, second = self.kernel(), self.kernel()
+        first.update(kernel="cast_to_bf16", operator="action_expert")
+        second.update(kernel="copy_layout", operator="action_expert")
+        groups = aggregate_operators(analyze([first, second], CONTRACT))
+        self.assertEqual({r["operator"] for r in groups}, {"cast_to_bf16", "copy_layout"})
+        self.assertEqual(len(groups), 4)
+        self.assertTrue(all(r["invocations"] == 1 for r in groups))
+
     def test_invalid_contracts_do_not_produce_false_points(self):
         for terms in ([], [{"metric": "tensor.sum.per_second", "weight": 1}],
                       [{"metric": "tensor.sum", "weight": 0}],

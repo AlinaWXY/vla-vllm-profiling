@@ -1,0 +1,91 @@
+{
+  "command": [
+    "/opt/nvidia/nsight-compute/2026.1.1/ncu",
+    "--target-processes",
+    "all",
+    "--profile-from-start",
+    "off",
+    "--nvtx",
+    "--nvtx-include",
+    "action_expert/",
+    "--graph-profiling",
+    "node",
+    "--replay-mode",
+    "kernel",
+    "--clock-control",
+    "none",
+    "--cache-control",
+    "all",
+    "--metrics",
+    "gpu__time_duration.sum,lts__t_bytes.sum,smsp__sass_thread_inst_executed_op_fadd_pred_on.sum,smsp__sass_thread_inst_executed_op_fmul_pred_on.sum,smsp__sass_thread_inst_executed_op_ffma_pred_on.sum,sm__ops_path_tensor_src_bf16_dst_fp32.sum",
+    "--export",
+    "results/raw/thor_pi05_20260913/ncu_expert/action_expert",
+    "bash",
+    "scripts/thor_python.sh",
+    "-u",
+    "-m",
+    "profiling.bench_pi05",
+    "--checkpoint",
+    "/scratch/xinyaowang/vla-vllm-profiling/assets/pi05_base/b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+    "--tokenizer",
+    "/scratch/xinyaowang/vla-vllm-profiling/assets/paligemma_tokenizer",
+    "--output",
+    "results/raw/thor_pi05_20260913/profile_workload",
+    "--cameras",
+    "3",
+    "--steps",
+    "10",
+    "--warmup",
+    "3",
+    "--profile"
+  ],
+  "slurm_job_id": null,
+  "host": "fact-thor",
+  "collection": "Isolated kernel replay, caches flushed; no NCU clock locking on Thor.",
+  "scope": "Action Expert diagnostic replay of the optimized Triton kernels; CUDA Graph disabled for attribution.",
+  "metrics_contract": {
+    "schema_version": 2,
+    "note": "Dense BF16 Tensor and FP32 add/mul/FMA are separate roofs; transcendental and integer ops excluded.",
+    "metrics": [
+      "gpu__time_duration.sum",
+      "lts__t_bytes.sum",
+      "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum",
+      "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum",
+      "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum",
+      "sm__ops_path_tensor_src_bf16_dst_fp32.sum"
+    ],
+    "memory": {
+      "level": "l2",
+      "metrics": [
+        "lts__t_bytes.sum"
+      ],
+      "note": "L2 requested bytes are not DRAM bytes; use a matching memory-level bandwidth roof."
+    },
+    "domains": {
+      "bf16_tensor": {
+        "terms": [
+          {
+            "metric": "sm__ops_path_tensor_src_bf16_dst_fp32.sum",
+            "weight": 1
+          }
+        ]
+      },
+      "fp32_simt": {
+        "terms": [
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum",
+            "weight": 1
+          },
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum",
+            "weight": 1
+          },
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum",
+            "weight": 2
+          }
+        ]
+      }
+    }
+  }
+}

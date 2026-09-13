@@ -1,0 +1,17 @@
+{
+  "baseline_retry_memory.csv": {
+    "samples": 496,
+    "first_utc": "2026-09-13T00:51:08.638741+00:00",
+    "last_utc": "2026-09-13T02:13:38.864558+00:00",
+    "max_process_hwm_bytes": 33995227136,
+    "min_sampled_host_available_bytes": 106415534080
+  },
+  "ncu_memory.csv": {
+    "samples": 249,
+    "first_utc": "2026-09-13T05:09:11.314471+00:00",
+    "last_utc": "2026-09-13T05:50:31.439829+00:00",
+    "max_process_hwm_bytes": 34060619776,
+    "min_sampled_host_available_bytes": 85523087360
+  },
+  "note": "Read-only samples, approximately 10 seconds apart; NCU sampling started after warmup. Process HWM retains earlier peaks. RSS and CUDA allocations overlap on UMA."
+}

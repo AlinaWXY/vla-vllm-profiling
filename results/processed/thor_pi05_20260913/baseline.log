@@ -1,0 +1,287 @@
+[2026-09-13 08:47:52] Local assets and memory preflight passed; importing runtime
+/fact_data/xinyaowang/vla_vllm_profiling/vllm-omni/vllm_omni/__init__.py:19: RuntimeWarning: Failed to import version from _version.py: No module named 'vllm_omni._version'
+This typically happens in development mode before building.
+Using fallback version 'dev'.
+  from .version import __version__, __version_tuple__  # isort:skip # noqa: F401
+WARNING 09-13 08:51:07 [patch.py:165] Monkey-patched unregister_vllm_metrics() to scope drops to non-omni vllm:* collectors. Remove this patch once vLLM adds _STAT_LOGGER_METRIC_NAMES.
+[2026-09-13 08:52:06] Initializing pipeline with local tokenizer and checkpoint
+INFO 09-13 08:52:08 [modeling_pi05.py:1911] pi0.5: no action normalization stats on config.norm_stats; returned actions are in the model's normalized space.
+[2026-09-13 08:52:08] Streaming real checkpoint tensors into model
+[2026-09-13 09:00:35] Loaded 206 checkpoint tensors (4.54 GiB)
+[2026-09-13 09:01:27] Loaded 208 checkpoint tensors (4.66 GiB)
+[2026-09-13 09:02:18] Loaded 209 checkpoint tensors (4.79 GiB)
+[2026-09-13 09:03:13] Loaded 210 checkpoint tensors (4.91 GiB)
+[2026-09-13 09:04:19] Loaded 217 checkpoint tensors (5.07 GiB)
+[2026-09-13 09:05:10] Loaded 218 checkpoint tensors (5.20 GiB)
+[2026-09-13 09:06:02] Loaded 219 checkpoint tensors (5.32 GiB)
+[2026-09-13 09:07:08] Loaded 226 checkpoint tensors (5.48 GiB)
+[2026-09-13 09:08:03] Loaded 227 checkpoint tensors (5.61 GiB)
+[2026-09-13 09:08:54] Loaded 228 checkpoint tensors (5.73 GiB)
+[2026-09-13 09:10:00] Loaded 235 checkpoint tensors (5.89 GiB)
+[2026-09-13 09:10:53] Loaded 236 checkpoint tensors (6.02 GiB)
+[2026-09-13 09:11:44] Loaded 237 checkpoint tensors (6.14 GiB)
+[2026-09-13 09:12:50] Loaded 244 checkpoint tensors (6.30 GiB)
+[2026-09-13 09:13:45] Loaded 245 checkpoint tensors (6.43 GiB)
+[2026-09-13 09:14:36] Loaded 246 checkpoint tensors (6.55 GiB)
+[2026-09-13 09:15:42] Loaded 253 checkpoint tensors (6.71 GiB)
+[2026-09-13 09:16:34] Loaded 254 checkpoint tensors (6.84 GiB)
+[2026-09-13 09:17:25] Loaded 255 checkpoint tensors (6.96 GiB)
+[2026-09-13 09:18:34] Loaded 262 checkpoint tensors (7.12 GiB)
+[2026-09-13 09:19:26] Loaded 263 checkpoint tensors (7.25 GiB)
+[2026-09-13 09:20:18] Loaded 264 checkpoint tensors (7.37 GiB)
+[2026-09-13 09:21:25] Loaded 271 checkpoint tensors (7.53 GiB)
+[2026-09-13 09:22:16] Loaded 272 checkpoint tensors (7.66 GiB)
+[2026-09-13 09:23:08] Loaded 273 checkpoint tensors (7.78 GiB)
+[2026-09-13 09:24:17] Loaded 280 checkpoint tensors (7.94 GiB)
+[2026-09-13 09:25:29] Loaded 282 checkpoint tensors (8.19 GiB)
+[2026-09-13 09:26:35] Loaded 289 checkpoint tensors (8.35 GiB)
+[2026-09-13 09:27:27] Loaded 290 checkpoint tensors (8.48 GiB)
+[2026-09-13 09:28:18] Loaded 291 checkpoint tensors (8.60 GiB)
+[2026-09-13 09:29:32] Loaded 298 checkpoint tensors (8.76 GiB)
+[2026-09-13 09:30:24] Loaded 299 checkpoint tensors (8.89 GiB)
+[2026-09-13 09:31:21] Loaded 300 checkpoint tensors (9.01 GiB)
+[2026-09-13 09:32:37] Loaded 307 checkpoint tensors (9.17 GiB)
+[2026-09-13 09:33:34] Loaded 308 checkpoint tensors (9.30 GiB)
+[2026-09-13 09:34:28] Loaded 309 checkpoint tensors (9.42 GiB)
+[2026-09-13 09:35:41] Loaded 316 checkpoint tensors (9.58 GiB)
+[2026-09-13 09:36:34] Loaded 317 checkpoint tensors (9.71 GiB)
+[2026-09-13 09:37:29] Loaded 318 checkpoint tensors (9.83 GiB)
+[2026-09-13 09:38:51] Loaded 325 checkpoint tensors (9.99 GiB)
+[2026-09-13 09:40:23] Loaded 327 checkpoint tensors (10.24 GiB)
+[2026-09-13 09:41:52] Loaded 334 checkpoint tensors (10.40 GiB)
+[2026-09-13 09:42:48] Loaded 335 checkpoint tensors (10.53 GiB)
+[2026-09-13 09:43:55] Loaded 336 checkpoint tensors (10.65 GiB)
+[2026-09-13 09:45:09] Loaded 343 checkpoint tensors (10.81 GiB)
+[2026-09-13 09:46:03] Loaded 344 checkpoint tensors (10.94 GiB)
+[2026-09-13 09:47:00] Loaded 345 checkpoint tensors (11.06 GiB)
+[2026-09-13 09:48:15] Loaded 352 checkpoint tensors (11.23 GiB)
+[2026-09-13 09:49:12] Loaded 353 checkpoint tensors (11.35 GiB)
+[2026-09-13 09:50:07] Loaded 354 checkpoint tensors (11.48 GiB)
+[2026-09-13 09:51:15] Loaded 361 checkpoint tensors (11.64 GiB)
+[2026-09-13 09:52:14] Loaded 362 checkpoint tensors (11.76 GiB)
+[2026-09-13 09:53:14] Loaded 363 checkpoint tensors (11.89 GiB)
+[2026-09-13 09:53:51] Loaded 380 checkpoint tensors (11.95 GiB)
+[2026-09-13 09:54:22] Loaded 396 checkpoint tensors (12.01 GiB)
+[2026-09-13 09:54:59] Loaded 412 checkpoint tensors (12.06 GiB)
+[2026-09-13 09:55:32] Loaded 428 checkpoint tensors (12.12 GiB)
+[2026-09-13 09:56:03] Loaded 446 checkpoint tensors (12.20 GiB)
+[2026-09-13 09:56:35] Loaded 470 checkpoint tensors (12.27 GiB)
+[2026-09-13 09:57:06] Loaded 492 checkpoint tensors (12.35 GiB)
+[2026-09-13 09:57:37] Loaded 510 checkpoint tensors (12.42 GiB)
+[2026-09-13 09:58:09] Loaded 534 checkpoint tensors (12.50 GiB)
+[2026-09-13 09:58:40] Loaded 556 checkpoint tensors (12.58 GiB)
+[2026-09-13 09:59:14] Loaded 574 checkpoint tensors (12.65 GiB)
+[2026-09-13 09:59:45] Loaded 598 checkpoint tensors (12.73 GiB)
+[2026-09-13 10:00:18] Loaded 620 checkpoint tensors (12.80 GiB)
+[2026-09-13 10:00:49] Loaded 638 checkpoint tensors (12.88 GiB)
+[2026-09-13 10:01:21] Loaded 662 checkpoint tensors (12.95 GiB)
+[2026-09-13 10:01:53] Loaded 684 checkpoint tensors (13.03 GiB)
+[2026-09-13 10:02:27] Loaded 702 checkpoint tensors (13.11 GiB)
+[2026-09-13 10:02:58] Loaded 724 checkpoint tensors (13.18 GiB)
+[2026-09-13 10:03:32] Loaded 748 checkpoint tensors (13.26 GiB)
+[2026-09-13 10:04:07] Loaded 766 checkpoint tensors (13.33 GiB)
+[2026-09-13 10:04:38] Loaded 788 checkpoint tensors (13.40 GiB)
+INFO 09-13 10:05:08 [modeling_pi05.py:4570] pi0.5 load_weights: 812 tensors loaded, 0 skipped, 0 missing.
+[2026-09-13 10:05:09] All checkpoint parameters loaded
+[2026-09-13 10:05:12] Pipeline initialized on GPU
+[2026-09-13 10:05:12] Safe backend warmup and timing
+[2026-09-13 10:06:00] Optimized backend warmup, Triton compilation and graph capture
+W0913 10:07:11.957000 2164062 .venv-thor-cu130/lib/python3.12/site-packages/torch/_inductor/utils.py:1731] [0/0] Not enough SMs to use max_autotune_gemm mode
+/fact_data/xinyaowang/vla_vllm_profiling/.venv-thor-cu130/lib/python3.12/site-packages/torch/_inductor/select_algorithm.py:3686: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  current_out_size = out_base.storage().size()
+Autotune Choices Stats:
+{"num_choices": 2, "num_triton_choices": 0, "best_kernel": "bias_addmm", "best_time": 0.08988799899816513}
+AUTOTUNE addmm(256x4304, 256x1152, 1152x4304)
+strides: [0, 1], [1152, 1], [1, 1152]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0899 ms 100.0% 
+  addmm 0.0913 ms 98.4% 
+SingleProcess AUTOTUNE benchmarking takes 0.6294 seconds and 0.0001 seconds precompiling for 2 choices
+Autotune Choices Stats:
+{"num_choices": 2, "num_triton_choices": 0, "best_kernel": "bias_addmm", "best_time": 0.04710400104522705}
+AUTOTUNE addmm(256x2048, 256x1152, 1152x2048)
+strides: [0, 1], [1152, 1], [1, 1152]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0471 ms 100.0% 
+  addmm 0.0543 ms 86.8% 
+SingleProcess AUTOTUNE benchmarking takes 0.1048 seconds and 0.0001 seconds precompiling for 2 choices
+Autotune Choices Stats:
+{"num_choices": 2, "num_triton_choices": 0, "best_kernel": "bias_addmm", "best_time": 0.034912001341581345}
+AUTOTUNE addmm(256x1152, 256x1152, 1152x1152)
+strides: [0, 1], [1152, 1], [1, 1152]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0349 ms 100.0% 
+  addmm 0.0379 ms 92.1% 
+SingleProcess AUTOTUNE benchmarking takes 0.9963 seconds and 0.0001 seconds precompiling for 2 choices
+Autotune Choices Stats:
+{"num_choices": 2, "num_triton_choices": 0, "best_kernel": "bias_addmm", "best_time": 0.10339199751615524}
+AUTOTUNE addmm(256x1152, 256x4304, 4304x1152)
+strides: [0, 1], [4352, 1], [1, 4304]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.1034 ms 100.0% 
+  addmm 0.1350 ms 76.6% 
+SingleProcess AUTOTUNE benchmarking takes 0.2123 seconds and 0.0001 seconds precompiling for 2 choices
+[2026-09-13 10:13:30] Optimized pipeline timing
+[2026-09-13 10:13:31] Isolated Action Expert correctness and timing
+[2026-09-13 10:13:35] Run completed; benchmark and actions saved
+{
+  "slurm_job_id": null,
+  "host": "fact-thor",
+  "gpu": "NVIDIA Thor",
+  "compute_capability": [
+    11,
+    0
+  ],
+  "python": "3.12.3",
+  "torch": "2.11.0+cu130",
+  "cuda": "13.0",
+  "packages": {
+    "vllm": "0.22.0",
+    "vllm-omni": null,
+    "transformers": "5.8.1",
+    "triton": "3.6.0"
+  },
+  "upstream_model_file": "/fact_data/xinyaowang/vla_vllm_profiling/vllm-omni/vllm_omni/diffusion/models/pi05/realtime_triton.py",
+  "workload": {
+    "checkpoint": "/scratch/xinyaowang/vla-vllm-profiling/assets/pi05_base/b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+    "dtype": "bfloat16 blanket cast (PR4419)",
+    "batch": 1,
+    "cameras": 3,
+    "steps": 10,
+    "seed": 17,
+    "input": "Synthetic images and zero state; repeated observation; cross-request caching disabled",
+    "expert_scope": "Action input projection, 10-step denoising (or configured steps), final head and Euler; prefix and AdaRMS precompute excluded"
+  },
+  "memory_before": {
+    "host_available_bytes": 126330679296,
+    "cgroup_limits": [],
+    "available_bytes": 126330679296
+  },
+  "min_available_gib": 32,
+  "cuda_peak_allocated_bytes": 15544240640,
+  "cuda_peak_reserved_bytes": 15730737152,
+  "load_audit": {
+    "loaded_parameter_names": 813,
+    "missing_parameter_names": []
+  },
+  "pipeline_safe_wall": {
+    "count": 20,
+    "mean_ms": 238.398633300676,
+    "p50_ms": 237.7900569990743,
+    "p95_ms": 241.4287169376621,
+    "samples_ms": [
+      239.45404900587164,
+      238.76254999777302,
+      237.36082299728878,
+      237.01610800344497,
+      237.57304000901058,
+      237.7439760020934,
+      237.81689800671302,
+      239.02807498234324,
+      241.57465502503328,
+      237.75134902098216,
+      237.76321599143557,
+      238.15306898904964,
+      238.6616209987551,
+      237.4790349858813,
+      237.59760899702087,
+      238.52707000332884,
+      241.4210359856952,
+      239.26508499425836,
+      237.75675101205707,
+      237.26665100548416
+    ]
+  },
+  "pipeline_optimized_wall": {
+    "count": 20,
+    "mean_ms": 72.73643969965633,
+    "p50_ms": 72.45569101360161,
+    "p95_ms": 73.7623459106544,
+    "samples_ms": [
+      73.69049001135863,
+      73.43131501693279,
+      72.5907720043324,
+      72.35794598818757,
+      72.37335099489428,
+      72.45006001903675,
+      72.40954198641703,
+      72.11861497489735,
+      72.41611098288558,
+      72.46132200816646,
+      72.25215202197433,
+      72.36505500623025,
+      72.35414598835632,
+      72.85215199226514,
+      75.12760799727403,
+      73.30720400204882,
+      72.78408101410605,
+      72.47172799543478,
+      72.44750700192526,
+      72.4676369864028
+    ]
+  },
+  "expert_diagnostic_launches": {
+    "count": 20,
+    "mean_ms": 35.61654396057129,
+    "p50_ms": 35.59444808959961,
+    "p95_ms": 35.82449359893799,
+    "samples_ms": [
+      35.8175048828125,
+      35.70649719238281,
+      35.60166549682617,
+      35.55039978027344,
+      35.53478240966797,
+      35.46547317504883,
+      35.62287902832031,
+      35.60768127441406,
+      35.53859329223633,
+      35.4736328125,
+      35.762367248535156,
+      35.957279205322266,
+      35.787391662597656,
+      35.51987075805664,
+      35.45926284790039,
+      35.64121627807617,
+      35.62499237060547,
+      35.511070251464844,
+      35.56108856201172,
+      35.58723068237305
+    ]
+  },
+  "expert_cuda_graph": {
+    "count": 20,
+    "mean_ms": 34.73475360870361,
+    "p50_ms": 34.72455978393555,
+    "p95_ms": 34.81107120513916,
+    "samples_ms": [
+      34.723968505859375,
+      34.73817443847656,
+      34.72092819213867,
+      34.76044845581055,
+      34.74665451049805,
+      34.810752868652344,
+      34.716800689697266,
+      34.660926818847656,
+      34.735198974609375,
+      34.71628952026367,
+      34.76784133911133,
+      34.720001220703125,
+      34.71440124511719,
+      34.689918518066406,
+      34.688575744628906,
+      34.760032653808594,
+      34.75833511352539,
+      34.72515106201172,
+      34.81711959838867,
+      34.72355270385742
+    ]
+  },
+  "comparison": {
+    "reference": "same PR safe backend; external LeRobot parity NOT yet established",
+    "safe_vs_optimized_max_abs": 0.19186890125274658,
+    "safe_vs_optimized_mean_abs": 0.043667882680892944,
+    "expert_eager_vs_graph_max_abs": 0.0
+  },
+  "profiled": false,
+  "timing_warning": "Profile mode omits latency sweeps and the extra expert graph; use the separate uninstrumented run for latency and parity."
+}

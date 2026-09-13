@@ -177,7 +177,9 @@ def aggregate_operators(rows):
     for row in rows:
         label = row.get("operator", row["kernel"])
         match = re.search(r"step-?\d+\.layer-?\d+\.(\w+\.line\d+)", label)
-        group = match.group(1) if match else label
+        # NCU can rename uninstrumented framework kernels to the outer range
+        # "action_expert". Preserve their actual kernel names for attribution.
+        group = match.group(1) if match else row["kernel"]
         key = group, row["domain"], row["memory_level"]
         grouped.setdefault(key, []).append(row)
     group_ids = {name: index + 1 for index, name in enumerate(sorted({key[0] for key in grouped}))}
@@ -240,9 +242,24 @@ def plot(rows, ceilings, output):
             grouped = "group_id" in points[0]
             fig.colorbar(scatter, ax=ax, label=("Mean " if grouped else "") + "NCU replay duration (µs)")
             if grouped:
+                clusters = []
                 for r in points:
-                    ax.annotate(str(r["group_id"]), (r["ai_flops_per_byte"], r["performance_tflops"]),
-                                xytext=(4, 3), textcoords="offset points", fontsize=7)
+                    cluster = next((c for c in clusters
+                                    if abs(math.log10(r["ai_flops_per_byte"] / c[0]["ai_flops_per_byte"])) < .08
+                                    and abs(math.log10(r["performance_tflops"] / c[0]["performance_tflops"])) < .08), None)
+                    if cluster is None:
+                        clusters.append([r])
+                    else:
+                        cluster.append(r)
+                # Separate labels for near-identical norm/attention points while
+                # keeping every marker at its measured coordinate.
+                for cluster in clusters:
+                    for index, r in enumerate(cluster):
+                        offset = 4 + 12 * (index - (len(cluster) - 1) / 2)
+                        ax.annotate(str(r["group_id"]), (r["ai_flops_per_byte"], r["performance_tflops"]),
+                                    xytext=(7, offset), textcoords="offset points", fontsize=7,
+                                    arrowprops=({"arrowstyle": "-", "color": "#777777", "lw": .5}
+                                                if len(cluster) > 1 else None))
         else:
             ax.text(.5, .5, "No valid measured points", transform=ax.transAxes, ha="center")
         ax.set(xlabel=f"{level.upper()} arithmetic intensity (FLOP/byte)",
@@ -250,7 +267,10 @@ def plot(rows, ceilings, output):
         ax.grid(True, which="both", alpha=.18)
         ax.legend(fontsize=8)
     fig.suptitle(ceilings.get("title", "π0.5 Action Expert — NCU kernel invocations"))
-    fig.tight_layout()
+    caption = ceilings.get("caption")
+    if caption:
+        fig.text(.5, .015, caption, ha="center", fontsize=8, color="#555555")
+    fig.tight_layout(rect=(0, .055 if caption else 0, 1, 1))
     for extension in ("png", "pdf"):
         fig.savefig(str(output) + "." + extension, dpi=180)
     plt.close(fig)
@@ -262,6 +282,7 @@ def main():
     parser.add_argument("--contract", type=Path, required=True)
     parser.add_argument("--operators-csv", type=Path)
     parser.add_argument("--ceilings", type=Path)
+    parser.add_argument("--caption", help="Run-specific caveat included in both PNG/PDF figures")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     kernels = load_ncu(args.csv)
@@ -288,7 +309,10 @@ def main():
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     if args.ceilings:
         ceilings = json.loads(args.ceilings.read_text())
-        plot(rows, ceilings, args.output / "roofline")
+        if args.caption:
+            ceilings["caption"] = args.caption
+        plot(rows, {**ceilings, "title": f"π0.5 Action Expert — {len(kernels):,} measured kernel invocations"},
+             args.output / "roofline")
         plot(operators, {**ceilings, "title": "π0.5 Action Expert — operator groups (IDs in operators.csv)"},
              args.output / "roofline_by_operator")
     print(json.dumps(summary, indent=2))

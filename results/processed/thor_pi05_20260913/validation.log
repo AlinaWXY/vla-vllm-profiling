@@ -1,0 +1,27 @@
+test_exact_coverage_and_no_precision_double_count (test_profile_audit.ProfileAuditTests) ... ok
+test_missing_duplicate_or_wrong_kernel_is_rejected (test_profile_audit.ProfileAuditTests) ... ok
+test_actual_thor_ncu_wide_export (test_roofline.RooflineTests) ... ok
+test_csv_kernel_identity_and_unavailable_counter (test_roofline.RooflineTests) ... ok
+test_duplicate_conflicts_fail (test_roofline.RooflineTests) ... ok
+test_invalid_contracts_do_not_produce_false_points (test_roofline.RooflineTests) ... ok
+test_l2_is_explicit_and_never_labeled_dram (test_roofline.RooflineTests) ... ok
+test_missing_is_not_zero (test_roofline.RooflineTests) ... ok
+test_no_double_count_tensor_parent_and_sparse_child (test_roofline.RooflineTests) ... ok
+test_operator_groups_pool_work_and_time_without_mixing_precisions (test_roofline.RooflineTests) ... ok
+test_operator_join_rejects_different_reports (test_roofline.RooflineTests) ... ok
+test_outer_nvtx_scope_does_not_merge_different_framework_kernels (test_roofline.RooflineTests) ... ok
+test_units_precision_and_fma (test_roofline.RooflineTests) ... ok
+test_unknown_architecture_requires_review (test_roofline.RooflineTests) ... ok
+test_unknown_units_fail (test_roofline.RooflineTests) ... ok
+test_zero_traffic_is_retained_but_not_plotted (test_roofline.RooflineTests) ... ok
+test_cache_paths_are_preserved_and_downloads_disabled (test_runtime.RuntimeTests) ... ok
+test_direct_execution_is_limited_to_authorized_thor (test_runtime.RuntimeTests) ... ok
+test_offline_assets_require_local_tokenizer (test_runtime.RuntimeTests) ... ok
+test_parent_cgroup_limit_wins_over_host_memory (test_runtime.RuntimeTests) ... ok
+test_unsafe_cache_fails_before_creating_directories (test_runtime.RuntimeTests) ... ok
+test_weight_stream_opens_one_shard_at_a_time (test_runtime.RuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.075s
+
+OK

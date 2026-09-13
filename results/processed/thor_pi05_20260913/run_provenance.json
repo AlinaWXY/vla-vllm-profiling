@@ -1,0 +1,61 @@
+{
+  "measurement_source_commit": "3b48e7402859aa0c64291503509d37290436e3c7",
+  "source_files_sha256": {
+    "profiling/bench_pi05.py": "1819348d76f2b3950829ef97ef34a6a43b2fae25b8cc31cd84e99c2b7eaf1fda",
+    "profiling/instrumentation.py": "e9d40b8c5debf86790fc5ab2dd167fea439c6f8b7a8c958b0c6eeb87a8b0c2dd",
+    "profiling/ncu.py": "5a651b8c9f402163751beed76709e20b2eee09ebb230cd525d1e080fdca4e7bd",
+    "profiling/runtime.py": "7a69978ea68abae73341429a28aee23b876e72afb2e143eb72a91ccb70d6ca25",
+    "scripts/thor_python.sh": "0c88865e2400bcfad05ffd7ed5185e95ba0c85d5284949bf097041048bcf0a34",
+    "scripts/cache_env.sh": "7d50f519a31cd857bbdfffd0fe6000447809e141539353775aaf442f60b31872"
+  },
+  "source_lock": {
+    "checked_at": "2026-09-12",
+    "vllm": {
+      "url": "https://github.com/vllm-project/vllm.git",
+      "commit": "0b3ba88f165976e77ca5e6a7a3f5bba4562b80af",
+      "role": "v0.22.0 matches the optimized Omni Docker base; ARM64 runtime validated on Thor.",
+      "ref": "refs/tags/v0.22.0"
+    },
+    "vllm-omni": {
+      "url": "https://github.com/vllm-project/vllm-omni.git",
+      "ref": "refs/pull/4419/head",
+      "commit": "1826509403bfa3d378d3476a4a341b78640165ea",
+      "role": "Experimental realtime_triton_prefix optimization, closed and unmerged PR 4419."
+    },
+    "vllm-omni-reference": {
+      "url": "https://github.com/vllm-project/vllm-omni.git",
+      "ref": "refs/pull/6950/head",
+      "commit": "41a6da68fcb2da7c2717dda32069ef9541797bbe",
+      "role": "Functional pi05 reference, open and unmerged PR 6950; use a separate environment."
+    },
+    "checkpoint": {
+      "repo_id": "lerobot/pi05_base",
+      "revision": "b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+      "parameters": 3616757520,
+      "download_bytes_weights": 14467030080,
+      "license": "gemma",
+      "role": "Real model weights; download only into a scratch cache; do not commit weights.",
+      "safetensors_file_bytes": 14467165872,
+      "safetensors_file_sha256": "0eb11ca9587678c1d2ef8cf32807c29f8ce53a2bfdfc1aa4a4c96f16fca59b0f"
+    },
+    "tokenizer": {
+      "url": "https://storage.googleapis.com/big_vision/paligemma_tokenizer.model",
+      "bytes": 4264023,
+      "sha256": "8986bb4f423f07f8c7f70d0dbe3526fb2316056c17bae71b1ea975e77a168fc6",
+      "official_usage": "https://github.com/Physical-Intelligence/openpi/blob/main/src/openpi/models/tokenizer.py",
+      "matching_hf_repo": "google/paligemma-3b-pt-224",
+      "matching_hf_revision": "35e4f46485b4d07967e7e9935bc3786aad50687c",
+      "role": "Public OpenPI tokenizer; identical SHA256 to the pinned HF tokenizer.model. Reconstruct text tokenizer config locally and verify token IDs."
+    }
+  },
+  "selected_runtime_environment": {
+    "TRITON_PTXAS_PATH": "/usr/local/cuda/bin/ptxas",
+    "TORCHINDUCTOR_COMPILE_THREADS": "1",
+    "MAX_JOBS": "1",
+    "OMP_NUM_THREADS": "1",
+    "TORCH_CUDA_ARCH_LIST": "11.0a",
+    "TRITON_PTXAS_BLACKWELL_PATH": "/usr/local/cuda/bin/ptxas"
+  },
+  "pi05_environment_overrides": "No PI05_* variables were present in the profiled process environment; upstream defaults apply.",
+  "note": "Data collection files are byte-identical to the recorded commit; analysis/publication scripts may be newer."
+}

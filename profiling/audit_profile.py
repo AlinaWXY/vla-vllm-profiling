@@ -83,6 +83,41 @@ def audit(kernels, benchmark, contract):
     return report, hotspots
 
 
+def plot_hotspots(hotspots, output):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    labels = []
+    for row in hotspots:
+        name = row["operator"]
+        if ".line" in name:
+            name, line = name.rsplit(".line", 1)
+            name += f" (line {line})"
+        elif len(name) > 65:
+            name = name.split("<", 1)[0]
+        labels.append(f"#{row['group_id']} {name}")
+    shares = [row["ncu_time_share_pct"] for row in hotspots]
+    fig, ax = plt.subplots(figsize=(12, max(5, .36 * len(labels) + 1.5)))
+    ax.barh(range(len(labels)), shares, color="#287e92")
+    ax.set_yticks(range(len(labels)))
+    ax.set_yticklabels(labels, fontsize=9)
+    for index, row in enumerate(hotspots):
+        ax.text(shares[index] + max(shares) * .015, index,
+                f"{shares[index]:.2f}%  /  {row['ncu_total_ms']:.3f} ms", va="center", fontsize=8)
+    ax.invert_yaxis()
+    ax.set(xlabel="Share of summed NCU kernel replay durations (%)", xlim=(0, max(shares) * 1.38),
+           title="π0.5 Action Expert — measured kernel replay timing")
+    ax.grid(axis="x", alpha=.18)
+    ax.set_axisbelow(True)
+    fig.text(.5, .015, "Experimental PR 4419; numerical equivalence unverified. "
+             "Replay sums are not request latency. IDs match operators.csv.", ha="center", fontsize=8)
+    fig.tight_layout(rect=(0, .055, 1, 1))
+    for ext in ("png", "pdf"):
+        fig.savefig(output / f"hotspots.{ext}", dpi=180)
+    plt.close(fig)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--raw", type=Path, required=True)
@@ -90,6 +125,7 @@ def main():
     p.add_argument("--benchmark", type=Path, required=True)
     p.add_argument("--contract", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--plot", action="store_true", help="Also create a timing-share PNG/PDF")
     args = p.parse_args()
     kernels = load_ncu(args.raw)
     attach_operators(kernels, load_ncu(args.annotated))
@@ -101,6 +137,8 @@ def main():
         writer = csv.DictWriter(f, fieldnames=list(hotspots[0]))
         writer.writeheader()
         writer.writerows(hotspots)
+    if args.plot:
+        plot_hotspots(hotspots, args.output)
     print(json.dumps(report, indent=2))
 
 
