@@ -3,11 +3,18 @@
 在 NVIDIA Thor 上部署 vLLM-Omni π0.5，采集 VLM 与 Action Expert 的逐 kernel 和整体
 timing、FLOP 与内存层级流量，并绘制完整 VLA 的 GPU Roofline 图。
 
-**当前任务（2026-09-13）：使用新 Omni 源码 `6bdbf97`，在现有 Thor 环境上分别采集 VLM 和 Action Expert 的逐算子、整体数据，以及完整 VLA 的整体 roofline。该版本修正 Gemma RoPE 和相机 CUDA Graph 输出覆盖；本轮不安装或升级 Thor 环境。**
+**当前结果（2026-09-13）：按用户要求停止 NCU，使用已有 VLM 数据与历史 Action Expert breakdown 分别绘图，见 [0913/30](results/processed/0913/30/README.md)。**
 
-环境、真实权重和计数器校验已完成。旧基线存在摄像头键名错误，实际三路图像被 mask，
-不能作为三摄像头 VLA 的结果；原始数据保留，修正后的输入将检查有效 camera masks 和 prefix 长度。
-新版本基线已完成：[0913/27](results/processed/0913/27/README.md)。VLM / Action Expert / VLA GPU 图的 p50 分别为 **69.05 / 41.95 / 111.01 ms**，原始完整 pipeline 为 **113.41 ms**。分段及捕获后的输出相对原始 pipeline 最大差均为 0。逐算子和整图 NCU 分别在 `0913/28` 和 `0913/29` 采集；旧版本 `08/10/11` 计划已取消。
+- VLM：新源码 `6bdbf97`、三路有效图像、前缀 918；从中断报告恢复完整的 **1,018 次调用 / 37 个算子组**。
+- Action Expert：复用旧源码 `1826509` 的完整 **1,654 次调用 / 16 个算子组**，历史图像被 mask、前缀 150。两套数据分别展示，不相加为一次 VLA。
+- 图内标注算子与 `0913/30` 绘图时间，附逐调用图、PDF、CSV 和覆盖审计。参考线来自旧微基准，不是本轮已验证的硬件上限。
+- `0913/28` 和 `0913/29` 已取消，无自动重试；本次只解析已有报告，没有新模型运行或 NCU 采集。
+
+![VLM L2 roofline](results/processed/0913/30/vlm/roofline_by_operator.png)
+
+![历史 Action Expert L2 roofline](results/processed/0913/30/action_expert/roofline_by_operator.png)
+
+新版本无 NCU 基线见 [0913/27](results/processed/0913/27/README.md)。VLM / Action Expert / VLA GPU 图的 p50 分别为 **69.05 / 41.95 / 111.01 ms**，原始完整 pipeline 为 **113.41 ms**。基线分段及捕获后的输出相对原始 pipeline 最大差均为 0。整体 roofline 所需的整图流量尚未采集。
 [模型文件](docs/model_assets.md)、[计数器校验](results/processed/compute_counter_validation/)、
 [历史结果与限制](results/processed/thor_pi05_20260913/)。
 
@@ -22,8 +29,6 @@ timing、FLOP 与内存层级流量，并绘制完整 VLA 的 GPU Roofline 图�
 
 带算子名称及绘图时间的版本见 [0913/00](results/processed/0913/00/)。
 低于参考线的原因分析与资源限制见 [0913/03](results/processed/0913/03/)。
-
-![Thor Action Expert L2 Roofline](results/processed/0913/00/roofline_by_operator.png)
 
 历史缺图实验中，FFN gate/up 与 down 两个融合算子合计占 NCU 重放耗时的 **49.1%**。
 NCU kernel 耗时之和为 57.70 ms，属于清缓存的诊断重放，不能当作原始请求延迟。

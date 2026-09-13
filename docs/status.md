@@ -1,5 +1,13 @@
 # Execution status — 2026-09-13
 
+## 已有 VLM / 历史 Action Expert 分别绘图完成
+
+[0913/30](../results/processed/0913/30/README.md) 包含两个模块的分算子和逐调用 roofline（PNG/PDF），
+算子清单与 CSV。取消报告中 VLM 的 ID 0–1017 完整、六项计数器无缺失；后续不完整 expert 数据排除。
+Action Expert 复用旧的完整 1,654 次调用，明确标注旧源码及 prefix=150 的配置。
+本次仅离线解析已有报告，不续跑 NCU，不合并不同负载为整体 VLA。部分 VLM 点超过旧微基准参考线，
+因此参考线明确不是本轮校准的硬件上限。所有后续采集仍取消。
+
 ## 本轮 NCU 已取消（2026-09-13T20:20:50+08:00）
 
 用户要求停止耗时过长的本轮实验。[0913/28](../results/processed/0913/28/README.md)

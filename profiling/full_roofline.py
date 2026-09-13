@@ -113,7 +113,7 @@ def short_label(key):
     return f"{part}: {name}" if part else name
 
 
-def plot_ops(rows, output, ceilings, title, inputs, invocations=False):
+def plot_ops(rows, output, ceilings, title, inputs, invocations=False, label_map=None, caption=""):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -125,6 +125,7 @@ def plot_ops(rows, output, ceilings, title, inputs, invocations=False):
     height = max(7.5, 2.5 + .21 * len(names))
     fig = plt.figure(figsize=(20, height))
     grid = fig.add_gridspec(2, 3, width_ratios=[1, 1, 1.5], height_ratios=[1, .04])
+    callouts = []
     for col, domain in enumerate(ceilings["compute_tflops"]):
         ax = fig.add_subplot(grid[0, col])
         pts = [r for r in rows if r["domain"] == domain and r["status"] == "ok"]
@@ -143,9 +144,7 @@ def plot_ops(rows, output, ceilings, title, inputs, invocations=False):
                        s=10 if invocations else 36, alpha=.35 if invocations else 1)
             center = np.median(np.log10(positions),axis=0)
             anchor = positions[np.argmin(np.sum((np.log10(positions)-center)**2,axis=1))]
-            ax.annotate(str(ident), anchor,
-                        xytext=(4, 5+(ident % 3)*7), textcoords="offset points", fontsize=8,
-                        arrowprops={"arrowstyle":"-", "lw":.4, "color":"#888"})
+            callouts.append((ax, ident, anchor))
         ax.set(title=domain, xlabel="L2 arithmetic intensity (FLOP/byte)", ylabel="Counted throughput (TFLOP/s)")
         ax.grid(True, which="both", alpha=.2)
         ax.legend(fontsize=8)
@@ -153,7 +152,7 @@ def plot_ops(rows, output, ceilings, title, inputs, invocations=False):
     table = []
     for name in names:
         members = [r for r in rows if r["operator"] == name]
-        label = short_label(name)
+        label = label_map[name] if label_map else short_label(name)
         domains = ", ".join(sorted({r["domain"] for r in members if r["status"] == "ok"}))
         table.append({"id":ids[name], "label":label, "operator":name, "plotted_domains":domains})
     legend.text(0, 1, "POINT → OPERATOR\n\n" + "\n".join(
@@ -163,8 +162,39 @@ def plot_ops(rows, output, ceilings, title, inputs, invocations=False):
     note = ("Each point is one measured invocation; numeric callouts identify operator clusters." if invocations else
             "Repeated calls pooled as ΣF/Σbytes and ΣF/Σkernel-time.")
     fig.text(.5, .035, note+" Kernel replay clears caches; this is not whole-stage latency.", ha="center", fontsize=9)
+    if caption:
+        fig.text(.5, .055, caption, ha="center", fontsize=9)
     fig.text(.5, .013, stamp, ha="center", fontsize=9)
     fig.subplots_adjust(top=.93, bottom=.1, left=.055, right=.99, wspace=.3)
+    # Place numeric labels without moving the measured points. Dense LayerNorm
+    # clusters otherwise hide labels behind one another.
+    from matplotlib.text import Text
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    occupied = {}
+    for ax, ident, anchor in callouts:
+        boxes = occupied.setdefault(ax, [ax.get_legend().get_window_extent(renderer)])
+        bounds = ax.get_window_extent(renderer).padded(-3)
+        best = None
+        for dy in (8, -8, 20, -20, 32, -32, 44, -44, 56, -56, 72, -72):
+            for dx in (6, -6, 18, -18, 30, -30):
+                ann = ax.annotate(str(ident), anchor, xytext=(dx, dy),
+                    textcoords="offset points", fontsize=8,
+                    ha="left" if dx > 0 else "right", va="center",
+                    bbox={"facecolor":"white", "edgecolor":"none", "alpha":.85, "pad":.5},
+                    arrowprops={"arrowstyle":"-", "lw":.4, "color":"#888"})
+                ann.update_positions(renderer)
+                box = Text.get_window_extent(ann, renderer).padded(2)
+                overflow = (max(bounds.x0-box.x0, 0)+max(box.x1-bounds.x1, 0)
+                            +max(bounds.y0-box.y0, 0)+max(box.y1-bounds.y1, 0))
+                score = overflow*1e8 + sum(box.overlaps(b) for b in boxes)*1e6 + dx*dx+dy*dy
+                if best is None or score < best[0]:
+                    if best is not None:
+                        best[1].remove()
+                    best = score, ann, box
+                else:
+                    ann.remove()
+        boxes.append(best[2])
     for ext in ("png", "pdf"):
         fig.savefig(str(output)+"."+ext, dpi=180)
     plt.close(fig)

@@ -1,0 +1,33 @@
+group_id,operator,domain,memory_level,invocations,flops,duration_ns,memory_bytes,mean_duration_ns,ai_flops_per_byte,performance_tflops,status
+1,_adarms_norm_kernel.line1854,bf16_tensor,l2,180,0.0,2740896.0,83131712.0,15227.2,,,zero_counted_flops
+1,_adarms_norm_kernel.line1854,fp32_simt,l2,180,64512000.0,2740896.0,83131712.0,15227.2,0.7760215499952653,0.02353682883261532,ok
+2,_adarms_norm_kernel.line1945,bf16_tensor,l2,180,0.0,2701408.0,83072320.0,15007.822222222223,,,zero_counted_flops
+2,_adarms_norm_kernel.line1945,fp32_simt,l2,180,64512000.0,2701408.0,83072320.0,15007.822222222223,0.7765763614161733,0.023880879896705717,ok
+3,_adarms_norm_kernel.line1989,bf16_tensor,l2,10,0.0,154528.0,4619552.0,15452.8,,,zero_counted_flops
+3,_adarms_norm_kernel.line1989,fp32_simt,l2,10,3584000.0,154528.0,4619552.0,15452.8,0.7758328080298695,0.023193207703458275,ok
+4,_matmul_abt_scale.line1899,bf16_tensor,l2,180,8587837440.0,3086752.0,513808128.0,17148.62222222222,16.714094176415987,2.782159836617908,ok
+4,_matmul_abt_scale.line1899,fp32_simt,l2,180,16773120.0,3086752.0,513808128.0,17148.62222222222,0.032644715188312474,0.005433905930894351,ok
+5,_matmul_rope_qkv.line1863,bf16_tensor,l2,180,60397977600.0,6502816.0,2487158784.0,36126.75555555556,24.283925090968378,9.287972718280818,ok
+5,_matmul_rope_qkv.line1863,fp32_simt,l2,180,79626240.0,6502816.0,2487158784.0,36126.75555555556,0.032014940305475886,0.012244885907889752,ok
+6,_matmul_small.line1921,bf16_tensor,l2,180,9814671360.0,3289376.0,615151840.0,18274.31111111111,15.954876051415209,2.9837486988413606,ok
+6,_matmul_small.line1921,fp32_simt,l2,180,0.0,3289376.0,615151840.0,18274.31111111111,,,zero_counted_flops
+7,_matmul_small_bias.line1839,bf16_tensor,l2,10,41943040.0,150848.0,3647616.0,15084.8,11.498754254833843,0.2780483665676708,ok
+7,_matmul_small_bias.line1839,fp32_simt,l2,10,327680.0,150848.0,3647616.0,15084.8,0.0898340176158894,0.002172252863809928,ok
+8,_matmul_small_bias_res.line1998,bf16_tensor,l2,10,83886080.0,149280.0,5170592.0,14928.0,16.223689666483065,0.5619378349410503,ok
+8,_matmul_small_bias_res.line1998,fp32_simt,l2,10,40960.0,149280.0,5170592.0,14928.0,0.007921723469962434,0.0002743837084673097,ok
+9,_matmul_small_gate.line1954,bf16_tensor,l2,180,193273528320.0,15055648.0,4198747136.0,83642.48888888888,46.03123790496347,12.837277300850818,ok
+9,_matmul_small_gate.line1954,fp32_simt,l2,180,519045120.0,15055648.0,4198747136.0,83642.48888888888,0.12361904710805618,0.03447510993880835,ok
+10,_matmul_small_res_gate_ffn_down.line1971,bf16_tensor,l2,180,96636764160.0,13282688.0,7076811552.0,73792.71111111112,13.65541013066671,7.27539216158657,ok
+10,_matmul_small_res_gate_ffn_down.line1971,fp32_simt,l2,180,23592960.0,13282688.0,7076811552.0,73792.71111111112,0.003333840363932302,0.0017762187894498462,ok
+11,_matmul_small_res_gate_oproj.line1932,bf16_tensor,l2,180,48318382080.0,7326528.0,2648917856.0,40702.933333333334,18.24080047274973,6.59499043475982,ok
+11,_matmul_small_res_gate_oproj.line1932,fp32_simt,l2,180,23592960.0,7326528.0,2648917856.0,40702.933333333334,0.008906640855834829,0.0032202101732225685,ok
+12,_softmax_prefix_suffix_mask_vector.line1911,bf16_tensor,l2,180,0.0,3210048.0,101477632.0,17833.6,,,zero_counted_flops
+12,_softmax_prefix_suffix_mask_vector.line1911,fp32_simt,l2,180,455040000.0,3210048.0,101477632.0,17833.6,4.484140899149085,0.14175488964650995,ok
+13,"void at::unrolled_elementwise_kernel<at::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 3)]::operator ()() const::[lambda(int) (instance 1)], std::array<char *, 2>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithCast<1>, memory::StoreWithCast<1>>(int, T1, T2, T4, T5, T6, T7)",bf16_tensor,l2,1,0.0,12608.0,119552.0,12608.0,,,zero_counted_flops
+13,"void at::unrolled_elementwise_kernel<at::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 3)]::operator ()() const::[lambda(int) (instance 1)], std::array<char *, 2>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithCast<1>, memory::StoreWithCast<1>>(int, T1, T2, T4, T5, T6, T7)",fp32_simt,l2,1,0.0,12608.0,119552.0,12608.0,,,zero_counted_flops
+14,"void at::unrolled_elementwise_kernel<at::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, 2>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithCast<1>, memory::StoreWithCast<1>>(int, T1, T2, T4, T5, T6, T7)",bf16_tensor,l2,1,0.0,13792.000000000002,129088.0,13792.000000000002,,,zero_counted_flops
+14,"void at::unrolled_elementwise_kernel<at::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, 2>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithCast<1>, memory::StoreWithCast<1>>(int, T1, T2, T4, T5, T6, T7)",fp32_simt,l2,1,0.0,13792.000000000002,129088.0,13792.000000000002,,,zero_counted_flops
+15,"void at::vectorized_elementwise_kernel<4, at::FillFunctor<int>, std::array<char *, 1>>(int, T2, T3)",bf16_tensor,l2,1,0.0,3552.0,19296.0,3552.0,,,zero_counted_flops
+15,"void at::vectorized_elementwise_kernel<4, at::FillFunctor<int>, std::array<char *, 1>>(int, T2, T3)",fp32_simt,l2,1,0.0,3552.0,19296.0,3552.0,,,zero_counted_flops
+16,"void at::vectorized_elementwise_kernel<4, at::bfloat16_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda(float) (instance 1)], std::array<char *, 2>>(int, T2, T3)",bf16_tensor,l2,1,0.0,18592.0,51904.0,18592.0,,,zero_counted_flops
+16,"void at::vectorized_elementwise_kernel<4, at::bfloat16_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda(float) (instance 1)], std::array<char *, 2>>(int, T2, T3)",fp32_simt,l2,1,0.0,18592.0,51904.0,18592.0,,,zero_counted_flops

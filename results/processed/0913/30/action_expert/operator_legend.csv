@@ -1,0 +1,17 @@
+group_id,label,operator,plotted_domains
+1,AdaRMS (pre-attention),_adarms_norm_kernel.line1854,fp32_simt
+2,AdaRMS (pre-FFN),_adarms_norm_kernel.line1945,fp32_simt
+3,AdaRMS (final),_adarms_norm_kernel.line1989,fp32_simt
+4,Attention scores: QKᵀ + scale,_matmul_abt_scale.line1899,bf16_tensor;fp32_simt
+5,QKV projection + RoPE,_matmul_rope_qkv.line1863,bf16_tensor;fp32_simt
+6,Attention context: P × V,_matmul_small.line1921,bf16_tensor
+7,Action input projection + bias,_matmul_small_bias.line1839,bf16_tensor;fp32_simt
+8,Action head + Euler update,_matmul_small_bias_res.line1998,bf16_tensor;fp32_simt
+9,FFN gate/up + GELU product,_matmul_small_gate.line1954,bf16_tensor;fp32_simt
+10,FFN down + gated residual,_matmul_small_res_gate_ffn_down.line1971,bf16_tensor;fp32_simt
+11,Attention out + gated residual,_matmul_small_res_gate_oproj.line1932,bf16_tensor;fp32_simt
+12,Attention masked softmax,_softmax_prefix_suffix_mask_vector.line1911,fp32_simt
+13,Framework copy (integer),"void at::unrolled_elementwise_kernel<at::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 3)]::operator ()() const::[lambda(int) (instance 1)], std::array<char *, 2>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithCast<1>, memory::StoreWithCast<1>>(int, T1, T2, T4, T5, T6, T7)",
+14,Framework copy (float),"void at::unrolled_elementwise_kernel<at::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, 2>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithCast<1>, memory::StoreWithCast<1>>(int, T1, T2, T4, T5, T6, T7)",
+15,Framework fill (integer),"void at::vectorized_elementwise_kernel<4, at::FillFunctor<int>, std::array<char *, 1>>(int, T2, T3)",
+16,Framework BF16 conversion,"void at::vectorized_elementwise_kernel<4, at::bfloat16_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda(float) (instance 1)], std::array<char *, 2>>(int, T2, T3)",

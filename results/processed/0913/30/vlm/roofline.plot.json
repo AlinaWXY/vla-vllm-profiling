@@ -1,0 +1,52 @@
+{
+  "experiment_id": "0913/30",
+  "plotted_at": "2026-09-13T20:26:36+08:00",
+  "inputs": [
+    {
+      "path": "results/processed/0913/30/export/raw.csv",
+      "bytes": 5290687,
+      "sha256": "11d039afc8e718946928d93e0cd183250f7b38c15ec49ef420337411273a36e9"
+    },
+    {
+      "path": "results/processed/0913/30/export/operators.csv",
+      "bytes": 5363364,
+      "sha256": "dab9451c5882775f45de0d460735378f565cc037c67c861075c2097232b0bf98"
+    },
+    {
+      "path": "results/processed/0913/27/workload/full_scopes.json",
+      "bytes": 12947,
+      "sha256": "72627ef53ee28c172a01865c8c06275e210a1d7e0ddbcac145e61fe723f903dc"
+    },
+    {
+      "path": "results/processed/0913/28/source.json",
+      "bytes": 1785,
+      "sha256": "a01dc91005a7f1c344898aaf45defa71b41c1afc1255ca7450f9951754137d6b"
+    },
+    {
+      "path": "results/processed/0913/28/metrics.json",
+      "bytes": 1205,
+      "sha256": "bfc5342a9f97d16e2af5ba39cc43ed11ba9a9843c9a0b43a1ee5d39000fa23c5"
+    },
+    {
+      "path": "results/processed/0913/28/ncu/collection.json",
+      "bytes": 3558,
+      "sha256": "5d1caa9dda525df08a4367849ae402f32fe12f25d6f744117bebc2836522028d"
+    },
+    {
+      "path": "results/processed/0913/28/ncu/ncu.log",
+      "bytes": 143213,
+      "sha256": "321d88f9efd29e57a5c0d4bbed7e6f7af5becab593a2bef400d32a62b11869ca"
+    },
+    {
+      "path": "vllm-omni/vllm_omni/diffusion/models/pi05/realtime_triton.py",
+      "bytes": 80319,
+      "sha256": "5aee47e85c07df3e6762d5953d094644c2a275b10da02f7b35a9fd2b45139a54"
+    },
+    {
+      "path": "results/processed/compute_counter_validation/ceilings_l2.json",
+      "bytes": 3562,
+      "sha256": "2bb3c1f1cda2a5004e7a74d62efddd38acc47f6a41b0c4247dcd4e1b1883579e"
+    }
+  ],
+  "host": "deep-space"
+}

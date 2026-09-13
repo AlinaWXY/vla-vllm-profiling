@@ -1,0 +1,12 @@
+{
+  "kernel_invocations": 1654,
+  "precision_rows": 3308,
+  "valid_precision_rows": 2570,
+  "operator_groups": 16,
+  "domains": [
+    "bf16_tensor",
+    "fp32_simt"
+  ],
+  "memory_level": "l2",
+  "note": "One kernel can appear in multiple precision domains; do not sum their durations."
+}
