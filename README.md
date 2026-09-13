@@ -3,6 +3,8 @@
 在 NVIDIA Thor 上部署 vLLM-Omni π0.5，采集 VLM 与 Action Expert 的逐 kernel 和整体
 timing、FLOP 与内存层级流量，并绘制完整 VLA 的 GPU Roofline 图。
 
+最新分析：[0913/33 — VLM 37 组 FLOPs 与 Thor 带宽](results/processed/0913/33/README.md)。官方 DRAM 为 **273 GB/s**；逻辑 Tensor 运算 **4.224 TFLOPs**、NCU 为 **4.289 TFLOPs**。分层流量、tile 重复读取和 FLOPs padding 已分别列出，不能统一判定整个 VLM 为 DRAM-bound。
+
 **当前结果（2026-09-13）：按用户要求停止 NCU，使用已有 VLM 数据与历史 Action Expert breakdown 分别绘图，见 [0913/30](results/processed/0913/30/README.md)。**
 
 - VLM：新源码 `6bdbf97`、三路有效图像、前缀 918；从中断报告恢复完整的 **1,018 次调用 / 37 个算子组**。

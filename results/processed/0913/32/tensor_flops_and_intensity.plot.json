@@ -1,0 +1,22 @@
+{
+  "experiment_id": "0913/32",
+  "plotted_at": "2026-09-13T20:58:20+08:00",
+  "inputs": [
+    {
+      "path": "results/processed/0913/32/operator_costs.csv",
+      "bytes": 21769,
+      "sha256": "52b31b60ce4888a750d56ba68151551a8f074cca409a4adc62aadb3c72bae773"
+    },
+    {
+      "path": "results/processed/0913/30/vlm/operators.csv",
+      "bytes": 18746,
+      "sha256": "3eadf46ebef5db636ff71636118370253a61b6089668ecee44206213ef13f9ff"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/profiling/vlm_costs.py",
+      "bytes": 16407,
+      "sha256": "022284282ec4734e8cc3d73dba972c4a2d630321982eae009e14951dbf006c11"
+    }
+  ],
+  "host": "deep-space"
+}

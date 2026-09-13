@@ -1,5 +1,9 @@
 # Execution status — 2026-09-13
 
+## VLM FLOPs / 带宽估算完成
+
+[0913/33](../results/processed/0913/33/README.md) 给出 37 组公式、理论/实测 FLOPs、两张解释图与 CSV；仅使用已有数据。官方 LPDDR5X 273 GB/s 与 L2 参考区分。Prefix QKV 的 tile 访问模型解释了大量 L2 重复流量，DRAM 饱和仍无直接计数证据。没有续跑 NCU。
+
 ## 已有 VLM / 历史 Action Expert 分别绘图完成
 
 [0913/30](../results/processed/0913/30/README.md) 包含两个模块的分算子和逐调用 roofline（PNG/PDF），

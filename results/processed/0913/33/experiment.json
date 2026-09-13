@@ -1,0 +1,10 @@
+{
+  "experiment_id": "0913/33",
+  "created_at": "2026-09-13T20:59:59+08:00",
+  "timezone": "Asia/Hong_Kong",
+  "purpose": "VLM FLOPs/带宽估算定稿：保留 32 初稿，修正图例遮挡并标出 Tensor padding 倍率；无新采集",
+  "host": "deep-space",
+  "status": "completed",
+  "finished_at": "2026-09-13T21:01:47+08:00",
+  "new_gpu_collection": false
+}
