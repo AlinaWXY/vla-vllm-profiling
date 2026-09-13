@@ -1,0 +1,7 @@
+{
+  "experiment_id": "0913/28",
+  "cancelled_at": "2026-09-13T20:20:50+08:00",
+  "reason": "User requested cancellation because this NCU experiment is too slow. Do not automatically resume or launch the queued capture.",
+  "state_at_cancellation": "NCU had already failed at kernel 1669; controller exited",
+  "thor_gpu_processes_at_verification": []
+}

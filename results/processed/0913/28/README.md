@@ -1,3 +1,9 @@
-# 0913/28 — Complete-model NCU capture
+# 0913/28 — NCU 已取消
 
-Collection is in progress / queued as of 2026-09-13. This commit publishes the frozen harness and exact command; complete counters and figures will follow. Baseline results are in ../27/. No partial NCU data is presented as a complete measurement.
+取消时间：2026-09-13T20:20:50+08:00（Asia/Hong_Kong）。用户要求本轮停止，原因是采集太慢。
+
+逐算子采集在用户取消前已于 2026-09-13 20:19:35 +08:00 报错退出，最后记录的 kernel ID 为 1669。已完成 3 个 Action Expert 去噪步，未完成全部采集；部分报告不能作为完整 VLA roofline 结果。原始日志及部分 NCU 报告保留在本地，未启动重试。
+
+已核实 Thor 上没有残留的本轮 NCU、模型或内存监控进程，GPU 进程清单为空。`run.sh` 增加取消标记检查，防止旧编号被意外再次启动。
+
+已完成的无 NCU 基线保留在 [0913/27](../27/README.md)。本轮没有生成完整的新 roofline 图。

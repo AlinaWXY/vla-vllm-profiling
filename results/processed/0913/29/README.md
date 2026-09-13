@@ -1,3 +1,9 @@
-# 0913/29 — Complete-model NCU capture
+# 0913/29 — NCU 已取消
 
-Collection is in progress / queued as of 2026-09-13. This commit publishes the frozen harness and exact command; complete counters and figures will follow. Baseline results are in ../27/. No partial NCU data is presented as a complete measurement.
+取消时间：2026-09-13T20:20:50+08:00（Asia/Hong_Kong）。用户要求本轮停止，原因是采集太慢。
+
+该整体 CUDA Graph 采集尚未启动。前序控制器已退出，取消后不再排队或自动启动。
+
+已核实 Thor 上没有残留的本轮 NCU、模型或内存监控进程，GPU 进程清单为空。`run.sh` 增加取消标记检查，防止旧编号被意外再次启动。
+
+已完成的无 NCU 基线保留在 [0913/27](../27/README.md)。本轮没有生成完整的新 roofline 图。

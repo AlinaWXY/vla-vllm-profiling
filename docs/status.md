@@ -1,5 +1,15 @@
 # Execution status — 2026-09-13
 
+## 本轮 NCU 已取消（2026-09-13T20:20:50+08:00）
+
+用户要求停止耗时过长的本轮实验。[0913/28](../results/processed/0913/28/README.md)
+逐算子采集在取消前已报错退出，保留部分日志但不作为完整结果；
+[0913/29](../results/processed/0913/29/README.md) 整体采集未启动，已取消排队。
+已核实 Thor 无残留 GPU 任务，不自动重试。
+[0913/27](../results/processed/0913/27/README.md) 的有效基线保留：VLM GPU p50 69.054 ms、
+Action Expert GPU p50 41.949 ms、VLA GPU p50 111.005 ms、原始 pipeline wall p50 113.410 ms。
+新框架的完整 roofline 图尚未产生；下文采集计划仅作为历史记录。
+
 ## Completed locally
 
 - Cloned vLLM into the requested workspace.
