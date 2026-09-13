@@ -1,0 +1,32 @@
+/fact_data/xinyaowang/vllm-omni-pi05-numerical-fixes/vllm_omni/__init__.py:19: RuntimeWarning: Failed to import version from _version.py: No module named 'vllm_omni._version'
+This typically happens in development mode before building.
+Using fallback version 'dev'.
+  from .version import __version__, __version_tuple__  # isort:skip # noqa: F401
+WARNING 09-13 17:10:42 [patch.py:165] Monkey-patched unregister_vllm_metrics() to scope drops to non-omni vllm:* collectors. Remove this patch once vLLM adds _STAT_LOGGER_METRIC_NAMES.
+test_camera_embeddings_survive_shared_output_replay (__main__.RealtimeNumericalContracts) ... ok
+test_decoder_uses_model_rotary_frequencies (__main__.RealtimeNumericalContracts) ... ok
+test_fused_qkv_preserves_gemma_half_split (__main__.RealtimeNumericalContracts) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.172s
+
+OK
+/fact_data/xinyaowang/vllm-omni-pi05-numerical-fixes/vllm_omni/__init__.py:19: RuntimeWarning: Failed to import version from _version.py: No module named 'vllm_omni._version'
+This typically happens in development mode before building.
+Using fallback version 'dev'.
+  from .version import __version__, __version_tuple__  # isort:skip # noqa: F401
+WARNING 09-13 17:10:58 [patch.py:165] Monkey-patched unregister_vllm_metrics() to scope drops to non-omni vllm:* collectors. Remove this patch once vLLM adds _STAT_LOGGER_METRIC_NAMES.
+INFO 09-13 17:11:02 [modeling_pi05.py:1911] pi0.5: no action normalization stats on config.norm_stats; returned actions are in the model's normalized space.
+INFO 09-13 17:11:10 [modeling_pi05.py:4572] pi0.5 load_weights: 812 tensors loaded, 0 skipped, 0 missing.
+2026-09-13T17:11:14+08:00 Loaded actual framework /fact_data/xinyaowang/vllm-omni-pi05-numerical-fixes/vllm_omni/diffusion/models/pi05/realtime_triton.py
+2026-09-13T17:11:22+08:00 legacy_masked_images {"optimized_vs_safe": {"rmse": 0.0020739819432929463, "reference_rms": 0.05739926761069847, "relative_rmse": 0.03613255063391058, "max_abs": 0.006667494773864746}, "optimized_vs_diagnostic_fix": {"rmse": 0.0, "reference_rms": 0.05719183505790034, "relative_rmse": 0.0, "max_abs": 0.0}, "safe_vs_original_safe": {"rmse": 0.0, "reference_rms": 0.05739926761069847, "relative_rmse": 0.0, "max_abs": 0.0}, "graph_repeat": {"rmse": 0.0, "reference_rms": 0.05719183505790034, "relative_rmse": 0.0, "max_abs": 0.0}}
+Traceback (most recent call last):
+  File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/fact_data/xinyaowang/vla_vllm_profiling/profiling/validate_framework.py", line 115, in <module>
+    main()
+  File "/fact_data/xinyaowang/vla_vllm_profiling/profiling/validate_framework.py", line 97, in main
+    raise AssertionError(f"{name}: actual source did not reproduce diagnostic: {key} {metrics[key]}")
+AssertionError: three_valid_images: actual source did not reproduce diagnostic: optimized_vs_diagnostic_fix {'rmse': 0.0009334566578014465, 'reference_rms': 0.1339929748337619, 'relative_rmse': 0.0069664596890959204, 'max_abs': 0.005859375}

@@ -4,7 +4,7 @@
 	shallow = true
 [submodule "vllm-omni"]
 	path = vllm-omni
-	url = https://github.com/vllm-project/vllm-omni.git
+	url = https://github.com/AlinaWXY/vllm-omni.git
 	shallow = true
 [submodule "vllm-omni-reference"]
 	path = vllm-omni-reference

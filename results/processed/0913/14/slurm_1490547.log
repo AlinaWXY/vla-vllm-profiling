@@ -1,0 +1,696 @@
+/fact_data/xinyaowang/vla_vllm_profiling/vllm-omni/vllm_omni/__init__.py:19: RuntimeWarning: Failed to import version from _version.py: No module named 'vllm_omni._version'
+This typically happens in development mode before building.
+Using fallback version 'dev'.
+  from .version import __version__, __version_tuple__  # isort:skip # noqa: F401
+WARNING 09-13 16:43:34 [patch.py:165] Monkey-patched unregister_vllm_metrics() to scope drops to non-omni vllm:* collectors. Remove this patch once vLLM adds _STAT_LOGGER_METRIC_NAMES.
+2026-09-13T16:43:36+08:00 Importing runtime
+INFO 09-13 16:43:38 [modeling_pi05.py:1911] pi0.5: no action normalization stats on config.norm_stats; returned actions are in the model's normalized space.
+2026-09-13T16:43:38+08:00 Streaming fixed checkpoint
+INFO 09-13 16:43:45 [modeling_pi05.py:4570] pi0.5 load_weights: 812 tensors loaded, 0 skipped, 0 missing.
+2026-09-13T16:43:49+08:00 RoPE frequency audit {"expert_inv_freq_dtype": "torch.bfloat16", "prefix_inv_freq_dtype": "torch.bfloat16", "expert_vs_recomputed_fp32": {"rmse": 0.00029109150636941195, "reference_rms": 0.24142643809318542, "relative_rmse": 0.0012057151183130028, "max_abs": 0.0013881921768188477, "mean_abs": 0.00011983807780779898}}
+2026-09-13T16:43:49+08:00 Model loaded
+2026-09-13T16:43:49+08:00 legacy_masked_images prefix 968 valid 150
+2026-09-13T16:43:50+08:00 legacy_masked_images safe_prefix__original {"rmse": 0.05961740389466286, "reference_rms": 0.057589855045080185, "relative_rmse": 1.0352067017358448, "max_abs": 0.18991577625274658, "mean_abs": 0.0436905175447464}
+2026-09-13T16:43:50+08:00 legacy_masked_images safe_prefix__rope {"rmse": 0.0008657607831992209, "reference_rms": 0.057589855045080185, "relative_rmse": 0.015033216918527069, "max_abs": 0.004204988479614258, "mean_abs": 0.0006383112049661577}
+2026-09-13T16:43:51+08:00 legacy_masked_images safe_prefix__rope_model {"rmse": 0.0008355840109288692, "reference_rms": 0.057589855045080185, "relative_rmse": 0.014509222332210957, "max_abs": 0.003469705581665039, "mean_abs": 0.0006303008995018899}
+2026-09-13T16:43:51+08:00 legacy_masked_images safe_prefix__euler {"rmse": 0.059590525925159454, "reference_rms": 0.057589855045080185, "relative_rmse": 1.0347399881196642, "max_abs": 0.19140625, "mean_abs": 0.04365650191903114}
+2026-09-13T16:43:51+08:00 legacy_masked_images safe_prefix__rope_euler {"rmse": 0.0006483207689598203, "reference_rms": 0.057589855045080185, "relative_rmse": 0.011257551672118775, "max_abs": 0.00390625, "mean_abs": 0.0004616830265149474}
+2026-09-13T16:43:51+08:00 legacy_masked_images safe_prefix__rope_model_euler {"rmse": 0.0006331478361971676, "reference_rms": 0.057589855045080185, "relative_rmse": 0.010994086296997139, "max_abs": 0.0029296875, "mean_abs": 0.00045231558033265173}
+2026-09-13T16:43:51+08:00 legacy_masked_images safe_prefix__rope_eager_euler {"rmse": 0.0006563147762790322, "reference_rms": 0.057589855045080185, "relative_rmse": 0.0113963609695715, "max_abs": 0.0029296875, "mean_abs": 0.00047291209921240807}
+2026-09-13T16:43:51+08:00 legacy_masked_images safe_prefix__rope_model_eager_euler {"rmse": 0.0006207552505657077, "reference_rms": 0.057589855045080185, "relative_rmse": 0.010778899340513931, "max_abs": 0.0029296875, "mean_abs": 0.0004482866788748652}
+2026-09-13T16:43:51+08:00 legacy_masked_images fast_prefix__original {"rmse": 0.059469833970069885, "reference_rms": 0.057589855045080185, "relative_rmse": 1.032644272563598, "max_abs": 0.18893921375274658, "mean_abs": 0.04364287108182907}
+2026-09-13T16:43:51+08:00 legacy_masked_images fast_prefix__rope {"rmse": 0.0016049816040322185, "reference_rms": 0.057589855045080185, "relative_rmse": 0.02786917249185418, "max_abs": 0.006203770637512207, "mean_abs": 0.001170294126495719}
+2026-09-13T16:43:51+08:00 legacy_masked_images fast_prefix__rope_model {"rmse": 0.0016658863751217723, "reference_rms": 0.057589855045080185, "relative_rmse": 0.028926733255670634, "max_abs": 0.007079720497131348, "mean_abs": 0.0012109678937122226}
+2026-09-13T16:43:51+08:00 legacy_masked_images fast_prefix__euler {"rmse": 0.05945492163300514, "reference_rms": 0.057589855045080185, "relative_rmse": 1.0323853322163257, "max_abs": 0.1884765625, "mean_abs": 0.043614234775304794}
+2026-09-13T16:43:51+08:00 legacy_masked_images fast_prefix__rope_euler {"rmse": 0.0016542869852855802, "reference_rms": 0.057589855045080185, "relative_rmse": 0.028725319485361396, "max_abs": 0.005859375, "mean_abs": 0.001226794789545238}
+2026-09-13T16:43:51+08:00 legacy_masked_images fast_prefix__rope_model_euler {"rmse": 0.0016364267794415355, "reference_rms": 0.057589855045080185, "relative_rmse": 0.02841519184517088, "max_abs": 0.005859375, "mean_abs": 0.001222877879627049}
+2026-09-13T16:43:51+08:00 legacy_masked_images fast_prefix__rope_eager_euler {"rmse": 0.0015857521211728454, "reference_rms": 0.057589855045080185, "relative_rmse": 0.02753526849358364, "max_abs": 0.005859375, "mean_abs": 0.001167809939943254}
+2026-09-13T16:43:51+08:00 legacy_masked_images fast_prefix__rope_model_eager_euler {"rmse": 0.0016047405079007149, "reference_rms": 0.057589855045080185, "relative_rmse": 0.027864986057779727, "max_abs": 0.005615234375, "mean_abs": 0.0011882606195285916}
+2026-09-13T16:43:51+08:00 three_valid_images prefix 968 valid 918
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/lf/clftq4ilo4yqxwnz3hieqqa6dgg6qqkoen44dsh3rgsqg3wyvso2.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4)
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Traceback (most recent call last):
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     choice.precompile()
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self.bmreq.precompile()
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     getattr(mod, self.kernel_name).precompile()
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self._make_launchers()
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:43:56.624000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/6w/c6wtuqymglf2b7hz36al37fjtzi7effdjo2cjv2x5zeqwqfzqqoh.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4)
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Traceback (most recent call last):
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     choice.precompile()
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self.bmreq.precompile()
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     getattr(mod, self.kernel_name).precompile()
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self._make_launchers()
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:43:57.811000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/u5/cu5zq7xhbpj2zg6hcp6u5fu57fg6bwkjw2xh45372edhhun6x4if.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8)
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Traceback (most recent call last):
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     choice.precompile()
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self.bmreq.precompile()
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     getattr(mod, self.kernel_name).precompile()
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self._make_launchers()
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:43:59.537000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/e7/ce7isjhfv5lubsjvdnz5o7obbinukrcstayuo6zrbzuwuukbqrza.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8)
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Traceback (most recent call last):
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     choice.precompile()
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self.bmreq.precompile()
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     getattr(mod, self.kernel_name).precompile()
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self._make_launchers()
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:43:59.940000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3686: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  current_out_size = out_base.storage().size()
+Autotune Choices Stats:
+{"num_choices": 17, "num_triton_choices": 16, "best_kernel": "triton_mm_9", "best_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4", "best_time": 1.129472017288208, "best_triton_pos": 0}
+AUTOTUNE mm(918x2048, 2048x32768)
+strides: [2048, 1], [32768, 1]
+dtypes: torch.bfloat16, torch.bfloat16
+  triton_mm_9 1.1295 ms 100.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_7 1.1418 ms 98.9% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_10 1.1438 ms 98.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_6 1.1459 ms 98.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_11 1.1469 ms 98.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  mm 1.1475 ms 98.4% 
+  triton_mm_5 1.1692 ms 96.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_13 1.2073 ms 93.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_16 1.2257 ms 92.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_14 1.2329 ms 91.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.8520 seconds and 5.6400 seconds precompiling for 17 choices
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/26/c26pgkmyq45ql5vbk752bmtzwlkuqiushaqa2fa5hktlt753tyhi.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8)
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Traceback (most recent call last):
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     choice.precompile()
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self.bmreq.precompile()
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self._make_launchers()
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:00.810000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/a2/ca2fdkqrzguiwfveayp4bpozkmdeskridipp3spqfxwpbna3lc3v.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8)
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Traceback (most recent call last):
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     choice.precompile()
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self.bmreq.precompile()
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self._make_launchers()
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:00.812000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/cj/ccj6alq4cru4b4wnyrrhmikvfs45gay6f6c4fzafxrogxsg6vk7o.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4)
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Traceback (most recent call last):
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     choice.precompile()
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self.bmreq.precompile()
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self._make_launchers()
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:00.813000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/nl/cnlmkjp6ngynl75oebcej5n6mudkpcmjiqafawmx64v257ot4wwq.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4)
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] Traceback (most recent call last):
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     choice.precompile()
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self.bmreq.precompile()
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     self._make_launchers()
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:00.814000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [0/1] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+Autotune Choices Stats:
+{"num_choices": 17, "num_triton_choices": 16, "best_kernel": "addmm", "best_time": 0.5990399718284607, "best_triton_pos": 1, "best_triton_time": 0.6625279784202576, "best_triton_kernel": "triton_mm_31", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4"}
+AUTOTUNE addmm(918x2048, 918x16384, 16384x2048)
+strides: [2048, 1], [16384, 1], [2048, 1]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  addmm 0.5990 ms 100.0% 
+  triton_mm_31 0.6625 ms 90.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_33 0.6656 ms 90.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_27 0.6676 ms 89.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_30 0.6717 ms 89.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_34 0.6746 ms 88.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_29 0.6809 ms 88.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_26 0.6861 ms 87.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_25 0.7247 ms 82.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_22 0.7537 ms 79.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=32, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.7843 seconds and 0.0054 seconds precompiling for 17 choices
+2026-09-13T16:44:03+08:00 three_valid_images safe_prefix__original {"rmse": 0.2228143811225891, "reference_rms": 0.13403929769992828, "relative_rmse": 1.662306390334872, "max_abs": 0.7258255481719971, "mean_abs": 0.15274900197982788}
+2026-09-13T16:44:03+08:00 three_valid_images safe_prefix__rope {"rmse": 0.002623746171593666, "reference_rms": 0.13403929769992828, "relative_rmse": 0.019574454780175037, "max_abs": 0.016081154346466064, "mean_abs": 0.001945927389897406}
+2026-09-13T16:44:03+08:00 three_valid_images safe_prefix__rope_model {"rmse": 0.0011176136322319508, "reference_rms": 0.13403929769992828, "relative_rmse": 0.008337954998346345, "max_abs": 0.0063018798828125, "mean_abs": 0.0008575043175369501}
+2026-09-13T16:44:03+08:00 three_valid_images safe_prefix__euler {"rmse": 0.22279813885688782, "reference_rms": 0.13403929769992828, "relative_rmse": 1.6621852149334786, "max_abs": 0.724609375, "mean_abs": 0.15271323919296265}
+2026-09-13T16:44:03+08:00 three_valid_images safe_prefix__rope_euler {"rmse": 0.0025297002866864204, "reference_rms": 0.13403929769992828, "relative_rmse": 0.018872825582461807, "max_abs": 0.01416015625, "mean_abs": 0.0018779041711241007}
+2026-09-13T16:44:03+08:00 three_valid_images safe_prefix__rope_model_euler {"rmse": 0.0010082143126055598, "reference_rms": 0.13403929769992828, "relative_rmse": 0.007521781521585063, "max_abs": 0.0048828125, "mean_abs": 0.0007565429550595582}
+2026-09-13T16:44:03+08:00 three_valid_images safe_prefix__rope_eager_euler {"rmse": 0.0025381860323250294, "reference_rms": 0.13403929769992828, "relative_rmse": 0.018936133476372186, "max_abs": 0.0146484375, "mean_abs": 0.0018868244951590896}
+2026-09-13T16:44:03+08:00 three_valid_images safe_prefix__rope_model_eager_euler {"rmse": 0.0009382360149174929, "reference_rms": 0.13403929769992828, "relative_rmse": 0.006999708525912359, "max_abs": 0.00390625, "mean_abs": 0.0007124564726836979}
+2026-09-13T16:44:03+08:00 three_valid_images fast_prefix__original {"rmse": 0.2227182239294052, "reference_rms": 0.13403929769992828, "relative_rmse": 1.661589009724604, "max_abs": 0.7258255481719971, "mean_abs": 0.15270116925239563}
+2026-09-13T16:44:03+08:00 three_valid_images fast_prefix__rope {"rmse": 0.002586063463240862, "reference_rms": 0.13403929769992828, "relative_rmse": 0.019293322985250508, "max_abs": 0.014128029346466064, "mean_abs": 0.001907340600155294}
+2026-09-13T16:44:03+08:00 three_valid_images fast_prefix__rope_model {"rmse": 0.0012300882954150438, "reference_rms": 0.13403929769992828, "relative_rmse": 0.009177072071571306, "max_abs": 0.0087432861328125, "mean_abs": 0.0009238050552085042}
+2026-09-13T16:44:03+08:00 three_valid_images fast_prefix__euler {"rmse": 0.222792387008667, "reference_rms": 0.13403929769992828, "relative_rmse": 1.6621423032775722, "max_abs": 0.728515625, "mean_abs": 0.1527259647846222}
+2026-09-13T16:44:04+08:00 three_valid_images fast_prefix__rope_euler {"rmse": 0.0024968923535197973, "reference_rms": 0.13403929769992828, "relative_rmse": 0.018628062041249664, "max_abs": 0.013671875, "mean_abs": 0.0018360076937824488}
+2026-09-13T16:44:04+08:00 three_valid_images fast_prefix__rope_model_euler {"rmse": 0.00108956394251436, "reference_rms": 0.13403929769992828, "relative_rmse": 0.008128690325978506, "max_abs": 0.0048828125, "mean_abs": 0.0008259142632596195}
+2026-09-13T16:44:04+08:00 three_valid_images fast_prefix__rope_eager_euler {"rmse": 0.002543272217735648, "reference_rms": 0.13403929769992828, "relative_rmse": 0.018974078955779315, "max_abs": 0.013427734375, "mean_abs": 0.0018688940908759832}
+2026-09-13T16:44:04+08:00 three_valid_images fast_prefix__rope_model_eager_euler {"rmse": 0.0011114755179733038, "reference_rms": 0.13403929769992828, "relative_rmse": 0.008292161605184973, "max_abs": 0.0048828125, "mean_abs": 0.0008510426850989461}
+2026-09-13T16:44:04+08:00 Complete
+2026-09-13T16:44:04+08:00 Beginning full Pi05Pipeline verification
+2026-09-13T16:44:04+08:00 legacy_masked_images Full pipeline warmup/capture original
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/7t/c7t5crcgav6gqu3i622zv6kpy4fk7favhvkv7wzevizj2zbspigb.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4)
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:26.335000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/y6/cy6xdutyllta7fjig4gx7gdaztlwl6y2ncfnoawlwthanpyj3v2v.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4)
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:26.339000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/33/c33fn4oby267wbjzcdvfqks6r5xxbj37avx5w6wsenzdrvibtx3l.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8)
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:26.527000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/tb/ctbrcbb4z3lgdzvgtlam2oudmvo2z57fy45vl3lnky2gjvaucd4k.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8)
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:27.530000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+Autotune Choices Stats:
+{"num_choices": 18, "num_triton_choices": 16, "best_kernel": "bias_addmm", "best_time": 0.03686400130391121, "best_triton_pos": 1, "best_triton_time": 0.03686400130391121, "best_triton_kernel": "triton_mm_139", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8"}
+AUTOTUNE addmm(256x4304, 256x1152, 1152x4304)
+strides: [0, 1], [1152, 1], [1, 1152]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0369 ms 100.0% 
+  triton_mm_139 0.0369 ms 100.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_143 0.0389 ms 94.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_149 0.0389 ms 94.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  addmm 0.0399 ms 92.3% 
+  triton_mm_146 0.0410 ms 89.9% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_142 0.0420 ms 87.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_136 0.0461 ms 80.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_134 0.0471 ms 78.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=32, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_135 0.0492 ms 75.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.6565 seconds and 1.1963 seconds precompiling for 18 choices
+E0913 16:44:31.528000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:31.528000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:31.528000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:31.636000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:31.636000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:31.636000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:31.800000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:31.800000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:31.800000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:31.801000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:31.801000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:31.801000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+Autotune Choices Stats:
+{"num_choices": 22, "num_triton_choices": 20, "best_kernel": "bias_addmm", "best_time": 0.03686400130391121, "best_triton_pos": 1, "best_triton_time": 0.03686400130391121, "best_triton_kernel": "triton_mm_259", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8"}
+AUTOTUNE addmm(256x4304, 256x1152, 1152x4304)
+strides: [0, 1], [1152, 1], [1, 1152]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0369 ms 100.0% 
+  triton_mm_259 0.0369 ms 100.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_263 0.0380 ms 97.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_269 0.0389 ms 94.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  addmm 0.0403 ms 91.6% 
+  triton_mm_266 0.0419 ms 88.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_262 0.0420 ms 87.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_256 0.0471 ms 78.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_254 0.0478 ms 77.1% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=32, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_255 0.0483 ms 76.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.6167 seconds and 0.0001 seconds precompiling for 22 choices
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/3h/c3hdc3znlkqb76ahx7qfvqf2kvf6bbds3ukwlthi6hfq7mndwetd.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4)
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:32.401000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/xt/cxt2rfpjggpev4ogu2zchzf2s346k4uiueejpncm65de7vbojb6z.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4)
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:32.585000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/s6/cs6avkc576jb6u5tb3lcotqbxmpbptxoab6gcwl6f2hjwyp2p7xt.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8)
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:35.511000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/yz/cyzxxx6kcuujb6r6x7hmypikgqy3ggmhigwzuvqchj4ksm37qllt.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8)
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:36.265000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+Autotune Choices Stats:
+{"num_choices": 18, "num_triton_choices": 16, "best_kernel": "bias_addmm", "best_time": 0.02252800017595291, "best_triton_pos": 2, "best_triton_time": 0.025599999353289604, "best_triton_kernel": "triton_mm_3296", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4"}
+AUTOTUNE addmm(256x2048, 256x1152, 1152x2048)
+strides: [0, 1], [1152, 1], [1, 1152]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0225 ms 100.0% 
+  addmm 0.0256 ms 88.0% 
+  triton_mm_3296 0.0256 ms 88.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_3299 0.0256 ms 88.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_3294 0.0266 ms 84.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=32, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_3303 0.0297 ms 75.9% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_3302 0.0317 ms 71.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_3293 0.0348 ms 64.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=32, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_3295 0.0372 ms 60.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_3306 0.0379 ms 59.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.6424 seconds and 3.8651 seconds precompiling for 18 choices
+Autotune Choices Stats:
+{"num_choices": 13, "num_triton_choices": 12, "best_kernel": "convolution", "best_time": 0.06656000018119812, "best_triton_pos": 1, "best_triton_time": 0.09011200070381165, "best_triton_kernel": "triton_convolution2d_44", "best_triton_kernel_desc": "ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=64, BLOCK_N=64, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=2, num_warps=4"}
+AUTOTUNE convolution(1x3x224x224, 1152x3x14x14)
+strides: [150528, 50176, 224, 1], [588, 196, 14, 1]
+dtypes: torch.bfloat16, torch.bfloat16
+  convolution 0.0666 ms 100.0% 
+  triton_convolution2d_44 0.0901 ms 73.9% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=64, BLOCK_N=64, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=2, num_warps=4
+  triton_convolution2d_49 0.1014 ms 65.7% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=128, BLOCK_N=64, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=4, num_warps=4
+  triton_convolution2d_48 0.1178 ms 56.5% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=64, BLOCK_N=128, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=4, num_warps=4
+  triton_convolution2d_47 0.1587 ms 41.9% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=128, BLOCK_N=128, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=3, num_warps=8
+  triton_convolution2d_43 0.1597 ms 41.7% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=128, BLOCK_N=128, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=2, num_warps=8
+  triton_convolution2d_46 0.1946 ms 34.2% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=256, BLOCK_N=64, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=2, num_warps=8
+  triton_convolution2d_42 0.2028 ms 32.8% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=1024, BLOCK_N=16, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=1, num_warps=8
+  triton_convolution2d_40 0.2212 ms 30.1% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=64, BLOCK_N=256, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=2, num_warps=4
+  triton_convolution2d_41 0.2273 ms 29.3% ALLOW_TF32=False, BLOCK_K=16, BLOCK_M=256, BLOCK_N=64, GROUPS=1, KERNEL_H=14, KERNEL_W=14, PADDING_H=0, PADDING_W=0, STRIDE_H=14, STRIDE_W=14, UNROLL=False, num_stages=2, num_warps=4
+SingleProcess AUTOTUNE benchmarking takes 0.6224 seconds and 0.0004 seconds precompiling for 13 choices
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/4i/c4ibvfy376nu2tpepokvhcoyzrqfgi5fxmpsvvrq72x6ao32vvug.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4)
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:40.072000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/xh/cxhoa2bskajyiuruvunpzhp7jccwb3nkbfl5wx6dvbf4mtdfo66v.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4)
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/up/cupz4vtctv55bov2dqg2ajyqnbgfiymhwz6hsqzqfc4ipo57fvat.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8)
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/ow/cowwryzynovw3ty2yxxog57kdm7vi6ahyxpuixckpia3xf6so2sl.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=128, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8)
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:40.073000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+Autotune Choices Stats:
+{"num_choices": 18, "num_triton_choices": 16, "best_kernel": "bias_addmm", "best_time": 0.014336000196635723, "best_triton_pos": 2, "best_triton_time": 0.01740800030529499, "best_triton_kernel": "triton_mm_56", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4"}
+AUTOTUNE addmm(256x1152, 256x1152, 1152x1152)
+strides: [0, 1], [1152, 1], [1, 1152]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0143 ms 100.0% 
+  addmm 0.0174 ms 82.4% 
+  triton_mm_56 0.0174 ms 82.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_53 0.0205 ms 70.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=32, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_59 0.0256 ms 56.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_54 0.0287 ms 50.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=32, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_63 0.0317 ms 45.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_55 0.0331 ms 43.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_66 0.0336 ms 42.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_62 0.0338 ms 42.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.6295 seconds and 0.0017 seconds precompiling for 18 choices
+E0913 16:44:41.018000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:41.018000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:41.018000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:41.111000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:41.111000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:41.111000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:41.288000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:41.288000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:41.288000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:41.289000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:41.289000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:41.289000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+Autotune Choices Stats:
+{"num_choices": 22, "num_triton_choices": 20, "best_kernel": "bias_addmm", "best_time": 0.014336000196635723, "best_triton_pos": 2, "best_triton_time": 0.01740800030529499, "best_triton_kernel": "triton_mm_76", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4"}
+AUTOTUNE addmm(256x1152, 256x1152, 1152x1152)
+strides: [0, 1], [1152, 1], [1, 1152]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0143 ms 100.0% 
+  addmm 0.0174 ms 82.4% 
+  triton_mm_76 0.0174 ms 82.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_73 0.0205 ms 70.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=32, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_79 0.0256 ms 56.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_74 0.0284 ms 50.5% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=32, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_83 0.0307 ms 46.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_86 0.0328 ms 43.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_75 0.0328 ms 43.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=32, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_82 0.0338 ms 42.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=True, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.6617 seconds and 0.0001 seconds precompiling for 22 choices
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/cp/ccpta44thbmybuijo4amhr3wxyhqi7wg5sesapfwinto3kgklbrx.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=128, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=4)
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:41.368000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/cy/ccyxffaepp6qx3hitwfd3quxuj755o6vlsfilrg6j4dvw2ine22e.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=64, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4)
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/ro/crogkd73vs32mtx4zsjn4mgjpye6nf6lz4nzhdv2zbsukijcuqlh.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=128, BLOCK_N=128, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8)
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Exception No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help. for benchmark choice TritonTemplateCaller(/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/pu/cpuldx7dke6dsshs57tf436jglwzpcehwo3bgve3xbcxrbrcibaf.py, ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=128, BLOCK_N=128, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8)
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] Traceback (most recent call last):
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/conda/envs/chia_env/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     result = self.fn(*self.args, **self.kwargs)
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 3464, in precompile_with_captured_stdout
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     choice.precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py", line 2388, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self.bmreq.precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/autotune_process.py", line 714, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     getattr(mod, self.kernel_name).precompile()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 503, in precompile
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     self._make_launchers()
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]   File "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 664, in _make_launchers
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0]     raise RuntimeError(f"No valid triton configs. {type(exc).__name__}: {exc}")
+E0913 16:44:41.369000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3541] [1/0] RuntimeError: No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.
+Autotune Choices Stats:
+{"num_choices": 18, "num_triton_choices": 16, "best_kernel": "bias_addmm", "best_time": 0.037856001406908035, "best_triton_pos": 2, "best_triton_time": 0.04915200173854828, "best_triton_kernel": "triton_mm_156", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4"}
+AUTOTUNE addmm(256x1152, 256x4304, 4304x1152)
+strides: [0, 1], [4352, 1], [1, 4304]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0379 ms 100.0% 
+  addmm 0.0399 ms 94.8% 
+  triton_mm_156 0.0492 ms 77.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_153 0.0717 ms 52.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=32, BLOCK_N=32, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_159 0.0770 ms 49.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_154 0.0815 ms 46.4% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=32, BLOCK_N=64, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_155 0.0881 ms 43.0% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=32, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_163 0.0932 ms 40.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_162 0.1004 ms 37.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_166 0.1014 ms 37.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.7394 seconds and 0.0015 seconds precompiling for 18 choices
+E0913 16:44:42.475000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:42.475000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:42.475000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:42.586000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:42.586000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 147456 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:42.586000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:42.988000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:42.988000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 131072 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:42.988000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+E0913 16:44:42.990000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Runtime error during autotuning: 
+E0913 16:44:42.990000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] No valid triton configs. OutOfMemoryError: out of resource: triton_mm Required: 196608 Hardware limit:101376 Reducing block sizes or `num_stages` may help.. 
+E0913 16:44:42.990000 719530 .venv-numerics-x86-cu130/lib/python3.10/site-packages/torch/_inductor/select_algorithm.py:3924] [1/0] Ignoring this choice.
+Autotune Choices Stats:
+{"num_choices": 22, "num_triton_choices": 20, "best_kernel": "bias_addmm", "best_time": 0.03782400116324425, "best_triton_pos": 2, "best_triton_time": 0.049984000623226166, "best_triton_kernel": "triton_mm_276", "best_triton_kernel_desc": "ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4"}
+AUTOTUNE addmm(256x1152, 256x4304, 4304x1152)
+strides: [0, 1], [4352, 1], [1, 4304]
+dtypes: torch.bfloat16, torch.bfloat16, torch.bfloat16
+  bias_addmm 0.0378 ms 100.0% 
+  addmm 0.0399 ms 94.7% 
+  triton_mm_276 0.0500 ms 75.7% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=64, BLOCK_N=32, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=4
+  triton_mm_273 0.0717 ms 52.8% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=128, BLOCK_M=32, BLOCK_N=32, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=2, num_warps=4
+  triton_mm_279 0.0778 ms 48.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=64, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=8
+  triton_mm_274 0.0819 ms 46.2% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=32, BLOCK_N=64, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_275 0.0882 ms 42.9% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=32, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=5, num_warps=8
+  triton_mm_283 0.0932 ms 40.6% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=64, BLOCK_M=64, BLOCK_N=128, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=3, num_warps=4
+  triton_mm_282 0.1014 ms 37.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=64, BLOCK_N=128, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+  triton_mm_286 0.1014 ms 37.3% ACC_TYPE='tl.float32', ALLOW_TF32=False, BLOCK_K=32, BLOCK_M=128, BLOCK_N=64, EVEN_K=False, GROUP_M=8, USE_FAST_ACCUM=False, num_stages=4, num_warps=8
+SingleProcess AUTOTUNE benchmarking takes 0.8962 seconds and 0.0000 seconds precompiling for 22 choices
+2026-09-13T16:45:19+08:00 legacy_masked_images FULL_MODEL original {"rmse": 0.05933472015964023, "reference_rms": 0.05739926761069847, "relative_rmse": 1.0337191157571672, "max_abs": 0.19186890125274658, "mean_abs": 0.043655037000280575, "capture_vs_replay": {"rmse": 0.0, "reference_rms": 0.028434632385460283, "relative_rmse": 0.0, "max_abs": 0.0, "mean_abs": 0.0}}
+2026-09-13T16:45:19+08:00 legacy_masked_images Full pipeline warmup/capture rope_model
+2026-09-13T16:45:20+08:00 legacy_masked_images FULL_MODEL rope_model {"rmse": 0.0020739819432929463, "reference_rms": 0.05739926761069847, "relative_rmse": 0.03613255063391058, "max_abs": 0.006667494773864746, "mean_abs": 0.0015786264270718675, "capture_vs_replay": {"rmse": 0.0, "reference_rms": 0.05719183505790034, "relative_rmse": 0.0, "max_abs": 0.0, "mean_abs": 0.0}}
+2026-09-13T16:45:20+08:00 legacy_masked_images Full pipeline warmup/capture rope_model_euler
+2026-09-13T16:45:20+08:00 legacy_masked_images FULL_MODEL rope_model_euler {"rmse": 0.0021222781621888023, "reference_rms": 0.05739926761069847, "relative_rmse": 0.03697395891151123, "max_abs": 0.0068359375, "mean_abs": 0.0015888982242904604, "capture_vs_replay": {"rmse": 0.0, "reference_rms": 0.057340584253745344, "relative_rmse": 0.0, "max_abs": 0.0, "mean_abs": 0.0}}
+2026-09-13T16:45:20+08:00 legacy_masked_images Full pipeline warmup/capture rope_model_eager_euler
+2026-09-13T16:45:20+08:00 legacy_masked_images FULL_MODEL rope_model_eager_euler {"rmse": 0.002110080939833574, "reference_rms": 0.05739926761069847, "relative_rmse": 0.03676146103718374, "max_abs": 0.0068359375, "mean_abs": 0.0015707206237129867, "capture_vs_replay": {"rmse": 0.0, "reference_rms": 0.05741593151767044, "relative_rmse": 0.0, "max_abs": 0.0, "mean_abs": 0.0}}
+2026-09-13T16:45:20+08:00 three_valid_images Full pipeline warmup/capture original
+2026-09-13T16:45:21+08:00 three_valid_images FULL_MODEL original {"rmse": 0.2225690636214562, "reference_rms": 0.13400991323647274, "relative_rmse": 1.6608402934245077, "max_abs": 0.722936749458313, "mean_abs": 0.15265399076219183, "capture_vs_replay": {"rmse": 0.0, "reference_rms": 0.26305386286771204, "relative_rmse": 0.0, "max_abs": 0.0, "mean_abs": 0.0}}
+2026-09-13T16:45:21+08:00 three_valid_images Full pipeline warmup/capture rope_model
+2026-09-13T16:45:21+08:00 three_valid_images FULL_MODEL rope_model {"rmse": 0.00417133449889526, "reference_rms": 0.13400991323647274, "relative_rmse": 0.031127059171619332, "max_abs": 0.022284477949142456, "mean_abs": 0.0031463977630482986, "capture_vs_replay": {"rmse": 0.0, "reference_rms": 0.13542741341318715, "relative_rmse": 0.0, "max_abs": 0.0, "mean_abs": 0.0}}
+2026-09-13T16:45:21+08:00 three_valid_images Full pipeline warmup/capture rope_model_euler
+2026-09-13T16:45:21+08:00 three_valid_images FULL_MODEL rope_model_euler {"rmse": 0.004201379228996431, "reference_rms": 0.13400991323647274, "relative_rmse": 0.031351256989344614, "max_abs": 0.0220794677734375, "mean_abs": 0.0031638421351090074, "capture_vs_replay": {"rmse": 0.0, "reference_rms": 0.13542949275660365, "relative_rmse": 0.0, "max_abs": 0.0, "mean_abs": 0.0}}
+2026-09-13T16:45:21+08:00 three_valid_images Full pipeline warmup/capture rope_model_eager_euler
+2026-09-13T16:45:22+08:00 three_valid_images FULL_MODEL rope_model_eager_euler {"rmse": 0.004129693738683108, "reference_rms": 0.13400991323647274, "relative_rmse": 0.030816330217271957, "max_abs": 0.02225494384765625, "mean_abs": 0.0031170676881447433, "capture_vs_replay": {"rmse": 0.0, "reference_rms": 0.13539951755027607, "relative_rmse": 0.0, "max_abs": 0.0, "mean_abs": 0.0}}
+2026-09-13T16:45:22+08:00 Full model verification complete
+[
+  {
+    "input": "legacy_masked_images",
+    "variant": "original",
+    "rmse": 0.05933472015964023,
+    "relative_rmse": 1.0337191157571672,
+    "reference_rms": 0.05739926761069847,
+    "max_abs": 0.19186890125274658,
+    "mean_abs": 0.043655037000280575
+  },
+  {
+    "input": "legacy_masked_images",
+    "variant": "rope_model",
+    "rmse": 0.0020739819432929463,
+    "relative_rmse": 0.03613255063391058,
+    "reference_rms": 0.05739926761069847,
+    "max_abs": 0.006667494773864746,
+    "mean_abs": 0.0015786264270718675
+  },
+  {
+    "input": "legacy_masked_images",
+    "variant": "rope_model_euler",
+    "rmse": 0.0021222781621888023,
+    "relative_rmse": 0.03697395891151123,
+    "reference_rms": 0.05739926761069847,
+    "max_abs": 0.0068359375,
+    "mean_abs": 0.0015888982242904604
+  },
+  {
+    "input": "legacy_masked_images",
+    "variant": "rope_model_eager_euler",
+    "rmse": 0.002110080939833574,
+    "relative_rmse": 0.03676146103718374,
+    "reference_rms": 0.05739926761069847,
+    "max_abs": 0.0068359375,
+    "mean_abs": 0.0015707206237129867
+  },
+  {
+    "input": "three_valid_images",
+    "variant": "original",
+    "rmse": 0.2225690636214562,
+    "relative_rmse": 1.6608402934245077,
+    "reference_rms": 0.13400991323647274,
+    "max_abs": 0.722936749458313,
+    "mean_abs": 0.15265399076219183
+  },
+  {
+    "input": "three_valid_images",
+    "variant": "rope_model",
+    "rmse": 0.00417133449889526,
+    "relative_rmse": 0.031127059171619332,
+    "reference_rms": 0.13400991323647274,
+    "max_abs": 0.022284477949142456,
+    "mean_abs": 0.0031463977630482986
+  },
+  {
+    "input": "three_valid_images",
+    "variant": "rope_model_euler",
+    "rmse": 0.004201379228996431,
+    "relative_rmse": 0.031351256989344614,
+    "reference_rms": 0.13400991323647274,
+    "max_abs": 0.0220794677734375,
+    "mean_abs": 0.0031638421351090074
+  },
+  {
+    "input": "three_valid_images",
+    "variant": "rope_model_eager_euler",
+    "rmse": 0.004129693738683108,
+    "relative_rmse": 0.030816330217271957,
+    "reference_rms": 0.13400991323647274,
+    "max_abs": 0.02225494384765625,
+    "mean_abs": 0.0031170676881447433
+  }
+]

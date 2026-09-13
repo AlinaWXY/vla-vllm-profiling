@@ -1,0 +1,53 @@
+{
+  "recorded_at": "2026-09-13T16:29:13+08:00",
+  "approved_resources": {
+    "partition": "dev",
+    "qos": "dev",
+    "tasks": 1,
+    "gpus": "nvidia_l20:1",
+    "cpus": 4,
+    "memory_gib": 64,
+    "walltime": "01:00:00",
+    "requeue": false
+  },
+  "previous_job": "1490538",
+  "source_files": [
+    {
+      "path": "profiling/diagnose_numerics.py",
+      "bytes": 17686,
+      "sha256": "b422625226460b0c5ee5c8ee5d163bec00737379e4cd9eead4ced7119a89406a"
+    },
+    {
+      "path": "profiling/diagnose_full_model.py",
+      "bytes": 8323,
+      "sha256": "c2ee530f7a59b3ae51a6cf26268428adf86d6baad42a0cb167bcef7f3ddc1e24"
+    },
+    {
+      "path": "profiling/summarize_full_model.py",
+      "bytes": 7216,
+      "sha256": "336df769d1a9b2f16914d1a143b9e81d3b7abdd128f73acd32e2c3d3ed369ddb"
+    },
+    {
+      "path": "requirements/numerics-x86-cu130.in",
+      "bytes": 676,
+      "sha256": "384af9fb411ae8b8901d19c9f269cb8aea8f8dab3805b70804219e080ef90716"
+    },
+    {
+      "path": "results/processed/0913/12/run.slurm",
+      "bytes": 1402,
+      "sha256": "fad5310d46eb089f1003eec81337bc9876da7eadb1e94c58b34c79bcc8de4a9f"
+    }
+  ],
+  "submitted_at": "2026-09-13T17:10:27+08:00",
+  "reason": "Actual source regression before requested GitHub push",
+  "sources": [
+    {
+      "path": "profiling/validate_framework.py",
+      "bytes": 6486,
+      "sha256": "f577c3c679012184545a464056284eee9b77bfeea1a29da31c85902b7d85735d"
+    }
+  ],
+  "follow_up_to": 1490549,
+  "framework_commit": "6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25",
+  "job_id": 1490568
+}

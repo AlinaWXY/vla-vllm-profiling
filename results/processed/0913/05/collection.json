@@ -1,0 +1,11 @@
+{
+  "stopped_at": "2026-09-13T15:39:27+08:00",
+  "status": "superseded_before_model_load",
+  "reason": "Source review identified an additional RoPE frequency-precision mismatch; restart with independent layout and frequency controls. No real-weight ablation outputs were produced.",
+  "next_experiment": "0913/06",
+  "log": {
+    "path": "results/processed/0913/05/run.log",
+    "bytes": 573,
+    "sha256": "e24059e03dbe1055392b7ea31b651bf8c172a87393835881a77eb5b70c60e31a"
+  }
+}

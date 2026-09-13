@@ -19,6 +19,7 @@ import time
 from profiling.ncu import require_gpu_execution
 from profiling.instrumentation import annotate_decoder, observe_decoder
 from profiling.runtime import offline_assets, require_headroom, stream_checkpoint_weights
+from profiling.inputs import camera_features, validate_camera_mapping
 
 
 @contextmanager
@@ -121,14 +122,14 @@ def main():
     args.output.mkdir(parents=True, exist_ok=False)
     torch.manual_seed(args.seed)
     rng = np.random.default_rng(args.seed)
-    camera_keys = list(raw_config["input_features"])
-    camera_keys = [k for k in camera_keys if k.startswith("observation.images.")][:args.cameras]
+    camera_keys = camera_features(raw_config, args.cameras)
     # Real weights, synthetic observations. This is a performance workload,
     # not a robot success-rate or action-space evaluation.
     robot_obs = {"prompt": "pick up the red block and place it in the bin",
                  "state": np.zeros(raw_config["max_state_dim"], dtype=np.float32),
-                 "images": {k.removeprefix("observation.images."):
+                 "images": {k:
                             rng.integers(0, 256, (224, 224, 3), dtype=np.uint8) for k in camera_keys}}
+    input_audit = validate_camera_mapping(robot_obs["images"], camera_keys, raw_config.get("image_key_map"))
     noise = rng.standard_normal((1, raw_config["chunk_size"], raw_config["max_action_dim"])).astype(np.float32)
     model_config = {**raw_config, "tokenizer": str(args.tokenizer), "dtype": "bfloat16"}
     config = OmniDiffusionConfig(model=str(args.checkpoint), model_class_name="Pi05Pipeline", dtype=torch.bfloat16,
@@ -137,6 +138,14 @@ def main():
     with torch.inference_mode(), strict_checkpoint_load(Pi05ForActionPrediction) as load_audit:
         phase("Initializing pipeline with local tokenizer and checkpoint")
         pipeline = LocalPipeline(od_config=config)
+        from vllm_omni.diffusion.models.pi05.processor_pi05 import build_model_inputs
+        checked = build_model_inputs(robot_obs, pipeline.config, pipeline.tokenizer, pipeline._device,
+                                     max_cameras=args.cameras, return_metadata=True)
+        actual_masks = [bool(mask.item()) for mask in checked[1]]
+        if len(actual_masks) != args.cameras or not all(actual_masks):
+            raise RuntimeError(f"Refusing missing-camera benchmark: {actual_masks}")
+        input_audit.update(image_masks=actual_masks, prefix_metadata=checked[4])
+        del checked
         phase("Pipeline initialized on GPU")
 
         def request(backend):
@@ -253,6 +262,7 @@ def main():
             "cuda_peak_allocated_bytes": torch.cuda.max_memory_allocated(),
             "cuda_peak_reserved_bytes": torch.cuda.max_memory_reserved(),
             "load_audit": load_audit, "pipeline_safe_wall": stats(safe_times) if safe_times else None,
+            "input_audit": input_audit,
             "pipeline_optimized_wall": stats(optimized_times) if optimized_times else None, **times,
             "comparison": {"reference": "same PR safe backend; external LeRobot parity NOT yet established",
                            "safe_vs_optimized_max_abs": (float(np.max(np.abs(safe_actions - optimized_actions)))

@@ -1,0 +1,25 @@
+{
+  "analyzed_at": "2026-09-13T15:35:20+08:00",
+  "source": {
+    "path": "results/raw/thor_pi05_20260913/baseline_retry/actions.npz",
+    "bytes": 19954,
+    "sha256": "ea4946d641a45e5273f392d820fdb7934503ca7682b916e765dcb943f513b5b4"
+  },
+  "source_collection_note": "Historical baseline from 2026-09-13, Asia/Hong_Kong; original logs and memory samples retained; analyzed_at is not collection time.",
+  "rmse_definition": "sqrt(mean((optimized-safe)^2)); relative_rmse = rmse / sqrt(mean(safe^2))",
+  "all_32_dimensions": {
+    "rmse": 0.059375227800019206,
+    "safe_rms": 0.057254415935518325,
+    "relative_rmse": 1.037041891526575,
+    "max_abs": 0.19186890125274658
+  },
+  "seven_dimension_check": {
+    "note": "Sensitivity check only; first 7 dimensions are not asserted to be a particular robot action schema.",
+    "relative_rmse": 0.8924700578480904
+  },
+  "kernel_check_source": {
+    "path": "results/processed/0913/04/rope_check.json",
+    "bytes": 5046,
+    "sha256": "38441ed3b84622824790bc654f72ab21962d78c18be55a588dd206ce2b0f5834"
+  }
+}

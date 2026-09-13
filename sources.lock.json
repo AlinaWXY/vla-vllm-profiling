@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-12",
+  "checked_at": "2026-09-13",
   "vllm": {
     "url": "https://github.com/vllm-project/vllm.git",
     "commit": "0b3ba88f165976e77ca5e6a7a3f5bba4562b80af",
@@ -7,10 +7,12 @@
     "ref": "refs/tags/v0.22.0"
   },
   "vllm-omni": {
-    "url": "https://github.com/vllm-project/vllm-omni.git",
-    "ref": "refs/pull/4419/head",
-    "commit": "1826509403bfa3d378d3476a4a341b78640165ea",
-    "role": "Experimental realtime_triton_prefix optimization, closed and unmerged PR 4419."
+    "url": "https://github.com/AlinaWXY/vllm-omni.git",
+    "ref": "refs/heads/codex/pi05-numerical-fixes",
+    "commit": "6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25",
+    "role": "PR4419 derivative correcting Gemma rotary pairing/model frequencies and preserving per-camera CUDA Graph outputs; residual numeric error remains.",
+    "upstream_commit": "1826509403bfa3d378d3476a4a341b78640165ea",
+    "upstream_url": "https://github.com/vllm-project/vllm-omni.git"
   },
   "vllm-omni-reference": {
     "url": "https://github.com/vllm-project/vllm-omni.git",

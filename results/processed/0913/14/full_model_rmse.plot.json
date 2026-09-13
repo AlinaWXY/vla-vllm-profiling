@@ -1,0 +1,17 @@
+{
+  "experiment_id": "0913/14",
+  "plotted_at": "2026-09-13T16:45:26+08:00",
+  "inputs": [
+    {
+      "path": "results/processed/0913/14/full_pipeline.json",
+      "bytes": 5356,
+      "sha256": "5aa7db406192d0cadc0533a1158293f44adf70e8dbdcffbacfd03df637d6e70a"
+    },
+    {
+      "path": "results/processed/0913/14/full_pipeline_actions.npz",
+      "bytes": 67002,
+      "sha256": "abad55694f28f5d70d42648d338e97578b7ab8930952df977bcf7902db1912d6"
+    }
+  ],
+  "host": "einstein"
+}

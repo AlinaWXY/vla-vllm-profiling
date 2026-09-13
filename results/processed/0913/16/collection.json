@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-09-13T17:10:48+08:00",
+  "status": "failed_cross_process_equality",
+  "finished_at": "2026-09-13T17:18:50+08:00",
+  "reason": "Unit tests passed; three-camera source output differs slightly from independent diagnostic output. Added same-process control to test source equivalence.",
+  "follow_up": "0913/21"
+}

@@ -66,8 +66,9 @@ expert outputs agree exactly for this input. Peak Torch allocated memory is
 
 **Large numerical discrepancy:** safe versus optimized max absolute error is
 0.191869 and relative RMSE is 1.03704. These normalized-space synthetic-input
-outputs are not a robot success test. The cause is not isolated, and the latency
-ratio is not a validated equivalent-model speedup. Outputs, individual timing
+outputs are not a robot success test. The historical run masked all three cameras
+because its observation keys did not match the processor. The numerical causes
+are now investigated below; the latency ratio is not a validated equivalent-model speedup. Outputs, individual timing
 samples and memory observations are in `results/processed/thor_pi05_20260913/`.
 
 NCU completed 1,654 kernel invocations: 1,650 instrumented Triton launches exactly
@@ -83,9 +84,35 @@ FFN gate/up and down account for 49.114% of this replay duration. L2 traffic tot
 The matching empirical L2 roof is explicitly labeled; no DRAM roof is inferred.
 NCU-phase memory sampling retained at least 79.65 GiB host headroom.
 
+## Complete-model numerical investigation on L20
+
+Slurm job 1490549 completed successfully on 2026-09-13. Experiment
+[0913/15](../results/processed/0913/15/README.md) compares complete
+`Pi05Pipeline.forward` outputs, including vision, prefix, ten denoising steps
+and the production CUDA Graph paths. With three valid cameras, original relative
+RMSE is 166.084%; correcting decoder RoPE layout and matching the model frequency
+reduces it to 3.113%. Saving each camera's graph output before the next replay
+reduces it to 1.007%. A control with eager image encoding gives 0.888%.
+
+Two semantic bugs are confirmed: decoder RoPE pairs adjacent dimensions instead
+of Gemma's two halves, and same-shaped camera calls return a shared graph output
+that is overwritten before prefix concatenation. Full source evidence and control
+results are in [findings](../results/processed/0913/15/findings.md). All 813 parameter
+names loaded; safe repeats and optimized graph repeats agree exactly for these
+inputs. Corrections are process-local diagnostics, not changes to pinned upstream
+source. Residuals and the lack of external-oracle validation remain explicit.
+
+The corrected framework commit `6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25`
+was subsequently tested without numerical substitutions in Slurm job 1490577,
+[0913/21](../results/processed/0913/21/README.md). Three-camera final-action
+relative RMSE is 1.0047%. Actual source and a same-process corrected original
+decoder control agree exactly. Three framework regression tests and 24 project
+CPU tests pass. Cross-process diagnostic outputs have a small recorded difference;
+the source regression does not claim cross-process bitwise reproducibility.
+
 ## Follow-up beyond this initial profiling result
 
-1. Isolate the safe/optimized numerical discrepancy and run an external oracle.
+1. Validate remaining numerical residuals against an external oracle.
 2. If optimizing further, remeasure after numerical validation and use additional
    utilization/stall counters to investigate the measured FFN hotspots.
 

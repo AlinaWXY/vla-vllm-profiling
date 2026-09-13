@@ -3,7 +3,14 @@
 在 NVIDIA Thor 上部署 vLLM-Omni π0.5，采集 Action Expert 的逐 kernel timing、
 FLOP 与内存层级流量，并生成可追溯的 Roofline 图。
 
-**当前状态（2026-09-13）：共享 ARM64 环境与 `sm_110a` 运行验证完成；
+**数值修正版（2026-09-13）：已修正 Action Expert 的 Gemma RoPE 配对/频率，以及多相机 CUDA Graph 输出覆盖。
+L20 上完整 pipeline、三路有效图像、10 步去噪的最终动作相对 RMSE 从原始 166.084% 降至新源码的 1.0047%。
+新源码与同进程诊断修正逐元素一致；3 项框架回归测试和 24 项项目 CPU 测试通过。
+源码仍有约 1% 残差，尚未完成外部 oracle 对齐或修正后的性能评估。**
+见 [整模型调查](results/processed/0913/15/findings.md)、[实际源码验证](results/processed/0913/21/README.md)
+和 [版本与复现方法](docs/numerics.md)。本分支的 `vllm-omni` 子模块已锁定到修正版。
+
+历史性能状态：共享 ARM64 环境与 `sm_110a` 运行验证完成；
 π0.5 权重（14.47 GB）和公开 tokenizer 已下载并校验，Tokenizer 14 组对照通过。
 BF16/FP32 计算量计数器和 L2 参考带宽已在 Thor 实测验证。
 真实权重推理已完成：优化 pipeline p50 为 72.46 ms，Action Expert CUDA Graph
@@ -12,7 +19,7 @@ p50 为 34.72 ms。safe 与优化实现的相对 RMSE 为 103.7%，尚未数值�
 生成 16 个算子组的 L2 Roofline、逐调用 CSV 和热点图，原始 NCU 报告一并保存。参见
 [真实模型结果](results/processed/thor_pi05_20260913/)、
 [模型文件](docs/model_assets.md)、[计数器校验](results/processed/compute_counter_validation/)
-和 [执行状态](docs/status.md)。**
+和 [执行状态](docs/status.md)。上述 103.7% 对应旧版相机键名错误、三路图像被 mask 的输入，不能作为三路有效图像的结果。
 
 ![Thor Action Expert L2 Roofline](results/processed/thor_pi05_20260913/roofline_by_operator.png)
 
@@ -24,10 +31,10 @@ NCU kernel 耗时之和为 57.70 ms，属于清缓存的诊断重放，不能当
 | 目录 | 用途 | 固定版本 |
 | --- | --- | --- |
 | [vllm/](https://github.com/vllm-project/vllm/tree/0b3ba88f165976e77ca5e6a7a3f5bba4562b80af) | vLLM 0.22.0 框架源码，与优化分支 Docker 基础版本一致 | `0b3ba88f165976e77ca5e6a7a3f5bba4562b80af` |
-| [vllm-omni/](https://github.com/vllm-project/vllm-omni/tree/1826509403bfa3d378d3476a4a341b78640165ea) | π0.5 `realtime_triton_prefix` 优化实现 | `1826509403bfa3d378d3476a4a341b78640165ea` |
+| [vllm-omni/](https://github.com/AlinaWXY/vllm-omni/tree/6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25) | π0.5 `realtime_triton_prefix` 数值修正版 | `6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25` |
 | [vllm-omni-reference/](https://github.com/vllm-project/vllm-omni/tree/41a6da68fcb2da7c2717dda32069ef9541797bbe) | 新 π0.5 功能实现及 LeRobot 对齐 oracle | `41a6da68fcb2da7c2717dda32069ef9541797bbe` |
 
-优化实现来自已关闭、未合并的 [PR #4419](https://github.com/vllm-project/vllm-omni/pull/4419)，
+优化实现以已关闭、未合并的 [PR #4419](https://github.com/vllm-project/vllm-omni/pull/4419) 为基础，当前子模块另含本项目验证过的修正，
 不能称为 vLLM 主线正式支持。新的 [PR #6950](https://github.com/vllm-project/vllm-omni/pull/6950)
 提供功能实现及对齐测试，但不包含该 Triton/CUDA Graph 优化。两分支的 Transformers
 版本约束不同，参考验证应使用单独环境。上游 PR 报告的性能与对齐结果不是本项目实测。
@@ -41,10 +48,10 @@ NCU kernel 耗时之和为 57.70 ms，属于清缓存的诊断重放，不能当
 完整上游源码。首次克隆时一并获取：
 
 ```bash
-git clone --recurse-submodules --shallow-submodules https://github.com/AlinaWXY/vla-vllm-profiling.git
+git clone --branch codex/pi05-numerical-fixes --recurse-submodules --shallow-submodules https://github.com/AlinaWXY/vla-vllm-profiling.git
 ```
 
-已有克隆可在项目目录中执行 `git submodule update --init --depth 1` 补齐源码。
+已有克隆切换到本分支后，先执行 `git submodule sync --recursive`，再执行 `git submodule update --init --depth 1` 补齐源码。
 GitHub 的 Download ZIP 不包含子模块内容，获取完整源码请使用上述克隆命令。
 
 源码依赖和权重版本同时记录在 `sources.lock.json`。也可使用重建与版本校验入口：
