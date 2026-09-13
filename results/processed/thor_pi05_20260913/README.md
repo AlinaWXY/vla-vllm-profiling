@@ -1,5 +1,9 @@
 # Thor π0.5 real-weight measurements — 2026-09-13
 
+**更正：历史脚本的短摄像头键名未匹配模型配置，三路输入图像均被 mask。
+本目录描述有效前缀为 150 个语言／状态 token 的历史负载，不能代表三摄像头 VLA。
+后续三路有效图像的分段 profiling 见 [0913/08](../0913/08/)。**
+
 This is a measurement of the pinned experimental vLLM-Omni PR 4419 implementation.
 **Safe/optimized numerical equivalence is not established: relative RMSE is
 103.7%. Do not interpret the latency ratio as a validated equivalent-model speedup.**
@@ -8,7 +12,37 @@ contains 1,654 kernel invocations, grouped into 16 operators/launch sites.
 
 ## L2 roofline and measured hotspots
 
-![Action Expert L2 roofline by operator](roofline_by_operator.png)
+The original figures below are retained. The dated version with direct operator
+names is [0913/00](../0913/00/); the interpretation and cache investigation are
+recorded in [0913/03](../0913/03/).
+
+![Action Expert L2 roofline by operator](../0913/00/roofline_by_operator.png)
+
+Each plotted operator is labelled directly with its ID and semantic name. The
+same ID in the two panels refers to the same operator's different arithmetic
+domains. The grouped plot pools repeated calls; the invocation plot labels each
+operator cluster while preserving every measured point. `operator_legend.csv`
+maps IDs and displayed names to the full kernel/launch-site names and plotted
+domains. Source roles were checked against pinned PR 4419 `realtime_triton.py`.
+
+| ID | 算子含义 | Kernel / 调用位置 | 出现的面板 |
+| --- | --- | --- | --- |
+| 1 | Attention 前的 AdaRMS | `_adarms_norm_kernel`, line 1854 | FP32 |
+| 2 | FFN 前的 AdaRMS | `_adarms_norm_kernel`, line 1945 | FP32 |
+| 3 | 最终输出前的 AdaRMS | `_adarms_norm_kernel`, line 1989 | FP32 |
+| 4 | Attention 分数：QKᵀ 与缩放 | `_matmul_abt_scale`, line 1899 | BF16、FP32 |
+| 5 | QKV 投影与 RoPE | `_matmul_rope_qkv`, line 1863 | BF16、FP32 |
+| 6 | Attention 加权汇总：P × V，P 为 softmax 概率 | `_matmul_small`, line 1921 | BF16 |
+| 7 | Action 输入投影与 bias | `_matmul_small_bias`, line 1839 | BF16、FP32 |
+| 8 | Action 输出投影、bias 与 Euler 更新 | `_matmul_small_bias_res`, line 1998 | BF16、FP32 |
+| 9 | FFN gate/up 双投影、GELU 与逐元素乘积 | `_matmul_small_gate`, line 1954 | BF16、FP32 |
+| 10 | FFN down 投影与门控残差 | `_matmul_small_res_gate_ffn_down`, line 1971 | BF16、FP32 |
+| 11 | Attention 输出投影与门控残差 | `_matmul_small_res_gate_oproj`, line 1932 | BF16、FP32 |
+| 12 | Prefix/suffix mask 与 softmax | `_softmax_prefix_suffix_mask_vector`, line 1911 | FP32 |
+| 13 | 框架整数拷贝 | `unrolled_elementwise_kernel`, integer copy | 无点：计入的 FLOPs 为 0 |
+| 14 | 框架浮点拷贝 | `unrolled_elementwise_kernel`, float copy | 无点：计入的 FLOPs 为 0 |
+| 15 | 框架整数填充 | `vectorized_elementwise_kernel`, `FillFunctor<int>` | 无点：计入的 FLOPs 为 0 |
+| 16 | 框架 BF16 转换 | `vectorized_elementwise_kernel`, `bfloat16_copy_kernel_cuda` | 无点：计入的 FLOPs 为 0 |
 
 The numbered points match `operators.csv`. This is an **L2** roofline: the installed
 Thor NCU has no DRAM byte counters. BF16 Tensor and FP32 SIMT arithmetic are shown
@@ -39,7 +73,9 @@ latency. They must not replace the independent CUDA Graph measurement below.
 The empirical references are 114.088 TFLOP/s BF16, 6.375 TFLOP/s FP32 and
 954.716 GB/s effective L2 copy bandwidth, from the separately validated
 [`compute_counter_validation`](../compute_counter_validation/) run.
-Clocks are unlocked and frequency telemetry is unavailable. The plotted Tensor
+NCU clock control was disabled; historical system frequency limits were not
+recorded and nvidia-smi reported N/A. This does not establish "unlocked clocks".
+The plotted Tensor
 points are on the bandwidth branch of this empirical L2 roof and below it;
 this alone does not establish a DRAM bottleneck or explain all unused throughput.
 
@@ -99,7 +135,8 @@ Torch peak allocated: 15,544,240,640 bytes (14.48 GiB); peak reserved:
 15,730,737,152 bytes. Read-only 10-second samples show process HWM 31.66 GiB
 and minimum host available memory 99.11 GiB. RSS and CUDA allocations overlap on
 UMA and must not be added. Sampling is not a hard memory bound.
-Power/clock queries are retained; N/A fields remain unknown and clocks were not locked.
+Power/clock queries are retained; historical N/A fields remain unknown. We did not
+change clock settings; later sysfs observations are recorded separately in 0913/01.
 NCU-phase samples show process HWM 31.72 GiB and minimum host available memory
 79.65 GiB. The NCU workload's Torch peak allocated is 15,379,749,888 bytes;
 profiler allocations are not fully represented by Torch allocator statistics.
@@ -126,12 +163,13 @@ report exports locally without using a GPU or loading model weights:
 
 ```bash
 source scripts/cache_env.sh
+experiment_dir=$(python3 -m profiling.experiments --purpose 'Replot complete original profile')
 python3 -m profiling.roofline results/processed/thor_pi05_20260913/ncu/raw.csv \
   --operators-csv results/processed/thor_pi05_20260913/ncu/operators.csv \
   --contract results/processed/thor_pi05_20260913/metrics.json \
   --ceilings results/processed/compute_counter_validation/ceilings_l2.json \
-  --caption 'Experimental PR 4419; safe/optimized relative RMSE 103.7%. Kernel replay, flushed caches; L2 empirical references, unlocked clocks.' \
-  --output results/processed/thor_pi05_20260913
+  --caption 'Experimental PR 4419; safe/optimized relative RMSE 103.7%. Kernel replay, flushed caches; L2 empirical references; historical frequency unobserved.' \
+  --output "$experiment_dir"
 python3 -m profiling.audit_profile \
   --raw results/processed/thor_pi05_20260913/ncu/raw.csv \
   --annotated results/processed/thor_pi05_20260913/ncu/operators.csv \
@@ -146,6 +184,7 @@ python3 -m profiling.audit_profile \
 - `ncu/raw.csv`, `ncu/operators.csv`: original raw and NVTX-renamed NCU exports.
 - `kernels.csv`: all 1,654 invocations × two precision domains, including zero rows.
 - `operators.csv`: 16 groups × two precision domains, pooled by source launch site.
+- `operator_legend.csv`: full ID → displayed name → kernel/launch-site mapping.
 - `roofline.png/pdf`, `roofline_by_operator.png/pdf`, `hotspots.png/pdf`: measured figures.
 - `coverage.json`, `profile_workload.json`: complete manifest and collection audit.
 - `benchmark.json`, `actions.npz`, `baseline.log`: independent baseline and numerical observations.

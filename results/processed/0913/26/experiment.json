@@ -1,0 +1,10 @@
+{
+  "experiment_id": "0913/26",
+  "created_at": "2026-09-13T19:19:46+08:00",
+  "timezone": "Asia/Hong_Kong",
+  "purpose": "新 Omni 基线重试：冻结采集脚本、顺序读取原始 F32 权重；VLM/AE/VLA 分段验证与计时",
+  "host": "deep-space",
+  "status": "failed_before_measurement",
+  "updated_at": "2026-09-13T19:28:23+08:00",
+  "reason": "Replace nested image-graph capture with the same compiled vision callable; freeze import path with PYTHONSAFEPATH"
+}

@@ -1,0 +1,88 @@
+{
+  "recorded_at": "2026-09-13T14:22:34+08:00",
+  "collection_source": [
+    {
+      "path": "profiling/ncu.py",
+      "bytes": 7636,
+      "sha256": "7074cf4e8744761a24ef30b94053d9813ca60e012037bc5c79735d1038a7b38b"
+    },
+    {
+      "path": "profiling/bench_pi05.py",
+      "bytes": 16059,
+      "sha256": "e0efc6ae20702c206e97a88bc4958aa52e7a11652e626eb2300d6cbd79e75217"
+    },
+    {
+      "path": "profiling/instrumentation.py",
+      "bytes": 3394,
+      "sha256": "e9d40b8c5debf86790fc5ab2dd167fea439c6f8b7a8c958b0c6eeb87a8b0c2dd"
+    },
+    {
+      "path": "profiling/runtime.py",
+      "bytes": 3245,
+      "sha256": "7a69978ea68abae73341429a28aee23b876e72afb2e143eb72a91ccb70d6ca25"
+    },
+    {
+      "path": "profiling/experiments.py",
+      "bytes": 3220,
+      "sha256": "4a6242c6dd4f20720665e241d42e3051270ca1d11c86fdaafdb95d078b5f21a3"
+    },
+    {
+      "path": "scripts/thor_python.sh",
+      "bytes": 1173,
+      "sha256": "0c88865e2400bcfad05ffd7ed5185e95ba0c85d5284949bf097041048bcf0a34"
+    },
+    {
+      "path": "scripts/cache_env.sh",
+      "bytes": 2196,
+      "sha256": "7d50f519a31cd857bbdfffd0fe6000447809e141539353775aaf442f60b31872"
+    },
+    {
+      "path": "profiling/inputs.py",
+      "bytes": 962,
+      "sha256": "4936a3659cf9f98a1c8e7181b4227b47da94c27c7ff56034dc425c2294b8185d"
+    }
+  ],
+  "upstream": {
+    "checked_at": "2026-09-12",
+    "vllm": {
+      "url": "https://github.com/vllm-project/vllm.git",
+      "commit": "0b3ba88f165976e77ca5e6a7a3f5bba4562b80af",
+      "role": "v0.22.0 matches the optimized Omni Docker base; ARM64 runtime validated on Thor.",
+      "ref": "refs/tags/v0.22.0"
+    },
+    "vllm-omni": {
+      "url": "https://github.com/vllm-project/vllm-omni.git",
+      "ref": "refs/pull/4419/head",
+      "commit": "1826509403bfa3d378d3476a4a341b78640165ea",
+      "role": "Experimental realtime_triton_prefix optimization, closed and unmerged PR 4419."
+    },
+    "vllm-omni-reference": {
+      "url": "https://github.com/vllm-project/vllm-omni.git",
+      "ref": "refs/pull/6950/head",
+      "commit": "41a6da68fcb2da7c2717dda32069ef9541797bbe",
+      "role": "Functional pi05 reference, open and unmerged PR 6950; use a separate environment."
+    },
+    "checkpoint": {
+      "repo_id": "lerobot/pi05_base",
+      "revision": "b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+      "parameters": 3616757520,
+      "download_bytes_weights": 14467030080,
+      "license": "gemma",
+      "role": "Real model weights; download only into a scratch cache; do not commit weights.",
+      "safetensors_file_bytes": 14467165872,
+      "safetensors_file_sha256": "0eb11ca9587678c1d2ef8cf32807c29f8ce53a2bfdfc1aa4a4c96f16fca59b0f"
+    },
+    "tokenizer": {
+      "url": "https://storage.googleapis.com/big_vision/paligemma_tokenizer.model",
+      "bytes": 4264023,
+      "sha256": "8986bb4f423f07f8c7f70d0dbe3526fb2316056c17bae71b1ea975e77a168fc6",
+      "official_usage": "https://github.com/Physical-Intelligence/openpi/blob/main/src/openpi/models/tokenizer.py",
+      "matching_hf_repo": "google/paligemma-3b-pt-224",
+      "matching_hf_revision": "35e4f46485b4d07967e7e9935bc3786aad50687c",
+      "role": "Public OpenPI tokenizer; identical SHA256 to the pinned HF tokenizer.model. Reconstruct text tokenizer config locally and verify token IDs."
+    }
+  },
+  "scope": "First 168 launches: 3 framework helpers then all 165 Triton kernels of step00. Full 10-step workload still executes; no whole-expert coverage claim.",
+  "amended_at": "2026-09-13T15:05:29+08:00",
+  "historical_workload_warning": "Explicit --legacy-image-keys reproduces zero effective cameras to isolate cache policy against 0913/01. Corrected default validates camera masks and prefix length."
+}

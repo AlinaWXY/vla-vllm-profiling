@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-09-13T18:50:54+08:00",
+  "baseline": "results/processed/0913/20",
+  "probe": "results/processed/0913/24",
+  "kernels": "results/processed/0913/22",
+  "ranges": "results/processed/0913/23",
+  "state": "failed",
+  "updated_at": "2026-09-13T19:18:41+08:00",
+  "error": "Baseline process exited without full_scopes.json; inspect run.log"
+}

@@ -1,0 +1,6 @@
+==WARNING== Note: Running with uncontrolled GPU caches. Profiling results may be inconsistent.
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 2689582 (/usr/bin/python3.12)
+==PROF== Profiling "graph" - 0: 0%....50%....100% - 1 pass
+==PROF== Disconnected from process 2689582
+==PROF== Report: /fact_data/xinyaowang/vla_vllm_profiling/results/processed/0913/24/range_probe/range.ncu-rep

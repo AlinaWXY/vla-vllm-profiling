@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import csv
 from pathlib import Path
+from profiling.experiments import figure_record
 
 
 def main():
@@ -11,6 +12,7 @@ def main():
     p.add_argument("actions", type=Path)
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args()
+    stamp = figure_record(args.output / "action_comparison", [args.actions])
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -43,7 +45,8 @@ def main():
         ax.set(xlabel=f"Action dimension (all {safe.shape[1]} retained)", ylabel="Action horizon index", title=title)
         fig.colorbar(im, ax=ax, label="Normalized action value" if ax is not axes[2] else "Difference")
     fig.suptitle(f"π0.5 experimental PR 4419 — relative RMSE {relative}\n"
-                 "Real weights, synthetic observation; numerical equivalence not established", fontsize=12)
+                 "Real weights, synthetic observation; numerical equivalence not established\n"
+                 + stamp, fontsize=11)
     for extension in ("png", "pdf"):
         fig.savefig(args.output / f"action_comparison.{extension}", dpi=180)
     plt.close(fig)

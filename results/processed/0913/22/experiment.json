@@ -1,0 +1,10 @@
+{
+  "experiment_id": "0913/22",
+  "created_at": "2026-09-13T17:22:53+08:00",
+  "timezone": "Asia/Hong_Kong",
+  "purpose": "Omni 6bdbf97：完整三摄像头 VLA kernels profiling，含 VLM 和 Action Expert",
+  "host": "deep-space",
+  "status": "cancelled_before_measurement",
+  "updated_at": "2026-09-13T19:28:23+08:00",
+  "reason": "Replace nested image-graph capture with the same compiled vision callable; freeze import path with PYTHONSAFEPATH"
+}

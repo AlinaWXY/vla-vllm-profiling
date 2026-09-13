@@ -58,7 +58,7 @@ an extended two-hour limit and completed all weights, warmup and measurement.
 All 813 parameter names are initialized (812 checkpoint tensors plus a tied alias),
 with no missing parameters. Loading and transfer times are excluded from latency.
 
-The real-weight, batch-one, three-camera, ten-step run records 20 timed samples:
+The historical real-weight run provided three cameras but masked them because of the key bug; its batch-one, ten-step workload records 20 timed samples:
 safe pipeline p50 237.790 ms, optimized pipeline p50 72.456 ms, optimized expert
 CUDA Graph p50 34.725 ms and direct-launch expert p50 35.594 ms. Graph/direct
 expert outputs agree exactly for this input. Peak Torch allocated memory is
@@ -122,3 +122,19 @@ No numerically equivalent speedup, definitive DRAM bottleneck, robot success rat
 or external numerical-parity result is claimed. Measured hotspots and L2 rooflines
 describe this experimental implementation under the documented replay conditions.
 Environment probes and calibration remain distinct from real-model measurements.
+
+
+## Corrected source performance and complete scopes
+
+Experiment [0913/27](../results/processed/0913/27/README.md) uses actual corrected
+Omni 6bdbf97 and three valid cameras (prefix 918). Twenty samples give GPU
+scope-graph p50 values of 69.054 ms VLM, 41.949 ms Action Expert and 111.005 ms
+combined VLA. Original complete pipeline wall p50 is 113.410 ms. Both direct
+scoped and recaptured-graph outputs match the original pipeline exactly for this
+input. All 813 actual parameter names are loaded and fingerprinted.
+
+Whole-graph NCU hardware counters passed the known-work probe in 0913/24.
+Per-kernel and whole-graph model captures are running in 0913/28 and 0913/29.
+Original-checkpoint buffered loading took about four seconds once the OS page
+cache was warm; this is a startup I/O observation, not a GPU inference speedup.
+No new packages were installed on Thor.

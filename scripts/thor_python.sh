@@ -12,8 +12,10 @@ if [[ ! -f "$runtime_dir/pyvenv.cfg" || ! -x "$runtime_dir/bin/python" ]]; then
   exit 1
 fi
 source "$project_dir/scripts/cache_env.sh"
-export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH="$project_dir/vllm-omni:$project_dir"
+export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONSAFEPATH=1
+omni_source_dir="${PI05_OMNI_SOURCE:-$project_dir/vllm-omni}"
+test -f "$omni_source_dir/vllm_omni/diffusion/models/pi05/modeling_pi05.py"
+export PYTHONPATH="$omni_source_dir:${PI05_PROFILE_SOURCE:-$project_dir}:$project_dir"
 export CUDA_HOME=/usr/local/cuda
 export PATH="$runtime_dir/bin:$CUDA_HOME/bin:$PATH"
 # These settings control new extension/JIT compilation, not prebuilt wheel code.

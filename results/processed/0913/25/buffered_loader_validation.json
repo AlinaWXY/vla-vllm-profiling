@@ -1,0 +1,6 @@
+{
+  "verified_at": "2026-09-13T19:10:50+08:00",
+  "tensors_verified": 812,
+  "all_raw_bf16_tensor_hashes_match": true,
+  "method": "buffered loader independently checks every tensor against serialization manifest"
+}

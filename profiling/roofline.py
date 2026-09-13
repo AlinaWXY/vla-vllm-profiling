@@ -13,6 +13,46 @@ import math
 from pathlib import Path
 import re
 
+from profiling.experiments import figure_record
+
+
+# Semantic names audited against the pinned PR 4419 decoder launch sites.
+# Unknown/revised sites retain their source name instead of guessing a role.
+OPERATOR_LABELS = {
+    "_adarms_norm_kernel.line1854": "AdaRMS (pre-attention)",
+    "_adarms_norm_kernel.line1945": "AdaRMS (pre-FFN)",
+    "_adarms_norm_kernel.line1989": "AdaRMS (final)",
+    "_matmul_abt_scale.line1899": "Attention scores: QKᵀ + scale",
+    "_matmul_rope_qkv.line1863": "QKV projection + RoPE",
+    "_matmul_small.line1921": "Attention context: P × V",
+    "_matmul_small_bias.line1839": "Action input projection + bias",
+    "_matmul_small_bias_res.line1998": "Action head + Euler update",
+    "_matmul_small_gate.line1954": "FFN gate/up + GELU product",
+    "_matmul_small_res_gate_ffn_down.line1971": "FFN down + gated residual",
+    "_matmul_small_res_gate_oproj.line1932": "Attention out + gated residual",
+    "_softmax_prefix_suffix_mask_vector.line1911": "Attention masked softmax",
+}
+
+
+def operator_key(row):
+    if "group_id" in row:
+        return row["operator"]
+    label = row.get("operator", row["kernel"])
+    match = re.search(r"step-?\d+\.layer-?\d+\.(\w+\.line\d+)", label)
+    return match.group(1) if match else row["kernel"]
+
+
+def operator_label(name):
+    if name in OPERATOR_LABELS:
+        return OPERATOR_LABELS[name]
+    if "FillFunctor<int>" in name:
+        return "Framework fill (integer)"
+    if "bfloat16_copy_kernel_cuda" in name:
+        return "Framework BF16 conversion"
+    if "direct_copy_kernel_cuda" in name:
+        return "Framework copy (integer)" if "lambda(int)" in name else "Framework copy (float)"
+    return name
+
 
 def number(value):
     try:
@@ -175,11 +215,9 @@ def aggregate_operators(rows):
     """
     grouped = {}
     for row in rows:
-        label = row.get("operator", row["kernel"])
-        match = re.search(r"step-?\d+\.layer-?\d+\.(\w+\.line\d+)", label)
         # NCU can rename uninstrumented framework kernels to the outer range
         # "action_expert". Preserve their actual kernel names for attribution.
-        group = match.group(1) if match else row["kernel"]
+        group = operator_key(row)
         key = group, row["domain"], row["memory_level"]
         grouped.setdefault(key, []).append(row)
     group_ids = {name: index + 1 for index, name in enumerate(sorted({key[0] for key in grouped}))}
@@ -206,7 +244,51 @@ def aggregate_operators(rows):
     return result
 
 
-def plot(rows, ceilings, output):
+def annotate_operators(ax, points, group_ids):
+    """Place readable callouts inside the axes without moving measured points."""
+    import numpy as np
+    from matplotlib.text import Text
+
+    by_operator = {}
+    for row in points:
+        by_operator.setdefault(operator_key(row), []).append(row)
+    renderer = ax.figure.canvas.get_renderer()
+    bounds = ax.get_window_extent(renderer).padded(-3)
+    occupied = [ax.get_legend().get_window_extent(renderer)]
+    coords = np.array([[r["ai_flops_per_byte"], r["performance_tflops"]] for r in points])
+    pixels = ax.transData.transform(coords)
+    for name, members in sorted(by_operator.items(), key=lambda item: group_ids[item[0]]):
+        # One label per operator in the invocation plot; attach to an actual
+        # measured point near the cluster median, not a fabricated new point.
+        positions = np.log10([[r["ai_flops_per_byte"], r["performance_tflops"]] for r in members])
+        anchor = members[int(np.argmin(np.sum((positions - np.median(positions, axis=0))**2, axis=1)))]
+        xy = anchor["ai_flops_per_byte"], anchor["performance_tflops"]
+        label = f"[{group_ids[name]}] {operator_label(name)}"
+        best = None
+        for dy in (0, 18, -18, 36, -36, 54, -54, 72, -72, 90, -90):
+            for dx in (8, -8, 24, -24):
+                ann = ax.annotate(label, xy, xytext=(dx, dy), textcoords="offset points",
+                                  ha="left" if dx > 0 else "right", va="center", fontsize=7.5,
+                                  bbox={"facecolor": "white", "edgecolor": "none", "alpha": .9, "pad": 1},
+                                  arrowprops={"arrowstyle": "-", "color": "#666666", "lw": .5})
+                ann.update_positions(renderer)
+                box = Text.get_window_extent(ann, renderer).padded(2)
+                overflow = (max(bounds.x0 - box.x0, 0) + max(box.x1 - bounds.x1, 0)
+                            + max(bounds.y0 - box.y0, 0) + max(box.y1 - bounds.y1, 0))
+                collisions = sum(box.overlaps(other) for other in occupied)
+                covered = np.count_nonzero((pixels[:, 0] >= box.x0) & (pixels[:, 0] <= box.x1)
+                                          & (pixels[:, 1] >= box.y0) & (pixels[:, 1] <= box.y1))
+                score = overflow * 1e8 + collisions * 1e6 + covered * 1e4 + dx**2 + dy**2
+                if best is None or score < best[0]:
+                    if best is not None:
+                        best[1].remove()
+                    best = score, ann, box
+                else:
+                    ann.remove()
+        occupied.append(best[2])
+
+
+def plot(rows, ceilings, output, inputs=()):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -221,9 +303,14 @@ def plot(rows, ceilings, output):
     domains = list(ceilings["compute_tflops"])
     if not domains:
         raise ValueError("No compute ceilings supplied.")
-    fig, axes = plt.subplots(1, len(domains), figsize=(7 * len(domains), 5), squeeze=False)
+    stamp = figure_record(output, inputs)
+    group_ids = {name: i + 1 for i, name in enumerate(sorted({operator_key(r) for r in rows}))}
+    grouped = "group_id" in rows[0]
+    fig, axes = plt.subplots(1, len(domains), figsize=(8 * len(domains), 6), squeeze=False)
+    plotted = []
     for ax, domain in zip(axes[0], domains):
         points = [r for r in rows if r["domain"] == domain and r["status"] == "ok"]
+        plotted.append((ax, points))
         peak = ceilings["compute_tflops"][domain]
         bandwidth = ceilings[f"{level}_bandwidth_gbps"]
         if peak <= 0 or bandwidth <= 0:
@@ -239,27 +326,7 @@ def plot(rows, ceilings, output):
             scatter = ax.scatter(intensities, [r["performance_tflops"] for r in points],
                                  c=[r.get("mean_duration_ns", r["duration_ns"]) / 1000 for r in points],
                                  cmap="viridis", s=24, alpha=0.75, rasterized=True)
-            grouped = "group_id" in points[0]
             fig.colorbar(scatter, ax=ax, label=("Mean " if grouped else "") + "NCU replay duration (µs)")
-            if grouped:
-                clusters = []
-                for r in points:
-                    cluster = next((c for c in clusters
-                                    if abs(math.log10(r["ai_flops_per_byte"] / c[0]["ai_flops_per_byte"])) < .08
-                                    and abs(math.log10(r["performance_tflops"] / c[0]["performance_tflops"])) < .08), None)
-                    if cluster is None:
-                        clusters.append([r])
-                    else:
-                        cluster.append(r)
-                # Separate labels for near-identical norm/attention points while
-                # keeping every marker at its measured coordinate.
-                for cluster in clusters:
-                    for index, r in enumerate(cluster):
-                        offset = 4 + 12 * (index - (len(cluster) - 1) / 2)
-                        ax.annotate(str(r["group_id"]), (r["ai_flops_per_byte"], r["performance_tflops"]),
-                                    xytext=(7, offset), textcoords="offset points", fontsize=7,
-                                    arrowprops=({"arrowstyle": "-", "color": "#777777", "lw": .5}
-                                                if len(cluster) > 1 else None))
         else:
             ax.text(.5, .5, "No valid measured points", transform=ax.transAxes, ha="center")
         ax.set(xlabel=f"{level.upper()} arithmetic intensity (FLOP/byte)",
@@ -269,8 +336,19 @@ def plot(rows, ceilings, output):
     fig.suptitle(ceilings.get("title", "π0.5 Action Expert — NCU kernel invocations"))
     caption = ceilings.get("caption")
     if caption:
-        fig.text(.5, .015, caption, ha="center", fontsize=8, color="#555555")
-    fig.tight_layout(rect=(0, .055 if caption else 0, 1, 1))
+        fig.text(.5, .035, caption, ha="center", fontsize=8, color="#555555")
+    fig.text(.5, .01, stamp, ha="center", fontsize=8, color="#555555")
+    missing = [name for name in group_ids if not any(operator_key(r) == name and r["status"] == "ok" for r in rows)]
+    note = ("Each point pools repeated calls of one operator." if grouped else
+            "Each point is one invocation; callouts identify operator clusters.")
+    if missing:
+        note += " Unplotted IDs (no valid FLOP/byte point): " + ", ".join(str(group_ids[name]) for name in missing) + "."
+    fig.text(.5, .065, note, ha="center", fontsize=8, color="#555555")
+    fig.tight_layout(rect=(0, .11, 1, 1))
+    fig.canvas.draw()
+    for ax, points in plotted:
+        if points:
+            annotate_operators(ax, points, group_ids)
     for extension in ("png", "pdf"):
         fig.savefig(str(output) + "." + extension, dpi=180)
     plt.close(fig)
@@ -285,6 +363,8 @@ def main():
     parser.add_argument("--caption", help="Run-specific caveat included in both PNG/PDF figures")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    if any((args.output / name).exists() for name in ("roofline.png", "roofline_by_operator.png")):
+        raise FileExistsError("Allocate a new dated experiment before replotting")
     kernels = load_ncu(args.csv)
     if args.operators_csv:
         attach_operators(kernels, load_ncu(args.operators_csv))
@@ -300,6 +380,14 @@ def main():
         writer = csv.DictWriter(handle, fieldnames=list(operators[0]))
         writer.writeheader()
         writer.writerows(operators)
+    with (args.output / "operator_legend.csv").open("w", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["group_id", "label", "operator", "plotted_domains"])
+        for group_id in sorted({r["group_id"] for r in operators}):
+            members = [r for r in operators if r["group_id"] == group_id]
+            name = members[0]["operator"]
+            writer.writerow([group_id, operator_label(name), name,
+                             ";".join(r["domain"] for r in members if r["status"] == "ok")])
     summary = {"kernel_invocations": len(kernels), "precision_rows": len(rows),
                "valid_precision_rows": sum(r["status"] == "ok" for r in rows),
                "operator_groups": len({r["group_id"] for r in operators}),
@@ -308,13 +396,14 @@ def main():
                "note": "One kernel can appear in multiple precision domains; do not sum their durations."}
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     if args.ceilings:
+        inputs = [p for p in (args.csv, args.operators_csv, args.contract, args.ceilings) if p]
         ceilings = json.loads(args.ceilings.read_text())
         if args.caption:
             ceilings["caption"] = args.caption
         plot(rows, {**ceilings, "title": f"π0.5 Action Expert — {len(kernels):,} measured kernel invocations"},
-             args.output / "roofline")
-        plot(operators, {**ceilings, "title": "π0.5 Action Expert — operator groups (IDs in operators.csv)"},
-             args.output / "roofline_by_operator")
+             args.output / "roofline", inputs)
+        plot(operators, {**ceilings, "title": "π0.5 Action Expert — roofline by operator"},
+             args.output / "roofline_by_operator", inputs)
     print(json.dumps(summary, indent=2))
 
 

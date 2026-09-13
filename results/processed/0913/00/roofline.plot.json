@@ -1,0 +1,27 @@
+{
+  "experiment_id": "0913/00",
+  "plotted_at": "2026-09-13T14:22:35+08:00",
+  "inputs": [
+    {
+      "path": "results/processed/thor_pi05_20260913/ncu/raw.csv",
+      "bytes": 5069064,
+      "sha256": "9946114616c6df9ce92a591d5bd66be362bf2a6c7653093e6ec68c4b5600d296"
+    },
+    {
+      "path": "results/processed/thor_pi05_20260913/ncu/operators.csv",
+      "bytes": 5146292,
+      "sha256": "f7cf9caef558d9d0f8945f0a7e6360ce078f46decda9653d1b0f5724fc08bcd5"
+    },
+    {
+      "path": "results/processed/thor_pi05_20260913/metrics.json",
+      "bytes": 1205,
+      "sha256": "bfc5342a9f97d16e2af5ba39cc43ed11ba9a9843c9a0b43a1ee5d39000fa23c5"
+    },
+    {
+      "path": "results/processed/compute_counter_validation/ceilings_l2.json",
+      "bytes": 3562,
+      "sha256": "2bb3c1f1cda2a5004e7a74d62efddd38acc47f6a41b0c4247dcd4e1b1883579e"
+    }
+  ],
+  "host": "deep-space"
+}

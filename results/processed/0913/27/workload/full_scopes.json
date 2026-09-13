@@ -1,0 +1,346 @@
+{
+  "started_at": "2026-09-13T19:32:04+08:00",
+  "clock_before": {
+    "observed_at": "2026-09-13T19:32:15+08:00",
+    "devfreq": {
+      "gpu-gpc-0": {
+        "cur_freq": "1575000000",
+        "min_freq": "1575000000",
+        "max_freq": "1575000000",
+        "governor": "nvhost_podgov"
+      },
+      "gpu-nvd-0": {
+        "cur_freq": "1692000000",
+        "min_freq": "1692000000",
+        "max_freq": "1692000000",
+        "governor": "nvhost_podgov"
+      }
+    }
+  },
+  "model_parameter_fingerprint": {
+    "sha256": "a1a0b85c81588a70b3ee0af5905f6dea15e6fbee639c16c0d19e3353ca624bb2",
+    "parameter_names": 813,
+    "method": "sorted names, shapes, dtypes and actual raw parameter bytes; outside timing"
+  },
+  "scopes": {
+    "vlm": "3 image encoders, text embedding, concatenation and prefix Transformer",
+    "action_expert": "Action input projection, 10 denoising steps (or configured count), action head/Euler",
+    "vla": "Combined VLM and Action Expert GPU computation"
+  },
+  "excluded_from_gpu_scopes": "Observation preprocessing, tokenization, output D2H copy and static timestep/AdaRMS setup",
+  "pipeline_wall_scope": "Original Pi05Pipeline.forward, including preprocessing and output copy; no service transport",
+  "framework": {
+    "path": "/fact_data/xinyaowang/vllm-omni-pi05-numerical-fixes",
+    "commit": "6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25",
+    "preserve_camera_outputs": true
+  },
+  "upstream_semantics": "Selected framework source; no numerical substitutions by the profiling harness",
+  "scope_graph_structure": "VLM/Expert/VLA graphs recapture the selected source's compiled kernels, static image input copies and camera output clones; original pipeline wall time is measured separately",
+  "input_audit": {
+    "camera_masks": [
+      true,
+      true,
+      true
+    ],
+    "prefix_len": 918,
+    "language_valid_tokens": 150,
+    "metadata": {
+      "prefix_valid_len": 918,
+      "prefix_masks_contiguous": true
+    }
+  },
+  "scoped_direct_vs_pipeline_max_abs": 0.0,
+  "scoped_graph_vs_pipeline_max_abs": 0.0,
+  "profiled": false,
+  "profile_kind": null,
+  "range_order": [
+    "vlm",
+    "action_expert",
+    "vla"
+  ],
+  "operator_manifest": [],
+  "pipeline_wall": {
+    "count": 20,
+    "mean_ms": 113.18662604753627,
+    "p50_ms": 113.41006500879303,
+    "p95_ms": 114.45524765731534,
+    "samples_ms": [
+      114.56633399939165,
+      113.607631996274,
+      113.72923798626289,
+      113.41455299407244,
+      113.54685499100015,
+      113.48683599499054,
+      113.43645298620686,
+      113.42400798457675,
+      113.40557702351362,
+      113.4366259793751,
+      112.5490459962748,
+      112.49209000379778,
+      112.48820699984208,
+      112.38115502055734,
+      112.66765499021858,
+      112.46320899226703,
+      112.45908198179677,
+      112.68107802607119,
+      114.44940100773238,
+      113.04748599650338
+    ]
+  },
+  "gpu_graph_timings": {
+    "vlm": {
+      "count": 20,
+      "mean_ms": 69.22047805786133,
+      "p50_ms": 69.05404663085938,
+      "p95_ms": 70.28734245300294,
+      "samples_ms": [
+        69.13533020019531,
+        69.00406646728516,
+        69.09001922607422,
+        69.28646087646484,
+        69.11196899414062,
+        69.13922882080078,
+        68.85830688476562,
+        69.06246185302734,
+        68.93049621582031,
+        69.0456314086914,
+        68.94989013671875,
+        68.92777252197266,
+        69.0408935546875,
+        68.99139404296875,
+        68.89561462402344,
+        69.04402923583984,
+        69.16079711914062,
+        69.66083526611328,
+        70.81478118896484,
+        70.25958251953125
+      ]
+    },
+    "action_expert": {
+      "count": 20,
+      "mean_ms": 41.95762405395508,
+      "p50_ms": 41.94900703430176,
+      "p95_ms": 42.069957160949706,
+      "samples_ms": [
+        41.94611358642578,
+        41.95849609375,
+        41.9920654296875,
+        41.950111389160156,
+        42.082847595214844,
+        41.920127868652344,
+        41.908321380615234,
+        42.04508972167969,
+        41.90399932861328,
+        41.963199615478516,
+        41.9951057434082,
+        41.843902587890625,
+        42.069278717041016,
+        41.916831970214844,
+        41.94790267944336,
+        42.03696060180664,
+        41.87062454223633,
+        41.91900634765625,
+        41.969825744628906,
+        41.91267013549805
+      ]
+    },
+    "vla": {
+      "count": 20,
+      "mean_ms": 111.08602027893066,
+      "p50_ms": 111.00534439086914,
+      "p95_ms": 111.20048103332519,
+      "samples_ms": [
+        110.92755126953125,
+        110.97654724121094,
+        111.04886627197266,
+        111.01116943359375,
+        110.96351623535156,
+        111.05951690673828,
+        112.47545623779297,
+        111.1269760131836,
+        110.98242950439453,
+        111.13337707519531,
+        110.87257385253906,
+        110.97727966308594,
+        110.9710693359375,
+        111.04115295410156,
+        111.11660766601562,
+        110.99951934814453,
+        110.95343780517578,
+        110.97315216064453,
+        111.07500457763672,
+        111.03520202636719
+      ]
+    }
+  },
+  "finished_at": "2026-09-13T19:32:23+08:00",
+  "clock_after": {
+    "observed_at": "2026-09-13T19:32:23+08:00",
+    "devfreq": {
+      "gpu-gpc-0": {
+        "cur_freq": "1575000000",
+        "min_freq": "1575000000",
+        "max_freq": "1575000000",
+        "governor": "nvhost_podgov"
+      },
+      "gpu-nvd-0": {
+        "cur_freq": "1692000000",
+        "min_freq": "1692000000",
+        "max_freq": "1692000000",
+        "governor": "nvhost_podgov"
+      }
+    }
+  },
+  "cuda_peak_allocated_bytes": 15576361984,
+  "cuda_peak_reserved_bytes": 15961423872,
+  "sources": [
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0913/27/harness/profiling/full_vla.py",
+      "bytes": 15250,
+      "sha256": "a0ea58a35baac447d8ecc15e507e0245ade20c2b3598e3b8b37ac36305a8cbd6"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vllm-omni-pi05-numerical-fixes/vllm_omni/diffusion/models/pi05/realtime_triton.py",
+      "bytes": 80319,
+      "sha256": "5aee47e85c07df3e6762d5953d094644c2a275b10da02f7b35a9fd2b45139a54"
+    }
+  ],
+  "compiled_code": [
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/c6h2lbhrxdltbcu7dkgusxjbebpx4lwd7ccqlqwsront7fq2jxfc.py",
+      "bytes": 4480,
+      "sha256": "d3a0b657772c106561f515ae945b3cc734ca7f0781ff2ef697d6e634bb33667a",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/6h/c6h2lbhrxdltbcu7dkgusxjbebpx4lwd7ccqlqwsront7fq2jxfc.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/c6j5gva3iaqni5hvuc3jtfva5cdfpgupfrvmt6sqsxzee3w3wr4r.py",
+      "bytes": 3613,
+      "sha256": "5d010cd789adc239f337946f762f1d42d1e643ac1c16f2db1622f69f3ef9ad2c",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/6j/c6j5gva3iaqni5hvuc3jtfva5cdfpgupfrvmt6sqsxzee3w3wr4r.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/c7v3l3hskrrdd6i4ig5jrfjildeoytbf3nwnxqbfcze3ozkm6iry.py",
+      "bytes": 322315,
+      "sha256": "06470bec1fa5b617cb7cc51d81a30ac04d686a73e9bbec4d57d49ea4e1a94d5a",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/7v/c7v3l3hskrrdd6i4ig5jrfjildeoytbf3nwnxqbfcze3ozkm6iry.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/cbenbi4ow6nrnsclejpewizhnnu4ozlfs5g7bdwqcnqn2ucoctrt.py",
+      "bytes": 2679,
+      "sha256": "78a6efef58606e8cf3dbab58a383c72e45680b69f25964f95c54f8e3b976d61a",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/be/cbenbi4ow6nrnsclejpewizhnnu4ozlfs5g7bdwqcnqn2ucoctrt.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/chgjqf2rnu6xhy7boucknsp4cd6vgattwiurvtrehyjrt6mox6c4.py",
+      "bytes": 5246,
+      "sha256": "fcbdb450bec3df54f949899fa1cad8b87219e976b513376dd923042ca5387686",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/hg/chgjqf2rnu6xhy7boucknsp4cd6vgattwiurvtrehyjrt6mox6c4.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/chooidlfj3zr2ch3cfng6lfjqpu3f4dpfc7hvcv2i6zdletxmbbq.py",
+      "bytes": 10053,
+      "sha256": "c53053f119b80b188b94d70bce41d4fb43ba78621937a1fe8c4b96095f001b81",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/ho/chooidlfj3zr2ch3cfng6lfjqpu3f4dpfc7hvcv2i6zdletxmbbq.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/cqmenrb7zitt2vhgkdnexcm4mwckqvsdunwxuqrw55kp2cjxoj3r.py",
+      "bytes": 2976,
+      "sha256": "a608054503668d75e6bb42ed8cb264457c6bc471f3c9acf9c5f15805706ec20e",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/qm/cqmenrb7zitt2vhgkdnexcm4mwckqvsdunwxuqrw55kp2cjxoj3r.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/crv7tmduxs6d5iwruwsacushpgrhwglkuv4u22cokbberlgjw546.py",
+      "bytes": 5993,
+      "sha256": "18a65b66147993880c5d2449578f6a543268cd7a660d864ff7f46e0b0a60a8bb",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/rv/crv7tmduxs6d5iwruwsacushpgrhwglkuv4u22cokbberlgjw546.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/cui3olio2fzniuwv7aiz6ged76dnsfwx3rwctsmokghqsd7aeubl.py",
+      "bytes": 2857,
+      "sha256": "794ea2713aaa5c97edb479a99775293d9d7ada9fc43794a57a4f24f31d0f9556",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/ui/cui3olio2fzniuwv7aiz6ged76dnsfwx3rwctsmokghqsd7aeubl.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/cupzhsvyapsz6didt5y2cqsrlqisxqldwvpnrzoxawmakmwjheb7.py",
+      "bytes": 6112,
+      "sha256": "f684fd89d98fdb64e9e0cf2cab768350e28808d829abe62b830302963daa5ab6",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/up/cupzhsvyapsz6didt5y2cqsrlqisxqldwvpnrzoxawmakmwjheb7.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/cw7pv62pvyiw2z66czacjjbwkxxgomak3v3nyflqkdk3lvluala5.py",
+      "bytes": 2365,
+      "sha256": "94d3e1a4230f1928638682bd01351a7f83d23c0e4f33a54efc932c6baf8b1652",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/w7/cw7pv62pvyiw2z66czacjjbwkxxgomak3v3nyflqkdk3lvluala5.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/cx2wuitswytufeoeatjy5jshvtliufdauuragznmh6j6zpe4etyh.py",
+      "bytes": 5868,
+      "sha256": "3c0c829e83ec287c57945b6ead5262d437d8508e242746781a35c6af011eb4f4",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/x2/cx2wuitswytufeoeatjy5jshvtliufdauuragznmh6j6zpe4etyh.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/cykwzbzdrxk2ijifiug7baymgtlqn7s6nf57c6b6nahks7kfqg4h.py",
+      "bytes": 5619,
+      "sha256": "51df5cd1ca81aa923c2f4412998a5a17d5af008f93517de10f65a053da044871",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/yk/cykwzbzdrxk2ijifiug7baymgtlqn7s6nf57c6b6nahks7kfqg4h.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/czpntwwatbbqbrauxkiemjznf7x7bjzlgmtgsejm2ud6t5w74p4v.py",
+      "bytes": 5216,
+      "sha256": "a4c23deff6adfa234b9bd12cce8a5a383a047da39f7e7b2bdbdaa57da256d4a4",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/zp/czpntwwatbbqbrauxkiemjznf7x7bjzlgmtgsejm2ud6t5w74p4v.py"
+    },
+    {
+      "path": "results/processed/0913/27/workload/compiled_code/czqsgfnct5vrkdjqigtnjitkgfeeawt7f7pxkchc5w724beejzx5.py",
+      "bytes": 4916,
+      "sha256": "5c19254bdf9f96d1411e5be5ce7169759fb8ae61884dff625c5ebdef53c1bdc5",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor/zq/czqsgfnct5vrkdjqigtnjitkgfeeawt7f7pxkchc5w724beejzx5.py"
+    }
+  ],
+  "load_audit": {
+    "loaded_parameter_names": 813,
+    "missing_parameter_names": []
+  },
+  "input_audit_preflight": {
+    "provided_keys": [
+      "observation.images.base_0_rgb",
+      "observation.images.left_wrist_0_rgb",
+      "observation.images.right_wrist_0_rgb"
+    ],
+    "required_keys": [
+      "observation.images.base_0_rgb",
+      "observation.images.left_wrist_0_rgb",
+      "observation.images.right_wrist_0_rgb"
+    ],
+    "matched_camera_count": 3,
+    "all_requested_cameras_present": true,
+    "image_masks": [
+      true,
+      true,
+      true
+    ],
+    "prefix_metadata": {
+      "prefix_valid_len": 918,
+      "prefix_masks_contiguous": true
+    },
+    "language_valid_tokens": 150
+  },
+  "checkpoint": "/scratch/xinyaowang/vla-vllm-profiling/assets/pi05_base/b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+  "seed": 17,
+  "steps": 10,
+  "packages": {
+    "vllm": "0.22.0",
+    "vllm-omni": null,
+    "transformers": "5.8.1",
+    "triton": "3.6.0"
+  },
+  "torch": "2.11.0+cu130",
+  "cuda": "13.0",
+  "host": "fact-thor",
+  "memory_before": {
+    "host_available_bytes": 127804198912,
+    "cgroup_limits": [],
+    "available_bytes": 127804198912
+  },
+  "weight_cache": null
+}

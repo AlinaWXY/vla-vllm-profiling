@@ -1,29 +1,31 @@
 # vla-vllm-profiling
 
-在 NVIDIA Thor 上部署 vLLM-Omni π0.5，采集 Action Expert 的逐 kernel timing、
-FLOP 与内存层级流量，并生成可追溯的 Roofline 图。
+在 NVIDIA Thor 上部署 vLLM-Omni π0.5，采集 VLM 与 Action Expert 的逐 kernel 和整体
+timing、FLOP 与内存层级流量，并绘制完整 VLA 的 GPU Roofline 图。
 
-**数值修正版（2026-09-13）：已修正 Action Expert 的 Gemma RoPE 配对/频率，以及多相机 CUDA Graph 输出覆盖。
-L20 上完整 pipeline、三路有效图像、10 步去噪的最终动作相对 RMSE 从原始 166.084% 降至新源码的 1.0047%。
-新源码与同进程诊断修正逐元素一致；3 项框架回归测试和 24 项项目 CPU 测试通过。
-源码仍有约 1% 残差，尚未完成外部 oracle 对齐或修正后的性能评估。**
-见 [整模型调查](results/processed/0913/15/findings.md)、[实际源码验证](results/processed/0913/21/README.md)
-和 [版本与复现方法](docs/numerics.md)。本分支的 `vllm-omni` 子模块已锁定到修正版。
+**当前任务（2026-09-13）：使用新 Omni 源码 `6bdbf97`，在现有 Thor 环境上分别采集 VLM 和 Action Expert 的逐算子、整体数据，以及完整 VLA 的整体 roofline。该版本修正 Gemma RoPE 和相机 CUDA Graph 输出覆盖；本轮不安装或升级 Thor 环境。**
 
-历史性能状态：共享 ARM64 环境与 `sm_110a` 运行验证完成；
-π0.5 权重（14.47 GB）和公开 tokenizer 已下载并校验，Tokenizer 14 组对照通过。
-BF16/FP32 计算量计数器和 L2 参考带宽已在 Thor 实测验证。
-真实权重推理已完成：优化 pipeline p50 为 72.46 ms，Action Expert CUDA Graph
-p50 为 34.72 ms。safe 与优化实现的相对 RMSE 为 103.7%，尚未数值对齐，
-不能将延迟差称为等价模型的加速。Action Expert 已完成 1,654 次 kernel 采集，
-生成 16 个算子组的 L2 Roofline、逐调用 CSV 和热点图，原始 NCU 报告一并保存。参见
-[真实模型结果](results/processed/thor_pi05_20260913/)、
-[模型文件](docs/model_assets.md)、[计数器校验](results/processed/compute_counter_validation/)
-和 [执行状态](docs/status.md)。上述 103.7% 对应旧版相机键名错误、三路图像被 mask 的输入，不能作为三路有效图像的结果。
+环境、真实权重和计数器校验已完成。旧基线存在摄像头键名错误，实际三路图像被 mask，
+不能作为三摄像头 VLA 的结果；原始数据保留，修正后的输入将检查有效 camera masks 和 prefix 长度。
+新版本基线已完成：[0913/27](results/processed/0913/27/README.md)。VLM / Action Expert / VLA GPU 图的 p50 分别为 **69.05 / 41.95 / 111.01 ms**，原始完整 pipeline 为 **113.41 ms**。分段及捕获后的输出相对原始 pipeline 最大差均为 0。逐算子和整图 NCU 分别在 `0913/28` 和 `0913/29` 采集；旧版本 `08/10/11` 计划已取消。
+[模型文件](docs/model_assets.md)、[计数器校验](results/processed/compute_counter_validation/)、
+[历史结果与限制](results/processed/thor_pi05_20260913/)。
 
-![Thor Action Expert L2 Roofline](results/processed/thor_pi05_20260913/roofline_by_operator.png)
+整模型数值调查已在 L20 完成，见 [0913/15 完整输出对照](results/processed/0913/15/README.md)
+和 [错误定位](results/processed/0913/15/findings.md)。三路有效图像下，最终动作相对 RMSE
+从 166.084% 降至修正 RoPE 后的 3.113%，再修正相机图特征覆盖后为 1.007%。
+修正已落实到新框架源码，L20 的源码回归相对 RMSE 为 **1.0047%**，见
+[0913/21](results/processed/0913/21/README.md)。这些是固定合成输入的完整 pipeline 实测，
+不是 Thor 的性能结果，也尚未达到完全数值对齐。
+后续已将修正落实到源码并推送 `codex/pi05-numerical-fixes`：框架 `6bdbf97`、项目 `5d4841c`。
+实际源码的整模型相对 RMSE 为 1.0047%，验证见 [0913/21](results/processed/0913/21/README.md)。
 
-本轮 FFN gate/up 与 down 两个融合算子合计占 NCU 重放耗时的 **49.1%**。
+带算子名称及绘图时间的版本见 [0913/00](results/processed/0913/00/)。
+低于参考线的原因分析与资源限制见 [0913/03](results/processed/0913/03/)。
+
+![Thor Action Expert L2 Roofline](results/processed/0913/00/roofline_by_operator.png)
+
+历史缺图实验中，FFN gate/up 与 down 两个融合算子合计占 NCU 重放耗时的 **49.1%**。
 NCU kernel 耗时之和为 57.70 ms，属于清缓存的诊断重放，不能当作原始请求延迟。
 
 ## 代码来源与实验边界
@@ -31,11 +33,11 @@ NCU kernel 耗时之和为 57.70 ms，属于清缓存的诊断重放，不能当
 | 目录 | 用途 | 固定版本 |
 | --- | --- | --- |
 | [vllm/](https://github.com/vllm-project/vllm/tree/0b3ba88f165976e77ca5e6a7a3f5bba4562b80af) | vLLM 0.22.0 框架源码，与优化分支 Docker 基础版本一致 | `0b3ba88f165976e77ca5e6a7a3f5bba4562b80af` |
-| [vllm-omni/](https://github.com/AlinaWXY/vllm-omni/tree/6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25) | π0.5 `realtime_triton_prefix` 数值修正版 | `6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25` |
+| [vllm-omni/](https://github.com/AlinaWXY/vllm-omni/tree/6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25) | π0.5 优化实现，含 RoPE 和相机输出修正 | `6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25` |
 | [vllm-omni-reference/](https://github.com/vllm-project/vllm-omni/tree/41a6da68fcb2da7c2717dda32069ef9541797bbe) | 新 π0.5 功能实现及 LeRobot 对齐 oracle | `41a6da68fcb2da7c2717dda32069ef9541797bbe` |
 
-优化实现以已关闭、未合并的 [PR #4419](https://github.com/vllm-project/vllm-omni/pull/4419) 为基础，当前子模块另含本项目验证过的修正，
-不能称为 vLLM 主线正式支持。新的 [PR #6950](https://github.com/vllm-project/vllm-omni/pull/6950)
+优化实现基于已关闭、未合并的 [PR #4419](https://github.com/vllm-project/vllm-omni/pull/4419)，
+当前子模块另含本项目的数值修正，不能称为 vLLM 主线正式支持。新的 [PR #6950](https://github.com/vllm-project/vllm-omni/pull/6950)
 提供功能实现及对齐测试，但不包含该 Triton/CUDA Graph 优化。两分支的 Transformers
 版本约束不同，参考验证应使用单独环境。上游 PR 报告的性能与对齐结果不是本项目实测。
 
@@ -48,10 +50,10 @@ NCU kernel 耗时之和为 57.70 ms，属于清缓存的诊断重放，不能当
 完整上游源码。首次克隆时一并获取：
 
 ```bash
-git clone --branch codex/pi05-numerical-fixes --recurse-submodules --shallow-submodules https://github.com/AlinaWXY/vla-vllm-profiling.git
+git clone --recurse-submodules --shallow-submodules https://github.com/AlinaWXY/vla-vllm-profiling.git
 ```
 
-已有克隆切换到本分支后，先执行 `git submodule sync --recursive`，再执行 `git submodule update --init --depth 1` 补齐源码。
+已有克隆先执行 `git submodule sync`，再执行 `git submodule update --init --depth 1` 补齐源码。
 GitHub 的 Download ZIP 不包含子模块内容，获取完整源码请使用上述克隆命令。
 
 源码依赖和权重版本同时记录在 `sources.lock.json`。也可使用重建与版本校验入口：
@@ -156,16 +158,20 @@ Thor 推理时模型与 tokenizer 均须提供本地目录。运行入口遇到�
 5. 生成逐 kernel 表和图：
 
    ```bash
+   experiment_dir=$(python -m profiling.experiments --purpose 'Action Expert roofline')
    python -m profiling.roofline results/raw/ncu_expert/raw.csv \
        --operators-csv results/raw/ncu_expert/operators.csv \
        --contract results/raw/ncu_inventory/metrics.json \
-       --ceilings results/raw/ceilings.json --output results/processed/thor_pi05
+       --ceilings results/raw/ceilings.json --output "$experiment_dir"
    ```
 
    输出逐调用 `kernels.csv`、按来源位置汇总的 `operators.csv`、`summary.json`，
-   以及逐调用和按算子编号的两组 Roofline PNG/PDF。编号与 `operators.csv` 对应。
+   以及逐调用和按算子汇总的两组 Roofline PNG/PDF。图中直接标注编号和算子名称，
+   `operator_legend.csv` 给出编号、名称、完整 kernel/调用位置和所属精度面板。
    缺失计数器、所选层级零流量或零浮点运算的 kernel 保留在表中并注明原因，不绘制虚假点。
    FP32 与 BF16 的点按精度分开；同一 kernel 可出现在多个精度面板，耗时不能重复求和。
+   每次实验／重新绘图分配 `MMDD/NN` 独立编号，不覆盖历史图。图内有编号和绘图时间，
+   `*.plot.json` 保存带时区时间与输入文件 SHA256；采集时间单独记在 `collection.json`。
 
 6. 校验逐调用归因与完整性，并输出不重复计时的热点表：
 
@@ -173,7 +179,7 @@ Thor 推理时模型与 tokenizer 均须提供本地目录。运行入口遇到�
    python -m profiling.audit_profile --raw results/raw/ncu_expert/raw.csv \
        --annotated results/raw/ncu_expert/operators.csv \
        --benchmark results/raw/profile_workload/benchmark.json \
-       --contract results/raw/ncu_inventory/metrics.json --output results/processed/thor_pi05 --plot
+       --contract results/raw/ncu_inventory/metrics.json --output "$experiment_dir" --plot
    ```
 
    `coverage.json` 核对 NVTX 标签与实际 launch 清单完全一致、每个去噪步均有记录，

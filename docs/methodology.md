@@ -36,8 +36,14 @@ result currently exists.
 The export also pools repeated denoising steps/layers by labeled source line in
 `operators.csv`. Its rates use total FLOPs / total time and total FLOPs / total
 traffic, rather than an unweighted average of individual rates. Precision domains
-remain separate. IDs on `roofline_by_operator.png` refer to this table; original
-invocations and their full labels remain in `kernels.csv`.
+remain separate. Both figures annotate operator IDs and semantic names directly;
+the invocation figure labels operator clusters, while each dot remains an actual
+invocation. `operator_legend.csv` maps IDs to displayed names, full source launch
+sites and plotted domains. The three AdaRMS sites distinguish pre-attention,
+pre-FFN and final normalization. Semantic roles are reviewed against the pinned
+PR 4419 source; unknown sites retain their source names. Labels may move to avoid
+overlap, but measured point coordinates do not move. Original invocations and
+their full labels remain in `kernels.csv`.
 `profiling.audit_profile` requires an exact multiset match between the instrumented
 Triton manifest and NCU NVTX labels, and checks every requested metric. Its
 `hotspots.csv` sums each launch duration once, including launches with zero counted
@@ -129,5 +135,114 @@ absolute hardware peak. Historical provisional results remain in
 `results/processed/environment_sm110a/`. The subsequent compute-path and L2
 counter checks, power observations and empirical references are in
 `results/processed/compute_counter_validation/`. Use that directory's
-`ceilings_l2.json` for the real-model run. Clock telemetry was unavailable and
-clocks were not locked, so exact frequency matching is not established.
+`ceilings_l2.json` for the real-model run. Historical nvidia-smi frequency telemetry
+was unavailable and NCU clock control was disabled; the system's historical
+frequency limits were not recorded, so exact frequency matching is not established.
+The earlier wording "unlocked clocks" was too strong: on 2026-09-13 the read-only
+sysfs observation found GPU GPC min=max=current=1.575 GHz. New collections save
+these observations without changing any settings.
+
+## Reading points below the reference
+
+For precision domain d and memory level l, the plotted coordinates are
+`P_d = F_d / t` and `AI_l,d = F_d / B_l`. The memory branch is
+`BW_l * AI_l,d`. Below that branch, `P_d / roof = (B_l / t) / BW_l`:
+this is the fraction of the chosen bandwidth reference achieved, not proof that
+this memory level limits the kernel. Another level, dependency latency, too few
+blocks or warps, resource limits, and non-counted work can all lower the point.
+
+The current x-axis uses **L2 traffic only**. A DRAM or L1 slope cannot be drawn
+against these same intensities and called a matching-level roof. This Thor's
+inventory exposes no DRAM/FBPA counter bases. L2 read-miss sectors can diagnose
+requests going beyond L2, but `32 * miss sectors` is not a measured DRAM byte count.
+
+The reference compute kernels are large pure GEMMs. A fused BF16/FP32 kernel uses
+the full elapsed time in both panels, with only that panel's arithmetic counted.
+SFU, integer, reduction, synchronization and memory work are not represented by
+the two arithmetic counts. Neither panel is expected to reach its pure GEMM roof.
+Tensor FLOPs count executed arithmetic, including tile padding, rather than only
+useful model arithmetic.
+
+NCU kernel replay with cache flushing measures isolated cache-cold launches.
+The `cache-control all/none` pair changes only flushing and tests sensitivity;
+`none` with kernel replay is not application-managed warm-cache execution.
+Application/range replay is needed to preserve that context across passes.
+Short kernels and multi-pass ratios need extra care; do not label a low hit rate
+alone as bandwidth saturation. See the [NCU profiling guide](https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#cache-control).
+
+## Dated records
+
+Use `python -m profiling.experiments --purpose '...'` to allocate
+`results/processed/MMDD/NN`, with Asia/Hong_Kong dates and exclusive directory
+creation. Each figure carries its experiment ID and full plot timestamp; a sidecar
+records input hashes. Collection start/end timestamps and observed frequency
+limits are separate. Historical data replots retain the original collection dates.
+Plotting entry points refuse to overwrite prior images.
+
+
+## Complete VLM, Action Expert and VLA (corrected Omni source)
+
+The selected source is Omni `6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25`.
+The harness follows its corrected Gemma RoPE and per-camera output ownership.
+`PI05_OMNI_SOURCE` selects an existing checkout without installing a package.
+`profiling.bench_pi05 --scope all` checks all three effective image masks and
+compares decomposed direct and captured-graph outputs with the original pipeline
+in the same process before collecting measurements.
+
+VLM includes three image encoders, text embedding, concatenation and prefix
+Transformer; Action Expert includes action projection, denoising steps and
+head/Euler update. The combined VLA scope runs both on the GPU. Preprocessing,
+tokenization, output D2H copy and static timestep/AdaRMS preparation are excluded
+from these GPU scopes. Independent pipeline wall timing includes preprocessing
+and output copy, without websocket transport or serving scheduling.
+
+Per-operator capture uses NCU kernel replay, graph node profiling and cache
+control `all`; NVTX and a source-launch manifest map points to stages, layers,
+steps, actual kernel names and tensor shapes. Aggregate operator rates use
+`sum(F)/sum(t)` and `sum(F)/sum(bytes)`. These sums are not overall latency.
+
+Thor NCU 2026.1.1 rejects FP32 SASS counters in range replay and rejects
+`cuGraphLaunch` inside a captured replay range (experiments 17–19). Whole-stage
+collection therefore uses `--graph-profiling graph --replay-mode kernel
+--cache-control none`, with each complete CUDA Graph as one measured workload.
+A known-work probe must verify Tensor counts before accepting full-model data.
+Graph profiling retains dependencies and cache reuse between its nodes, unlike
+isolated kernel replay; see NVIDIA's [graph profiling documentation](https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#graph-profiling).
+
+Whole-graph time, L2 requested bytes and BF16 Tensor operations come from that
+graph report. Instruction-level FP32 counters are unavailable in graph mode;
+if an FP32 whole-stage point is shown, its numerator is explicitly the sum from
+the matching per-kernel workload. Hardware BF16 totals must agree between both
+collections before those records are joined. Input, source and output identity
+are checked as well. Missing counters are never replaced with zero.
+
+`profiling.full_roofline` renders VLM and expert operator plots and exact point
+legends. `profiling.whole_roofline` renders VLM, expert and combined VLA overall
+plots. Every plot remains below a new dated experiment directory.
+
+
+The GPU scope graphs are newly captured from the same compiled vision callable
+and prefix/expert kernels, preserving the image input copy and per-camera output
+clone. PyTorch rejects nesting an existing graph replay inside a new capture
+(experiment 26), so the vision callable is recaptured directly. This preserves
+its compiled arithmetic but changes graph packaging. Original Pi05Pipeline wall
+time remains a separate measurement. Experiment 27 verifies both direct and
+recaptured scoped output equality (maximum absolute difference 0) in-process.
+
+A slow NFS mapping was observed during startup. The benchmark can stream the
+original F32 serialization with buffered I/O (`--buffered-original`) instead of
+faulting the checkpoint's memory map tensor by tensor. Once the original file
+was in the OS page cache, loading took about four seconds. This changes startup
+I/O, not model values or timed GPU work. Actual parameters are fingerprinted
+before profiling, and captures require the same fingerprint as the baseline.
+A separate BF16 cache was prepared off Thor in experiment 25, but the final
+27/28/29 runs use the original F32 checkpoint.
+
+Long-running jobs use a frozen copy of the harness in their experiment directory.
+`PYTHONSAFEPATH=1` prevents the working directory from shadowing that snapshot;
+the benchmark checks its actual import path before loading the model. NCU raw
+reports, exact NVTX labels and compiler-generated source are retained. The two
+operator views use the same stage-local IDs: one pools repeated calls; the other
+shows every invocation and labels its actual operator cluster. Zero-counted-FLOP
+copy/conversion kernels remain in tables even though a logarithmic FLOP plot
+cannot display zero.

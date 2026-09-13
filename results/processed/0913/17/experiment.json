@@ -1,0 +1,11 @@
+{
+  "experiment_id": "0913/17",
+  "created_at": "2026-09-13T17:14:19+08:00",
+  "timezone": "Asia/Hong_Kong",
+  "purpose": "新 Omni 6bdbf97：NCU whole-range 计数器小规模验证",
+  "host": "deep-space",
+  "status": "failed_probe",
+  "reason": "NCU range replay does not accept profile-from-start",
+  "status_recorded_at": "2026-09-13T18:53:32+08:00",
+  "log_finished_at": "2026-09-13T17:14:24+08:00"
+}

@@ -1,0 +1,8 @@
+{
+  "started_at": "2026-09-13T18:51:23+08:00",
+  "finished_at": "2026-09-13T19:11:30+08:00",
+  "expected_bf16_tensor_flops": 2147483648,
+  "expected_jit_fp32_fma_flops": 2097152,
+  "all_outputs_correct": true,
+  "scope": "One CUDA Graph: native BF16 GEMM plus JIT FP32 FMA"
+}

@@ -38,6 +38,20 @@ class ProfileAuditTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Missing/invalid metric"):
             audit(kernels, benchmark, contract)
 
+    def test_subset_requires_explicit_scope_and_rejects_extra_step(self):
+        kernels, benchmark, contract = self.inputs()
+        benchmark["workload"]["steps"] = 2
+        benchmark["operator_manifest"].append({"operator": "step01.layer00._matmul.line10"})
+        with self.assertRaisesRegex(ValueError, "coverage differs"):
+            audit(kernels, benchmark, contract)
+        report, _ = audit(kernels, benchmark, contract, selected_steps=[0])
+        self.assertEqual(report["scope"], "selected denoising steps only")
+        self.assertEqual(report["workload_steps"], [0, 1])
+        extra = copy.deepcopy(kernels[0])
+        extra["operator"] = "step01.layer00._matmul.line10"
+        with self.assertRaisesRegex(ValueError, "coverage differs"):
+            audit(kernels + [extra], benchmark, contract, selected_steps=[0])
+
 
 if __name__ == "__main__":
     unittest.main()

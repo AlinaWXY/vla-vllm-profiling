@@ -9,15 +9,23 @@ from pathlib import Path
 import re
 
 from profiling.roofline import aggregate_operators, analyze, attach_operators, load_ncu
+from profiling.experiments import figure_record
 
 
 LABEL = re.compile(r"step(-?\d+)\.layer(-?\d+)\.(\w+)\.line(\d+)")
 
 
-def audit(kernels, benchmark, contract):
+def audit(kernels, benchmark, contract, selected_steps=None):
     if not benchmark.get("profiled"):
         raise ValueError("Coverage requires the benchmark from the profiled invocation.")
     manifest = benchmark["operator_manifest"]
+    workload_steps = set(range(benchmark["workload"]["steps"]))
+    expected_steps = workload_steps if selected_steps is None else set(selected_steps)
+    if not expected_steps or not expected_steps <= workload_steps:
+        raise ValueError("Selected steps must be a nonempty subset of the workload")
+    if selected_steps is not None:
+        manifest = [item for item in manifest
+                    if int(LABEL.fullmatch(item["operator"]).group(1)) in expected_steps]
     if not manifest:
         raise ValueError("Empty launch manifest.")
     expected = Counter(item["operator"] for item in manifest)
@@ -50,8 +58,7 @@ def audit(kernels, benchmark, contract):
             raise ValueError(f"Invalid manifest label: {item['operator']}")
         by_step[int(match.group(1))] += 1
         by_layer[int(match.group(2))] += 1
-    steps = benchmark["workload"]["steps"]
-    if set(by_step) != set(range(steps)):
+    if set(by_step) != expected_steps:
         raise ValueError("Denoising step coverage differs from the workload.")
     # Durations and traffic are identical across precision rows: select one domain.
     first_domain = next(iter(contract["domains"]))
@@ -66,6 +73,8 @@ def audit(kernels, benchmark, contract):
                 for r in sorted(groups, key=lambda r: r["duration_ns"], reverse=True)]
     report = {
         "coverage": "exact manifest/NCU label multiset match",
+        "scope": "full expert" if selected_steps is None else "selected denoising steps only",
+        "selected_steps": sorted(expected_steps), "workload_steps": sorted(workload_steps),
         "kernel_invocations": len(kernels), "labelled_triton_invocations": sum(measured.values()),
         "unlabelled_invocations": unlabelled,
         "triton_invocations_by_step": dict(sorted(by_step.items())),
@@ -83,10 +92,11 @@ def audit(kernels, benchmark, contract):
     return report, hotspots
 
 
-def plot_hotspots(hotspots, output):
+def plot_hotspots(hotspots, output, inputs=()):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    stamp = figure_record(output / "hotspots", inputs)
 
     labels = []
     for row in hotspots:
@@ -110,9 +120,10 @@ def plot_hotspots(hotspots, output):
            title="π0.5 Action Expert — measured kernel replay timing")
     ax.grid(axis="x", alpha=.18)
     ax.set_axisbelow(True)
-    fig.text(.5, .015, "Experimental PR 4419; numerical equivalence unverified. "
+    fig.text(.5, .04, "Experimental PR 4419; numerical equivalence unverified. "
              "Replay sums are not request latency. IDs match operators.csv.", ha="center", fontsize=8)
-    fig.tight_layout(rect=(0, .055, 1, 1))
+    fig.text(.5, .015, stamp, ha="center", fontsize=8)
+    fig.tight_layout(rect=(0, .08, 1, 1))
     for ext in ("png", "pdf"):
         fig.savefig(output / f"hotspots.{ext}", dpi=180)
     plt.close(fig)
@@ -126,11 +137,12 @@ def main():
     p.add_argument("--contract", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--plot", action="store_true", help="Also create a timing-share PNG/PDF")
+    p.add_argument("--selected-steps", type=int, nargs="+", help="Explicit partial diagnostic scope")
     args = p.parse_args()
     kernels = load_ncu(args.raw)
     attach_operators(kernels, load_ncu(args.annotated))
     report, hotspots = audit(kernels, json.loads(args.benchmark.read_text()),
-                             json.loads(args.contract.read_text()))
+                             json.loads(args.contract.read_text()), args.selected_steps)
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "coverage.json").write_text(json.dumps(report, indent=2) + "\n")
     with (args.output / "hotspots.csv").open("w", newline="") as f:
@@ -138,7 +150,7 @@ def main():
         writer.writeheader()
         writer.writerows(hotspots)
     if args.plot:
-        plot_hotspots(hotspots, args.output)
+        plot_hotspots(hotspots, args.output, [args.raw, args.annotated, args.benchmark, args.contract])
     print(json.dumps(report, indent=2))
 
 

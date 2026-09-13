@@ -1,0 +1,12 @@
+==WARNING== Note: Running with uncontrolled GPU caches. Profiling results may be inconsistent.
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 2615983 (/usr/bin/python3.12)
+
+==ERROR== An error was reported by the driver:
+==ERROR== For more information, see /tmp/nsight-compute-f5ae-aad5.log
+==ERROR== Unsupported API during capture (cuGraphLaunch)
+==ERROR== For more information, see /tmp/nsight-compute-f5ae-aad5.log
+==ERROR== Skipping invalid capture range (RecordStatusUnsupportedApi).
+==PROF== Trying to shutdown target application
+==ERROR== The application returned an error code (9).
+==WARNING== See https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#range-replay for range-based replay mode requirements and limitations.

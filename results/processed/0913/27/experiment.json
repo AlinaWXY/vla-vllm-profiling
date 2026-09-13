@@ -1,0 +1,9 @@
+{
+  "experiment_id": "0913/27",
+  "created_at": "2026-09-13T19:28:23+08:00",
+  "timezone": "Asia/Hong_Kong",
+  "purpose": "新 Omni 分段基线：复用已编译 vision callable，避免嵌套 CUDA Graph capture；冻结脚本导入已检查",
+  "host": "deep-space",
+  "status": "completed",
+  "finished_at": "2026-09-13T19:32:23+08:00"
+}

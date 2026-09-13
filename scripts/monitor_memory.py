@@ -20,7 +20,8 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["utc", "pid", "rss_bytes", "process_hwm_bytes", "host_available_bytes"])
+        writer.writerow(["utc", "pid", "rss_bytes", "process_hwm_bytes", "host_available_bytes",
+                         "gpu_gpc_cur_hz", "gpu_gpc_min_hz", "gpu_gpc_max_hz"])
         while True:
             try:
                 if identity() != initial:
@@ -29,9 +30,13 @@ def main():
                 mem = dict(line.split(":", 1) for line in Path("/proc/meminfo").read_text().splitlines())
                 if "VmRSS" not in status:  # exited/zombie
                     break
+                clocks = []
+                for key in ("cur_freq", "min_freq", "max_freq"):
+                    path = Path("/sys/class/devfreq/gpu-gpc-0") / key
+                    clocks.append(path.read_text().strip() if path.is_file() else "")
                 writer.writerow([datetime.now(timezone.utc).isoformat(), args.pid,
                     int(status["VmRSS"].split()[0]) * 1024, int(status["VmHWM"].split()[0]) * 1024,
-                    int(mem["MemAvailable"].split()[0]) * 1024])
+                    int(mem["MemAvailable"].split()[0]) * 1024, *clocks])
                 f.flush()
             except (FileNotFoundError, ProcessLookupError):
                 break

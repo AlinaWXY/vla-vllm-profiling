@@ -1,0 +1,17 @@
+{
+  "analyzed_at": "2026-09-13T14:56:17+08:00",
+  "inputs": [
+    {
+      "path": "results/processed/thor_pi05_20260913/ncu/raw.csv",
+      "bytes": 5069064,
+      "sha256": "9946114616c6df9ce92a591d5bd66be362bf2a6c7653093e6ec68c4b5600d296"
+    },
+    {
+      "path": "results/processed/thor_pi05_20260913/ncu/operators.csv",
+      "bytes": 5146292,
+      "sha256": "f7cf9caef558d9d0f8945f0a7e6360ce078f46decda9653d1b0f5724fc08bcd5"
+    }
+  ],
+  "scope": "All 1650 original Triton launches, 10 steps, 18 layers",
+  "note": "Occupancy limit is theoretical, not measured active occupancy. Resource limits and launch sizes can coexist with memory stalls."
+}
