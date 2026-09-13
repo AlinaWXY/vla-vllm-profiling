@@ -11,6 +11,7 @@ import io
 import json
 import math
 from pathlib import Path
+import re
 
 
 def number(value):
@@ -166,6 +167,43 @@ def attach_operators(kernels, annotated):
         kernel["operator"] = label["kernel"]
 
 
+def aggregate_operators(rows):
+    """Pool repeated steps/layers by launch site, preserving precision domains.
+
+    Compute F/sum(t) and F/sum(B), never an unweighted mean of rates. A source
+    line distinguishes separate uses of the same fused Triton kernel.
+    """
+    grouped = {}
+    for row in rows:
+        label = row.get("operator", row["kernel"])
+        match = re.search(r"step-?\d+\.layer-?\d+\.(\w+\.line\d+)", label)
+        group = match.group(1) if match else label
+        key = group, row["domain"], row["memory_level"]
+        grouped.setdefault(key, []).append(row)
+    group_ids = {name: index + 1 for index, name in enumerate(sorted({key[0] for key in grouped}))}
+    result = []
+    for (group, domain, level), members in sorted(grouped.items()):
+        sums = {field: (sum(r[field] for r in members) if all(r[field] is not None for r in members) else None)
+                for field in ("flops", "duration_ns", "memory_bytes")}
+        f, t, b = (sums[field] for field in ("flops", "duration_ns", "memory_bytes"))
+        issues = []
+        if f is None:
+            issues.append("missing_flop_metrics")
+        elif f <= 0:
+            issues.append("zero_counted_flops")
+        if any(r["duration_ns"] is None or r["duration_ns"] <= 0 for r in members):
+            issues.append("missing_or_nonpositive_duration")
+        if b is None or b <= 0:
+            issues.append(f"missing_or_zero_{level}_traffic")
+        result.append({"group_id": group_ids[group], "operator": group, "domain": domain,
+                       "memory_level": level, "invocations": len(members), **sums,
+                       "mean_duration_ns": t / len(members) if t is not None else None,
+                       "ai_flops_per_byte": f / b if not issues else None,
+                       "performance_tflops": f / t / 1000 if not issues else None,
+                       "status": "|".join(issues) if issues else "ok"})
+    return result
+
+
 def plot(rows, ceilings, output):
     import matplotlib
     matplotlib.use("Agg")
@@ -197,9 +235,14 @@ def plot(rows, ceilings, output):
                   label=ceilings.get("label", "Documented hardware ceiling"))
         if points:
             scatter = ax.scatter(intensities, [r["performance_tflops"] for r in points],
-                                 c=[r["duration_ns"] / 1000 for r in points],
+                                 c=[r.get("mean_duration_ns", r["duration_ns"]) / 1000 for r in points],
                                  cmap="viridis", s=24, alpha=0.75, rasterized=True)
-            fig.colorbar(scatter, ax=ax, label="NCU replay duration (µs)")
+            grouped = "group_id" in points[0]
+            fig.colorbar(scatter, ax=ax, label=("Mean " if grouped else "") + "NCU replay duration (µs)")
+            if grouped:
+                for r in points:
+                    ax.annotate(str(r["group_id"]), (r["ai_flops_per_byte"], r["performance_tflops"]),
+                                xytext=(4, 3), textcoords="offset points", fontsize=7)
         else:
             ax.text(.5, .5, "No valid measured points", transform=ax.transAxes, ha="center")
         ax.set(xlabel=f"{level.upper()} arithmetic intensity (FLOP/byte)",
@@ -226,19 +269,28 @@ def main():
         attach_operators(kernels, load_ncu(args.operators_csv))
     contract = json.loads(args.contract.read_text())
     rows = analyze(kernels, contract)
+    operators = aggregate_operators(rows)
     args.output.mkdir(parents=True, exist_ok=True)
     with (args.output / "kernels.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
+    with (args.output / "operators.csv").open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(operators[0]))
+        writer.writeheader()
+        writer.writerows(operators)
     summary = {"kernel_invocations": len(kernels), "precision_rows": len(rows),
                "valid_precision_rows": sum(r["status"] == "ok" for r in rows),
+               "operator_groups": len({r["group_id"] for r in operators}),
                "domains": list(contract["domains"]),
                "memory_level": contract.get("memory", {}).get("level", "dram"),
                "note": "One kernel can appear in multiple precision domains; do not sum their durations."}
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     if args.ceilings:
-        plot(rows, json.loads(args.ceilings.read_text()), args.output / "roofline")
+        ceilings = json.loads(args.ceilings.read_text())
+        plot(rows, ceilings, args.output / "roofline")
+        plot(operators, {**ceilings, "title": "π0.5 Action Expert — operator groups (IDs in operators.csv)"},
+             args.output / "roofline_by_operator")
     print(json.dumps(summary, indent=2))
 
 

@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "prompt": "pick up the red block and place it in the bin",
+      "tokens": 150,
+      "input_ids_sha256": "27219ba5e1da44ac4d86871c48e16a39b6526f5ccab2ecade0be449bb275be25"
+    },
+    {
+      "prompt": "pick up the red block and place it in the bin",
+      "tokens": 118,
+      "input_ids_sha256": "52a6b875ef6eaa5e700550d4f0d2c2ef0e551e6721eaa4f8d4b60ebd63393a45"
+    },
+    {
+      "prompt": "",
+      "tokens": 139,
+      "input_ids_sha256": "cc657f6e0db6354771eb079248947cee1a05f876ff164ff6afd3fee2c64a7f7c"
+    },
+    {
+      "prompt": "",
+      "tokens": 107,
+      "input_ids_sha256": "887f3bbf414dbb7504016d063a1577011a4e66e04f6614071597e9d09f56b253"
+    },
+    {
+      "prompt": "open_drawer\nand place cup",
+      "tokens": 144,
+      "input_ids_sha256": "4265ca2dc3adbcdb9e57fe7427bf8f7916fa94701ba66a929a18286fdb6ebb99"
+    },
+    {
+      "prompt": "open_drawer\nand place cup",
+      "tokens": 112,
+      "input_ids_sha256": "edf53b611c6fabf998e765368add5e6d1354f9cdf59632bf88977cf03b81f0d4"
+    },
+    {
+      "prompt": "拿起红色积木",
+      "tokens": 144,
+      "input_ids_sha256": "db5fab926c2bca430be7db15f70d587d6b2dbeeb0d1b8881f1d7d8e98841927d"
+    },
+    {
+      "prompt": "拿起红色积木",
+      "tokens": 112,
+      "input_ids_sha256": "b4015f6c09918516ac976d9b98ab001ac96a56038478bf230f6c94a8ae3c06a6"
+    },
+    {
+      "prompt": "move 0.125 m; rotate -90°",
+      "tokens": 152,
+      "input_ids_sha256": "2b4f5d81134069a60ce59553a01949bad0ac2a889887faf22bf59fddf6e882bb"
+    },
+    {
+      "prompt": "move 0.125 m; rotate -90°",
+      "tokens": 120,
+      "input_ids_sha256": "9a9a2cd2cc64e30201b9df96c7838c553549b81b43be894a784cdbbec296f6e0"
+    },
+    {
+      "prompt": "café\t cup",
+      "tokens": 142,
+      "input_ids_sha256": "54411de807640e83803888be0718af64f88bdfb255bdffaaa43165df2fad9eaa"
+    },
+    {
+      "prompt": "café\t cup",
+      "tokens": 110,
+      "input_ids_sha256": "9bfbc34c4f933b07e59a3e5044678bb788950b5fd0565379a2f4dcf104ef82d7"
+    },
+    {
+      "prompt": "pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block ",
+      "tokens": 200,
+      "input_ids_sha256": "456a8e6d88547f2707d51a699e8e3f7578f582872ad8d297770dfb534992df4b"
+    },
+    {
+      "prompt": "pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block pick up the block ",
+      "tokens": 200,
+      "input_ids_sha256": "456a8e6d88547f2707d51a699e8e3f7578f582872ad8d297770dfb534992df4b"
+    }
+  ],
+  "tokenizer_class": "GemmaTokenizer",
+  "vocab_size": 257152,
+  "pad_id": 0,
+  "bos_id": 2,
+  "source_sha256": "8986bb4f423f07f8c7f70d0dbe3526fb2316056c17bae71b1ea975e77a168fc6",
+  "scope": "14 pi05 prompt/state cases: token IDs, BOS, truncation, right padding against official SentencePiece"
+}

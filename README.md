@@ -3,11 +3,13 @@
 在 NVIDIA Thor 上部署 vLLM-Omni π0.5，采集 Action Expert 的逐 kernel timing、
 FLOP 与内存层级流量，并生成可追溯的 Roofline 图。
 
-**当前状态（2026-09-12）：按用户新授权，在其他机器准备 ARM64 环境，放入共享
-目录供 Thor 运行；不在 Thor 安装依赖。vLLM 已对齐到 π0.5 优化分支使用的 0.22.0。
-共享环境已准备完成，Thor 上的 BF16/Triton 运算及 π0.5 入口导入验证通过。
-尚未加载模型权重，尚无 VLA 推理或 Action Expert 实测 Roofline。
-参见 [环境准备](docs/offhost_environment.md) 和 [Thor 环境审查](docs/thor_environment.md)。**
+**当前状态（2026-09-13）：共享 ARM64 环境与 `sm_110a` 运行验证完成；
+π0.5 权重（14.47 GB）和公开 tokenizer 已下载并校验，Tokenizer 14 组对照通过。
+BF16/FP32 计算量计数器和 L2 参考带宽已在 Thor 实测验证。
+真实模型加载受到 Thor 共享存储读取速度影响，首轮达到启动时限，正在延长时限重试；
+尚无 VLA 推理或 Action Expert 实测 Roofline。参见
+[模型文件](docs/model_assets.md)、[计数器校验](results/processed/compute_counter_validation/)
+和 [执行状态](docs/status.md)。**
 
 ## 代码来源与实验边界
 
@@ -61,7 +63,9 @@ ssh thor0 'bash -s' < scripts/inspect_thor.sh
 **Thor 可直接运行，不需要 Slurm。** 用户已明确授权 `thor0`（hostname `fact-thor`）
 作为例外，规则见 `AGENTS.md`。其他机器仍要求 Slurm；脚本按主机名检查此边界。
 
-共享源码、隔离运行环境及结果放在 `/fact_data`，模型和 tokenizer 仍需已有本地路径。
+共享源码、隔离运行环境及结果放在 `/fact_data`。缺少的模型/tokenizer 可在非 Thor
+主机通过 `bash scripts/download_assets.sh` 下载到 `/scratch`，来源和校验方法见
+[模型文件](docs/model_assets.md)。
 在其他机器执行 `bash scripts/prepare_thor_env.sh` 准备环境；在 Thor 通过
 `bash scripts/thor_python.sh ...` 使用它，详见 [环境准备](docs/offhost_environment.md)。
 已有缓存路径会保留；未设置的运行缓存才采用 `/scratch` 默认值：
@@ -72,7 +76,8 @@ source scripts/cache_env.sh
 python scripts/resolve_checkpoint.py
 ```
 
-模型与 tokenizer 均须提供已有的本地目录。缺失文件直接报错，不自动补装或下载。
+Thor 推理时模型与 tokenizer 均须提供本地目录。运行入口遇到缺失文件直接报错；
+下载仅由非 Thor 主机的独立下载入口执行。
 缓存脚本开启离线模式，不覆盖已有的合法缓存路径，也不设置 pip/uv 安装缓存。
 不要把凭据、权重或缓存提交到 GitHub。
 
@@ -142,7 +147,8 @@ python scripts/resolve_checkpoint.py
        --ceilings results/raw/ceilings.json --output results/processed/thor_pi05
    ```
 
-   输出 `kernels.csv`、`summary.json`、`roofline.png` 和 `roofline.pdf`。
+   输出逐调用 `kernels.csv`、按来源位置汇总的 `operators.csv`、`summary.json`，
+   以及逐调用和按算子编号的两组 Roofline PNG/PDF。编号与 `operators.csv` 对应。
    缺失计数器、所选层级零流量或零浮点运算的 kernel 保留在表中并注明原因，不绘制虚假点。
    FP32 与 BF16 的点按精度分开；同一 kernel 可出现在多个精度面板，耗时不能重复求和。
 

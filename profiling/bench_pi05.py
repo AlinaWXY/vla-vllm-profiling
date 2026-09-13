@@ -3,7 +3,7 @@
 Run in the existing environment for pinned vLLM-Omni PR 4419. Thor permits direct
 execution; other hosts require Slurm. This exercises
 Pi05Pipeline directly, not the websocket transport or the serving scheduler.
-GPU execution and Thor compatibility remain pending until actually measured.
+Runtime compatibility was validated on Thor; model results are recorded per run.
 """
 from __future__ import annotations
 
@@ -64,6 +64,8 @@ def main():
     p.add_argument("--min-available-gib", type=float, default=32,
                    help="Host/cgroup free-memory preflight; not a hard allocation limit or an OOM guarantee")
     args = p.parse_args()
+    def phase(message):
+        print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {message}", flush=True)
     require_gpu_execution()
     if min(args.steps, args.warmup, args.iterations) < 1:
         p.error("steps, warmup and iterations must be positive")
@@ -85,6 +87,7 @@ def main():
             # Shared source can be importable without an installed distribution.
             packages[name] = None
 
+    phase("Local assets and memory preflight passed; importing runtime")
     import numpy as np
     import torch
     from vllm_omni.diffusion.data import OmniDiffusionConfig
@@ -100,7 +103,18 @@ def main():
             return AutoTokenizer.from_pretrained(str(args.tokenizer), local_files_only=True)
 
         def _load_checkpoint(self, model):
-            model.load_weights(stream_checkpoint_weights(self.model_dir))
+            phase("Streaming real checkpoint tensors into model")
+            def weights():
+                count, byte_count, last_log = 0, 0, time.monotonic()
+                for name, tensor in stream_checkpoint_weights(self.model_dir):
+                    yield name, tensor
+                    count += 1
+                    byte_count += tensor.numel() * tensor.element_size()
+                    if time.monotonic() - last_log >= 30:
+                        phase(f"Loaded {count} checkpoint tensors ({byte_count / 1024**3:.2f} GiB)")
+                        last_log = time.monotonic()
+            model.load_weights(weights())
+            phase("All checkpoint parameters loaded")
 
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA unavailable in the selected runtime.")
@@ -121,7 +135,9 @@ def main():
                                 model_config=model_config)
 
     with torch.inference_mode(), strict_checkpoint_load(Pi05ForActionPrediction) as load_audit:
+        phase("Initializing pipeline with local tokenizer and checkpoint")
         pipeline = LocalPipeline(od_config=config)
+        phase("Pipeline initialized on GPU")
 
         def request(backend):
             return OmniDiffusionRequest(
@@ -145,6 +161,7 @@ def main():
         safe_times = []
         # NCU needs one measured expert invocation, not a second latency sweep.
         if not args.profile:
+            phase("Safe backend warmup and timing")
             for _ in range(args.warmup):
                 safe_actions = forward(safe_req)
             for _ in range(args.iterations):
@@ -154,12 +171,14 @@ def main():
                 torch.cuda.synchronize()
                 safe_times.append((time.perf_counter() - begin) * 1000)
         with observe_decoder(realtime_triton) as observed:
+            phase("Optimized backend warmup, Triton compilation and graph capture")
             for _ in range(args.warmup):
                 optimized_actions = forward(optimized_req)
         if not observed:
             raise RuntimeError("Optimized decoder was never invoked.")
         optimized_times = []
         if not args.profile:
+            phase("Optimized pipeline timing")
             for _ in range(args.iterations):
                 torch.cuda.synchronize()
                 begin = time.perf_counter()
@@ -179,6 +198,7 @@ def main():
         times = {}
         delta = None
         if not args.profile:
+            phase("Isolated Action Expert correctness and timing")
             for _ in range(args.warmup):
                 expert()
             torch.cuda.synchronize()
@@ -206,6 +226,7 @@ def main():
 
         manifest = []
         if args.profile:
+            phase("Starting NCU-scoped Action Expert invocation")
             with annotate_decoder(realtime_triton, decoder, manifest):
                 torch.cuda.synchronize()
                 torch.cuda.cudart().cudaProfilerStart()
@@ -244,6 +265,7 @@ def main():
             "operator_manifest": manifest,
         }
         (args.output / "benchmark.json").write_text(json.dumps(report, indent=2) + "\n")
+        phase("Run completed; benchmark and actions saved")
         print(json.dumps({k: v for k, v in report.items() if k != "operator_manifest"}, indent=2))
 
 

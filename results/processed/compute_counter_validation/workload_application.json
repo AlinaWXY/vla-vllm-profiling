@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "domain": "bf16_tensor",
+      "expected_matmul_flops": 1099511627776,
+      "matrix_size": 8192,
+      "output_correct": true
+    },
+    {
+      "domain": "fp32_simt",
+      "expected_matmul_flops": 1099511627776,
+      "matrix_size": 8192,
+      "output_correct": true
+    }
+  ],
+  "torch": "2.11.0+cu130",
+  "purpose": "Match NCU domain FLOPs to known dense GEMM work; NCU timing is not a ceiling measurement"
+}

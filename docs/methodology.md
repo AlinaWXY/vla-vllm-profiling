@@ -33,10 +33,16 @@ must be labeled accordingly. Validate direct-launch vs decoder-graph action
 agreement. A later graph-node collection may corroborate the mapping, but no such
 result currently exists.
 
+The export also pools repeated denoising steps/layers by labeled source line in
+`operators.csv`. Its rates use total FLOPs / total time and total FLOPs / total
+traffic, rather than an unweighted average of individual rates. Precision domains
+remain separate. IDs on `roofline_by_operator.png` refer to this table; original
+invocations and their full labels remain in `kernels.csv`.
+
 ## FLOPs and traffic
 
 For a kernel with measured duration `t`, counted floating-point operations `F`
-and total DRAM read+write bytes `B`:
+and measured traffic bytes `B` at the selected memory level (L2 on Thor):
 
 ```text
 Arithmetic intensity = F / B                     [FLOP/byte]
@@ -55,9 +61,9 @@ arithmetic, loads/stores and transcendental instructions such as exponentials ar
 not counted as ordinary floating-point add/mul/FMA work in these panels. A softmax
 or normalization point therefore describes counted arithmetic, not all issued work.
 
-Missing or unavailable metrics stay unknown. Kernels with no DRAM traffic can be
-cache resident and cannot be assigned a finite DRAM arithmetic intensity. Keep
-their timing in the table and consider a future L2 roofline. Preserve all launches,
+Missing or unavailable metrics stay unknown. Kernels with zero traffic at the
+selected level cannot be assigned a finite arithmetic intensity at that level.
+Keep their timing in the table. Preserve all launches,
 including repeated names; their cache states and shapes can differ.
 
 ## Thor conditions
@@ -71,8 +77,8 @@ on Thor in the same way as desktop GPUs. The initial command uses
 Empirical GEMM and streaming-copy rates are reference ceilings. They are not
 guaranteed maxima and must be recorded under the same power state as the workload.
 FP32 calibration disables TF32. Confirm the BF16 and FP32 instruction paths with
-NCU before interpreting precision-specific roofs. The first copy calibration's
-traffic is read+write bytes and its buffers should exceed the target L2 capacity.
+NCU before interpreting precision-specific roofs. Copy traffic is read+write bytes. DRAM streaming buffers exceed L2 capacity; the
+explicit L2 calibration uses cache-resident buffers and bypasses L1.
 
 ## Correctness gates
 

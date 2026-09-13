@@ -5,7 +5,7 @@ import tempfile
 import unittest
 
 from profiling.ncu import FP32_METRICS, select_contract
-from profiling.roofline import analyze, attach_operators, load_ncu
+from profiling.roofline import aggregate_operators, analyze, attach_operators, load_ncu
 
 
 CONTRACT = {"domains": {"bf16_tensor": {"terms": [{"metric": "tensor.sum", "weight": 1}]},
@@ -117,6 +117,25 @@ class RooflineTests(unittest.TestCase):
         annotated["metrics"]["tensor.sum"] = (123, "op")
         with self.assertRaisesRegex(ValueError, "metrics differ"):
             attach_operators([kernel], [annotated])
+
+    def test_operator_groups_pool_work_and_time_without_mixing_precisions(self):
+        first, second = self.kernel(), self.kernel(**{"gpu__time_duration.sum": (6, "usecond"),
+                                                      "tensor.sum": (12000, "op"),
+                                                      "dram__bytes.sum": (6000, "byte")})
+        first["operator"] = "step00.layer00._qkv.line100"
+        second["operator"] = "step09.layer17._qkv.line100"
+        rows = analyze([first, second], CONTRACT)
+        groups = aggregate_operators(rows)
+        self.assertEqual(len(groups), 2)
+        bf = next(r for r in groups if r["domain"] == "bf16_tensor")
+        self.assertEqual(bf["operator"], "_qkv.line100")
+        self.assertEqual(bf["invocations"], 2)
+        self.assertEqual(bf["flops"], 16000)
+        self.assertAlmostEqual(bf["ai_flops_per_byte"], 16000 / 7000)
+        self.assertAlmostEqual(bf["performance_tflops"], .002)
+        self.assertEqual(bf["mean_duration_ns"], 4000)
+        rows[0]["flops"] = None
+        self.assertIsNone(aggregate_operators(rows)[0]["ai_flops_per_byte"])
 
     def test_invalid_contracts_do_not_produce_false_points(self):
         for terms in ([], [{"metric": "tensor.sum.per_second", "weight": 1}],

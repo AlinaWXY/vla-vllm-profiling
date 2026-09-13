@@ -1,0 +1,8 @@
+{
+  "kernel": "copy_l2",
+  "l2_bytes": 8425056.0,
+  "logical_read_write_bytes": 8388608,
+  "ratio": 1.0043449401855469,
+  "replay": "single pass, cache-control none after 5 warmups",
+  "report_sha256": "1cfbda8ba8cfa6493e1d5576b1d6cc2b2a624e1f56e75eac87fdb47dc0a5838b"
+}

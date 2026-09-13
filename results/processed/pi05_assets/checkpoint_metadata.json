@@ -1,0 +1,10 @@
+{
+  "tensors": 812,
+  "parameters": 3616757520,
+  "dtypes": {
+    "F32": 812
+  },
+  "safetensors_header_bytes": 135784,
+  "file_bytes": 14467165872,
+  "source_sha256": "0eb11ca9587678c1d2ef8cf32807c29f8ce53a2bfdfc1aa4a4c96f16fca59b0f"
+}

@@ -1,0 +1,2 @@
+name, pstate, clocks.current.sm [MHz], clocks.current.memory [MHz], power.draw [W], temperature.gpu
+NVIDIA Thor, [N/A], [N/A], [N/A], 5.53 W, 44

@@ -9,6 +9,8 @@ logs/
 *.ncu-rep
 !results/processed/environment_sm110a/probe_sm110a.ncu-rep
 !results/processed/environment_sm110a/probe_sm110a_l2.ncu-rep
+!results/processed/compute_counter_validation/compute_application.ncu-rep
+!results/processed/compute_counter_validation/l2_copy.ncu-rep
 *.pt
 *.safetensors
 .env
