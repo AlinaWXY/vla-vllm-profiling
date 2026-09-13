@@ -1,0 +1,2 @@
+# Preserve standard CSV CRLF endings in measured exports; accept CR at EOL.
+*.csv whitespace=trailing-space,space-before-tab,cr-at-eol

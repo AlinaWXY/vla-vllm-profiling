@@ -19,8 +19,9 @@
   offline assets, cache preservation, memory guards and the Thor execution rule.
   Python syntax and shell syntax checks pass.
   PNG/PDF rendering passed using disposable synthetic test input, which was
-  removed after the check. The VLA runner has started, but model loading has not completed.
-  The expanded 19-test CPU suite and operator-group PNG/PDF rendering also pass locally.
+  removed after the check. Real-weight inference subsequently completed on Thor.
+  The expanded 21-test CPU suite, including exact launch-coverage and
+  precision-duration de-duplication checks, and operator-group rendering pass locally.
 
 ## Shared ARM64 runtime ready
 
@@ -41,7 +42,7 @@ with 4096 bytes of explicit device data allocation. Build and execution records
 are in `results/processed/environment_sm110a/`. This is a deployment probe, not
 pi0.5 inference or a performance measurement.
 
-## New counter validation and loading status
+## Counter validation and real-model results
 
 `results/processed/compute_counter_validation/` contains complete NCU application
 replay results. BF16 Tensor operations exactly match 2×8192³; FP32 SIMT operations
@@ -53,19 +54,34 @@ logical copy bytes by 0.434%. These are empirical references, not hardware maxim
 The first real-weight run hit its 30-minute startup limit while streaming
 checkpoint tensors over Thor's NFS mount. It did not reach GPU inference or
 report an OOM. Memory samples retained over 110 GiB host headroom. A retry uses
-an extended two-hour limit and reports loaded tensor/byte progress. Loading
-and network transfer times are excluded from kernel/deployment latency claims.
+an extended two-hour limit and completed all weights, warmup and measurement.
+All 813 parameter names are initialized (812 checkpoint tensors plus a tied alias),
+with no missing parameters. Loading and transfer times are excluded from latency.
+
+The real-weight, batch-one, three-camera, ten-step run records 20 timed samples:
+safe pipeline p50 237.790 ms, optimized pipeline p50 72.456 ms, optimized expert
+CUDA Graph p50 34.725 ms and direct-launch expert p50 35.594 ms. Graph/direct
+expert outputs agree exactly for this input. Peak Torch allocated memory is
+14.48 GiB; the sampled minimum host headroom is 99.11 GiB.
+
+**Numerical equivalence failed:** safe versus optimized max absolute error is
+0.191869 and relative RMSE is 1.03704. These normalized-space synthetic-input
+outputs are not a robot success test. The cause is not isolated, and the latency
+ratio is not a validated equivalent-model speedup. Outputs, individual timing
+samples and memory observations are in `results/processed/thor_pi05_20260913/`.
+
+NCU is collecting the actual optimized Action Expert with per-launch NVTX labels.
+Its result is pending; no measured model roofline or bottleneck claim is made yet.
 
 ## Remaining work
 
-1. Complete real-checkpoint loading on Thor; local assets are now ready.
-2. Run inference and numerical checks using one process/configuration.
-3. Collect uninstrumented timing, NCU operator metrics and documented ceilings.
-4. Review counter coverage and publish measured rooflines, commands and limits.
+1. Finish NCU operator collection and review counter/label coverage.
+2. Publish measured rooflines, raw reports, commands and limitations.
+3. Separately isolate the safe/optimized numerical discrepancy and run an external oracle.
 
 ## Claims not yet supported
 
-No successful pi0.5 deployment, VLA latency, speedup, Action Expert NCU result,
-kernel bottleneck, VLA roofline point or external numerical-parity result is
-claimed. The successful toy-kernel deployment and NCU access checks are separately
-labeled environment validation.
+No numerically equivalent speedup, Action Expert NCU result, kernel bottleneck,
+VLA roofline point, robot success rate or external numerical-parity result is
+claimed yet. Environment probes and calibration remain separate from the
+successful real-checkpoint experimental inference measurements.

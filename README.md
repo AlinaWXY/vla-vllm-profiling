@@ -6,8 +6,10 @@ FLOP 与内存层级流量，并生成可追溯的 Roofline 图。
 **当前状态（2026-09-13）：共享 ARM64 环境与 `sm_110a` 运行验证完成；
 π0.5 权重（14.47 GB）和公开 tokenizer 已下载并校验，Tokenizer 14 组对照通过。
 BF16/FP32 计算量计数器和 L2 参考带宽已在 Thor 实测验证。
-真实模型加载受到 Thor 共享存储读取速度影响，首轮达到启动时限，正在延长时限重试；
-尚无 VLA 推理或 Action Expert 实测 Roofline。参见
+真实权重推理已完成：优化 pipeline p50 为 72.46 ms，Action Expert CUDA Graph
+p50 为 34.72 ms。safe 与优化实现的相对 RMSE 为 103.7%，尚未数值对齐，
+不能将延迟差称为等价模型的加速。Action Expert NCU 逐算子采集中。参见
+[真实模型结果](results/processed/thor_pi05_20260913/)、
 [模型文件](docs/model_assets.md)、[计数器校验](results/processed/compute_counter_validation/)
 和 [执行状态](docs/status.md)。**
 
@@ -152,6 +154,19 @@ Thor 推理时模型与 tokenizer 均须提供本地目录。运行入口遇到�
    缺失计数器、所选层级零流量或零浮点运算的 kernel 保留在表中并注明原因，不绘制虚假点。
    FP32 与 BF16 的点按精度分开；同一 kernel 可出现在多个精度面板，耗时不能重复求和。
 
+6. 校验逐调用归因与完整性，并输出不重复计时的热点表：
+
+   ```bash
+   python -m profiling.audit_profile --raw results/raw/ncu_expert/raw.csv \
+       --annotated results/raw/ncu_expert/operators.csv \
+       --benchmark results/raw/profile_workload/benchmark.json \
+       --contract results/raw/ncu_inventory/metrics.json --output results/processed/thor_pi05
+   ```
+
+   `coverage.json` 核对 NVTX 标签与实际 launch 清单完全一致、每个去噪步均有记录，
+   并检查所有请求计数器均已返回。`hotspots.csv` 按 NCU 总耗时排序，每次 launch
+   仅计时一次；它的耗时比例仍属于 NCU 重放条件。
+
 ## 校验与后续发布
 
 本机 CPU 侧的数据处理测试：
@@ -162,7 +177,8 @@ python3 -m unittest discover -s tests -v
 
 模型加载前默认检查至少 32 GiB 主机/可见 cgroup 可用内存，并逐张量读取权重。
 这是启动前检查，不是硬内存限额；上游的图捕获、权重打包及 NCU 重放仍占用额外内存，
-实际峰值尚未验证。首次实测应单进程、单配置运行。
+本次未插桩运行的 Torch 峰值 allocated 为 14.48 GiB，采样到的主机最低可用内存
+为 99.11 GiB；这不是 NCU 重放或其他配置的内存保证。保持单进程、单配置运行。
 
 运行环境使用共享目录中的 ARM64 包及 Thor 现有解释器/驱动。分析/绘图只需要 Python、NumPy 和 Matplotlib；
 NCU CSV 解析本身只使用标准库。方法、结果口径及当前待办见 `docs/methodology.md`

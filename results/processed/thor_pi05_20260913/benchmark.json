@@ -1,0 +1,162 @@
+{
+  "slurm_job_id": null,
+  "host": "fact-thor",
+  "gpu": "NVIDIA Thor",
+  "compute_capability": [
+    11,
+    0
+  ],
+  "python": "3.12.3",
+  "torch": "2.11.0+cu130",
+  "cuda": "13.0",
+  "packages": {
+    "vllm": "0.22.0",
+    "vllm-omni": null,
+    "transformers": "5.8.1",
+    "triton": "3.6.0"
+  },
+  "upstream_model_file": "/fact_data/xinyaowang/vla_vllm_profiling/vllm-omni/vllm_omni/diffusion/models/pi05/realtime_triton.py",
+  "workload": {
+    "checkpoint": "/scratch/xinyaowang/vla-vllm-profiling/assets/pi05_base/b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+    "dtype": "bfloat16 blanket cast (PR4419)",
+    "batch": 1,
+    "cameras": 3,
+    "steps": 10,
+    "seed": 17,
+    "input": "Synthetic images and zero state; repeated observation; cross-request caching disabled",
+    "expert_scope": "Action input projection, 10-step denoising (or configured steps), final head and Euler; prefix and AdaRMS precompute excluded"
+  },
+  "memory_before": {
+    "host_available_bytes": 126330679296,
+    "cgroup_limits": [],
+    "available_bytes": 126330679296
+  },
+  "min_available_gib": 32,
+  "cuda_peak_allocated_bytes": 15544240640,
+  "cuda_peak_reserved_bytes": 15730737152,
+  "load_audit": {
+    "loaded_parameter_names": 813,
+    "missing_parameter_names": []
+  },
+  "pipeline_safe_wall": {
+    "count": 20,
+    "mean_ms": 238.398633300676,
+    "p50_ms": 237.7900569990743,
+    "p95_ms": 241.4287169376621,
+    "samples_ms": [
+      239.45404900587164,
+      238.76254999777302,
+      237.36082299728878,
+      237.01610800344497,
+      237.57304000901058,
+      237.7439760020934,
+      237.81689800671302,
+      239.02807498234324,
+      241.57465502503328,
+      237.75134902098216,
+      237.76321599143557,
+      238.15306898904964,
+      238.6616209987551,
+      237.4790349858813,
+      237.59760899702087,
+      238.52707000332884,
+      241.4210359856952,
+      239.26508499425836,
+      237.75675101205707,
+      237.26665100548416
+    ]
+  },
+  "pipeline_optimized_wall": {
+    "count": 20,
+    "mean_ms": 72.73643969965633,
+    "p50_ms": 72.45569101360161,
+    "p95_ms": 73.7623459106544,
+    "samples_ms": [
+      73.69049001135863,
+      73.43131501693279,
+      72.5907720043324,
+      72.35794598818757,
+      72.37335099489428,
+      72.45006001903675,
+      72.40954198641703,
+      72.11861497489735,
+      72.41611098288558,
+      72.46132200816646,
+      72.25215202197433,
+      72.36505500623025,
+      72.35414598835632,
+      72.85215199226514,
+      75.12760799727403,
+      73.30720400204882,
+      72.78408101410605,
+      72.47172799543478,
+      72.44750700192526,
+      72.4676369864028
+    ]
+  },
+  "expert_diagnostic_launches": {
+    "count": 20,
+    "mean_ms": 35.61654396057129,
+    "p50_ms": 35.59444808959961,
+    "p95_ms": 35.82449359893799,
+    "samples_ms": [
+      35.8175048828125,
+      35.70649719238281,
+      35.60166549682617,
+      35.55039978027344,
+      35.53478240966797,
+      35.46547317504883,
+      35.62287902832031,
+      35.60768127441406,
+      35.53859329223633,
+      35.4736328125,
+      35.762367248535156,
+      35.957279205322266,
+      35.787391662597656,
+      35.51987075805664,
+      35.45926284790039,
+      35.64121627807617,
+      35.62499237060547,
+      35.511070251464844,
+      35.56108856201172,
+      35.58723068237305
+    ]
+  },
+  "expert_cuda_graph": {
+    "count": 20,
+    "mean_ms": 34.73475360870361,
+    "p50_ms": 34.72455978393555,
+    "p95_ms": 34.81107120513916,
+    "samples_ms": [
+      34.723968505859375,
+      34.73817443847656,
+      34.72092819213867,
+      34.76044845581055,
+      34.74665451049805,
+      34.810752868652344,
+      34.716800689697266,
+      34.660926818847656,
+      34.735198974609375,
+      34.71628952026367,
+      34.76784133911133,
+      34.720001220703125,
+      34.71440124511719,
+      34.689918518066406,
+      34.688575744628906,
+      34.760032653808594,
+      34.75833511352539,
+      34.72515106201172,
+      34.81711959838867,
+      34.72355270385742
+    ]
+  },
+  "comparison": {
+    "reference": "same PR safe backend; external LeRobot parity NOT yet established",
+    "safe_vs_optimized_max_abs": 0.19186890125274658,
+    "safe_vs_optimized_mean_abs": 0.043667882680892944,
+    "expert_eager_vs_graph_max_abs": 0.0
+  },
+  "profiled": false,
+  "timing_warning": "Profile mode omits latency sweeps and the extra expert graph; use the separate uninstrumented run for latency and parity.",
+  "operator_manifest": []
+}

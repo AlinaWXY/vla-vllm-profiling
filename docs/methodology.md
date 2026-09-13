@@ -38,6 +38,10 @@ The export also pools repeated denoising steps/layers by labeled source line in
 traffic, rather than an unweighted average of individual rates. Precision domains
 remain separate. IDs on `roofline_by_operator.png` refer to this table; original
 invocations and their full labels remain in `kernels.csv`.
+`profiling.audit_profile` requires an exact multiset match between the instrumented
+Triton manifest and NCU NVTX labels, and checks every requested metric. Its
+`hotspots.csv` sums each launch duration once, including launches with zero counted
+floating-point arithmetic; `coverage.json` retains unlabelled framework kernels.
 
 ## FLOPs and traffic
 
@@ -54,10 +58,14 @@ BF16 Tensor operations are obtained from a supported hardware operations counter
 not from MMA instruction count times a guessed instruction width. Prefer a
 single aggregate counter; never add it to its sparsity children. The selected
 counter and exact formula are saved in `metrics.json`.
+Executed hardware arithmetic may include padded matrix-tile work; these are
+counted operations, not a claim of useful algorithm FLOPs.
 
 FP32 SIMT arithmetic counts `FADD + FMUL + 2*FFMA`. BF16 Tensor and FP32 SIMT
-are separate precision domains, even if a fused kernel does both. Integer index
-arithmetic, loads/stores and transcendental instructions such as exponentials are
+are separate precision domains, even if a fused kernel does both.
+Each precision row carries that kernel's full time and traffic; neither can be
+summed across precision domains without counting the same launch twice.
+Integer arithmetic, loads/stores and transcendental instructions such as exponentials are
 not counted as ordinary floating-point add/mul/FMA work in these panels. A softmax
 or normalization point therefore describes counted arithmetic, not all issued work.
 
@@ -117,7 +125,9 @@ For the L2 reference, `profiling.calibrate --memory-level l2` uses Triton copy
 kernels with `.cg` loads to bypass L1 and `.wb` stores. The two buffers together
 must fit in half the device-reported L2 cache (the deployment probe reported
 32 MiB on this Thor). The achieved copy rate is an empirical reference, not an
-absolute hardware peak. This calibration ran successfully in the shared runtime. Its provisional results
-and missing pre-run clock observation are recorded in
-`results/processed/environment_sm110a/`; final model-run ceilings need matching
-clock observations and instruction-path checks.
+absolute hardware peak. Historical provisional results remain in
+`results/processed/environment_sm110a/`. The subsequent compute-path and L2
+counter checks, power observations and empirical references are in
+`results/processed/compute_counter_validation/`. Use that directory's
+`ceilings_l2.json` for the real-model run. Clock telemetry was unavailable and
+clocks were not locked, so exact frequency matching is not established.
