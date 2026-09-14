@@ -1,0 +1,60 @@
+{
+  "recorded_at": "2026-09-14T15:39:04+08:00",
+  "input_audit": {
+    "camera_masks": [
+      true,
+      true,
+      true
+    ],
+    "prefix_len": 918,
+    "language_valid_tokens": 150,
+    "metadata": {
+      "prefix_valid_len": 918,
+      "prefix_masks_contiguous": true
+    }
+  },
+  "compiled_launch_choices": {
+    "triton_poi_fused__to_copy_convolution_0": [
+      "XBLOCK: 256, YBLOCK: 4, num_warps: 4, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_red_fused__to_copy_add_convolution_embedding_native_layer_norm_transpose_view_1": [
+      "XBLOCK: 4, R0_BLOCK: 128, num_warps: 2, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_per_fused__to_copy_add_convolution_embedding_native_layer_norm_transpose_view_2": [
+      "XBLOCK: 4, num_warps: 4, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_poi_fused__to_copy_add_convolution_embedding_native_layer_norm_transpose_view_3": [
+      "XBLOCK: 16, YBLOCK: 32, num_warps: 4, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_red_fused__to_copy_add_convolution_embedding_native_layer_norm_transpose_view_4": [
+      "XBLOCK: 2, R0_BLOCK: 2048, num_warps: 16, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_tem_fused_addmm_gelu_native_layer_norm_t_view_5": [
+      "num_warps: 8, num_ctas: 1, num_stages: 3, maxnreg: None"
+    ],
+    "triton_red_fused_add_native_layer_norm_view_6": [
+      "XBLOCK: 2, R0_BLOCK: 2048, num_warps: 8, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_red_fused_add_native_layer_norm_view_7": [
+      "XBLOCK: 1, R0_BLOCK: 2048, num_warps: 8, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_red_fused_add_native_layer_norm_view_8": [
+      "XBLOCK: 2, R0_BLOCK: 2048, num_warps: 8, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_red_fused_add_native_layer_norm_view_9": [
+      "XBLOCK: 2, R0_BLOCK: 2048, num_warps: 16, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_red_fused_add_native_layer_norm_view_10": [
+      "XBLOCK: 2, R0_BLOCK: 2048, num_warps: 16, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ],
+    "triton_tem_fused_add_addmm_mul_native_layer_norm_t_view_11": [
+      "num_warps: 4, num_ctas: 1, num_stages: 5, maxnreg: None"
+    ],
+    "triton_tem_fused_mm_0": [
+      "num_warps: 4, num_ctas: 1, num_stages: 3, maxnreg: None"
+    ],
+    "triton_poi_fused_gelu_mul_split_1": [
+      "XBLOCK: 256, num_warps: 4, num_ctas: 1, num_stages: 1, maxnreg: None"
+    ]
+  }
+}

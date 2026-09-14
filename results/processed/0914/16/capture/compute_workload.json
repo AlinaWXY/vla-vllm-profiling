@@ -1,0 +1,19 @@
+{
+  "case": "compute",
+  "cases": [
+    {
+      "domain": "bf16_tensor",
+      "expected_matmul_flops": 1099511627776,
+      "matrix_size": 8192,
+      "output_correct": true
+    },
+    {
+      "domain": "fp32_simt",
+      "expected_matmul_flops": 1099511627776,
+      "matrix_size": 8192,
+      "output_correct": true
+    }
+  ],
+  "torch": "2.13.0+cu130",
+  "purpose": "Match NCU counters to known GEMM work or L2 traffic; NCU timing is not a ceiling measurement"
+}

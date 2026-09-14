@@ -1,0 +1,255 @@
+{
+  "commit": "5200508b0fd25733752c2c5e3af5539508023c27",
+  "source": "/fact_data/xinyaowang/sglang-pi05-profiling",
+  "files": [
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/multimodal_gen/runtime/models/vlas/pi05_policy.py",
+      "bytes": 47957,
+      "sha256": "71b4d95eabd496acdf69cbc9fc287c55f694a65100175e87a4bf33df7a837b3d"
+    },
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/multimodal_gen/runtime/models/vlas/pi05_core.py",
+      "bytes": 55939,
+      "sha256": "501dee15f6d02ed737145643e14180ebf1744f19f4bd8c3dd839b164c85640c4"
+    },
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/multimodal_gen/runtime/vla/cuda_graph.py",
+      "bytes": 16220,
+      "sha256": "1ae2183084c04f4f5153aa7e8399b7cb299cbdee29b8cbc6ac2efd76cdadf2de"
+    },
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/multimodal_gen/runtime/layers/attention/layer.py",
+      "bytes": 87356,
+      "sha256": "0b3b841a0172d3404e585fd1cc6c162961b42fe799cc877fde67a63decea8f86"
+    },
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/multimodal_gen/runtime/layers/linear.py",
+      "bytes": 47552,
+      "sha256": "787f30fc59e93c42c847bc417ef627d951da3401b40198c93dc6ba67eb504d79"
+    },
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/srt/models/siglip.py",
+      "bytes": 11271,
+      "sha256": "c1958dd5dede56d4715f449c10a63c30ecc20b5e133fec39db857c534db71538"
+    },
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/srt/layers/attention/vision.py",
+      "bytes": 54255,
+      "sha256": "00ff69ab2f2fdfb74e319789aad47291bf84ba675d6bf227de4e3a5c5d5ca192"
+    },
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/srt/layers/activation.py",
+      "bytes": 18325,
+      "sha256": "c732ab311f98e78b4f22edc7f26c3d928be40dce100dea24754984ddc6c37bc3"
+    },
+    {
+      "path": "/fact_data/xinyaowang/sglang-pi05-profiling/python/sglang/multimodal_gen/runtime/pipelines_core/stages/model_specific_stages/pi05_preprocess.py",
+      "bytes": 9141,
+      "sha256": "907722ab1b870f37380bef6ca018c9fb364143d3e6db3c9afe07de8d6dad5a9b"
+    }
+  ],
+  "harness": [
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/plot_actions.py",
+      "bytes": 2896,
+      "sha256": "63227222f43429153fc128fc47538f07d703b44bdde56350484039647c839cb2"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/ncu.py",
+      "bytes": 8580,
+      "sha256": "0432cc27cbb3cd166bfa22d3087cf6b529c28e052a20bc65b4d6b968ac6dea25"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/summarize_numerics.py",
+      "bytes": 5605,
+      "sha256": "c2ad81102c5da0a437330c72a868a46ee177128856f296bb320ba0953c03963f"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/range_probe.py",
+      "bytes": 1928,
+      "sha256": "46dabb616651ce487ac50f9c0c86a898f2e83481ff7d1129ad2e9692bcba4351"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/sglang_report.py",
+      "bytes": 8382,
+      "sha256": "76ad776151262143e10e0d75ca5f3f28ba34c384bf1324e3ea419fb2c867a2cf"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/model_fingerprint.py",
+      "bytes": 787,
+      "sha256": "2d30d5dd30d6c20e427750c4f69e8c529479d42955cd141bd1f50bc90e982d09"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/full_roofline.py",
+      "bytes": 15275,
+      "sha256": "4d35162f3ee8ae11b934b2b5b85ebcb96016cafcdd32398290fe2c22f275ef7d"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/application_replay.py",
+      "bytes": 1436,
+      "sha256": "0ddf9be61a8f36c5db97e1d6e7075abe617d01fd4c67db8ab8fd9b820f7586e1"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/whole_roofline.py",
+      "bytes": 7163,
+      "sha256": "7a5feb87a3ab60bf4ee455f4cd3905a4dd1211a1cfcc637b1844113d718f3cfe"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/validate_compute_counters.py",
+      "bytes": 3905,
+      "sha256": "7975c2f04bc4ecb280aa3259c247eeae659b0c5fc30d752f76d93b068530c311"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/calibrate.py",
+      "bytes": 5281,
+      "sha256": "ff110e899597e63ff917c67fc9b76d75dd19137e2ae7a5da33c273274e3a60f0"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/__init__.py",
+      "bytes": 75,
+      "sha256": "dfe78d3c3806378aec218aa5a2623fe036d4b28ab6a89396219da3dd15e3ac13"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/range_probe_kernel.py",
+      "bytes": 384,
+      "sha256": "6192bbf5af22272619e06e0a8600514097f0fdd1f17f62ffd0754c779ad85d03"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/smoke_runtime.py",
+      "bytes": 3252,
+      "sha256": "06828e291cdecbd4ad9b531bc6830ed6270e65645a9821b2a2ee5bc8714eb5c5"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/recover_vlm.py",
+      "bytes": 12169,
+      "sha256": "b624070742bb67a454a5381414617e3cd61069313c73406e2dca3ca15f5282e1"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/coarse_roofline.py",
+      "bytes": 23861,
+      "sha256": "2d3e4862369d66f6f9f71094a32884883da48c09c6991a34428b72dede4284e9"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/sglang_suite.py",
+      "bytes": 6233,
+      "sha256": "5bc50ca92dde47460c9b2e67f05090515274323d53b07509422b7e3d1131ec05"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/instrumentation.py",
+      "bytes": 3537,
+      "sha256": "c3321762567f19239dbac68a47f232a91e933f97e10e68d53b4acfc1528df6e9"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/memory_kernels.py",
+      "bytes": 456,
+      "sha256": "b1c8466621d5e9e5354e94dc73136ffba20689390e3dd5a3d671edb2231dc586"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/sglang_pi05.py",
+      "bytes": 13503,
+      "sha256": "320f146249f00c37ccc655bd30faa42367c98ab18b851b9beec5791ef9d2b088"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/diagnose_numerics.py",
+      "bytes": 17686,
+      "sha256": "b422625226460b0c5ee5c8ee5d163bec00737379e4cd9eead4ced7119a89406a"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/probe_cubin.py",
+      "bytes": 3173,
+      "sha256": "39cf08d32d42c0b444316bc21617cdecfbc000e66c245a743462386756c238ee"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/check_rope.py",
+      "bytes": 4674,
+      "sha256": "924c7cffd10025e49c017791ccf99d4b7d02360e1fc3f56142d3a8f2acf43b02"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/inputs.py",
+      "bytes": 962,
+      "sha256": "4936a3659cf9f98a1c8e7181b4227b47da94c27c7ff56034dc425c2294b8185d"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/full_vla.py",
+      "bytes": 16158,
+      "sha256": "1e86c4a61e4657dcbe27b7a12b4baa39c2fb97ebd0fede7226e1c9ba5ede6457"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/validate_framework.py",
+      "bytes": 9405,
+      "sha256": "dca01fe5d427030d11550df2c396e2adae49a07ce40b22763da67008a3754b8f"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/bench_pi05.py",
+      "bytes": 18442,
+      "sha256": "b4da4d20e4128d253971477d6b4619942926bd6e3434e65b285f559c2a369144"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/summarize_full_model.py",
+      "bytes": 9000,
+      "sha256": "4d9cc77d295e2f2f1e6c2e62c0c111c698aeb5ec9b0ddd214c5b423dad8a3435"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/diagnose.py",
+      "bytes": 11306,
+      "sha256": "69dfc82b59a2dea465b1b332f2dbd8501cfc7c507c91b9985afe551441c74710"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/vlm_costs.py",
+      "bytes": 16778,
+      "sha256": "140b127045f5b729234b6712a9122a9291773eb8fd4c70a116e6da32e3871686"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/l20_report.py",
+      "bytes": 14958,
+      "sha256": "cd95a0ca6f8e8c4d7e92e85452f94d06a26818fee04d50ffce99779ea1a7389e"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/experiments.py",
+      "bytes": 3220,
+      "sha256": "4a6242c6dd4f20720665e241d42e3051270ca1d11c86fdaafdb95d078b5f21a3"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/audit_profile.py",
+      "bytes": 7880,
+      "sha256": "87c76dc7296e89561e0fa902a7fd726f370f34ef0cf262cab81e507d6e565152"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/runtime.py",
+      "bytes": 4947,
+      "sha256": "18afd146d6a0457366c68e169c7ce26bcc18fd466ad82be71b743ad2d06055b5"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/freeze_launches.py",
+      "bytes": 2558,
+      "sha256": "91736c5bcc98b77773549a4a9424958bf4db99f1d39deb710531587376698b97"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/roofline.py",
+      "bytes": 20704,
+      "sha256": "0c6aae15eb79c34d85c754790267ea9eb5d11c3c726c34b0c5fcd7002eaafdb8"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/diagnose_full_model.py",
+      "bytes": 11781,
+      "sha256": "f1691484f8a9627e8aecbd76716432a5527465a3c97ecaff20dfbd7fcb46b84d"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/launch_limits.py",
+      "bytes": 3771,
+      "sha256": "88a9d83b9ff58702bbd65c58ed4afd977d217f3adf0593aeda3e7a48a100c155"
+    }
+  ],
+  "checkpoint_config": {
+    "path": "/scratch/xinyaowang/vla-vllm-profiling/assets/pi05_base/b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba/config.json",
+    "bytes": 1896,
+    "sha256": "367869712a2847c27e95c431ecb03f17bec4eee01a63995e2fb2d91940752b53"
+  },
+  "checkpoint_revision": "b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+  "checkpoint_sha256": "0eb11ca9587678c1d2ef8cf32807c29f8ce53a2bfdfc1aa4a4c96f16fca59b0f",
+  "tokenizer_config": {
+    "path": "/scratch/xinyaowang/vla-vllm-profiling/assets/paligemma_tokenizer/tokenizer_config.json",
+    "bytes": 244,
+    "sha256": "43b995ca5be62629f34e5ad84359e6f507e9b7c2b7846b50d13c856cf47f69c7"
+  }
+}

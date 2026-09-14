@@ -1,6 +1,0 @@
-2026-09-13T15:33:46+08:00 Importing runtime
-/fact_data/xinyaowang/vla_vllm_profiling/vllm-omni/vllm_omni/__init__.py:19: RuntimeWarning: Failed to import version from _version.py: No module named 'vllm_omni._version'
-This typically happens in development mode before building.
-Using fallback version 'dev'.
-  from .version import __version__, __version_tuple__  # isort:skip # noqa: F401
-WARNING 09-13 15:37:58 [patch.py:165] Monkey-patched unregister_vllm_metrics() to scope drops to non-omni vllm:* collectors. Remove this patch once vLLM adds _STAT_LOGGER_METRIC_NAMES.

@@ -1,9 +1,0 @@
-{
-  "experiment_id": "0913/29",
-  "created_at": "2026-09-13T19:28:23+08:00",
-  "timezone": "Asia/Hong_Kong",
-  "purpose": "新 Omni VLM / Action Expert / VLA 三个整体图的 NCU 采集，三项硬件计数器",
-  "host": "deep-space",
-  "status": "cancelled",
-  "cancelled_at": "2026-09-13T20:20:50+08:00"
-}

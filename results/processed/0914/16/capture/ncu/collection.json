@@ -1,0 +1,110 @@
+{
+  "command": [
+    "/opt/nvidia/nsight-compute/2025.1.1/ncu",
+    "--target-processes",
+    "all",
+    "--nvtx",
+    "--graph-profiling",
+    "node",
+    "--replay-mode",
+    "application",
+    "--clock-control",
+    "none",
+    "--cache-control",
+    "all",
+    "--metrics",
+    "gpu__time_duration.sum,dram__bytes_read.sum,dram__bytes_write.sum,smsp__sass_thread_inst_executed_op_fadd_pred_on.sum,smsp__sass_thread_inst_executed_op_fmul_pred_on.sum,smsp__sass_thread_inst_executed_op_ffma_pred_on.sum,sm__ops_path_tensor_src_bf16_dst_fp32.sum,dram__throughput.avg.pct_of_peak_sustained_elapsed,sm__pipe_tensor_cycles_active_v2.avg.pct_of_peak_sustained_elapsed",
+    "--export",
+    "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/ncu/vla",
+    "--profile-from-start",
+    "off",
+    "--app-replay-mode",
+    "strict",
+    "--app-replay-match",
+    "grid",
+    "--app-replay-buffer",
+    "file",
+    "--nvtx-include",
+    "vla/",
+    "/fact_data/xinyaowang/vla_vllm_profiling/.venv-sglang-pi05/bin/python",
+    "-u",
+    "-m",
+    "profiling.sglang_pi05",
+    "--profile",
+    "--output-root",
+    "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes",
+    "--expected",
+    "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/baseline/report.json"
+  ],
+  "slurm_job_id": "1506879",
+  "host": "einstein",
+  "collection": "application replay; cache-control=all; NCU clock control disabled.",
+  "cache_caveat": "Kernel replay with cache-control=none does not recreate application cache state between passes. Range replay preserves reuse within the range.",
+  "launch_count_limit": null,
+  "started_at": "2026-09-14T16:47:37+08:00",
+  "clock_before": {
+    "observed_at": "2026-09-14T16:47:37+08:00",
+    "devfreq": {}
+  },
+  "scope": "SGLang native fused operators; VLM and 10 Expert steps; eager dispatch for NVTX; independent native graph latency in baseline",
+  "graph_profiling": "node",
+  "metrics_contract": {
+    "schema_version": 2,
+    "note": "Dense BF16 Tensor and FP32 add/mul/FMA are separate roofs; transcendental and integer ops excluded.",
+    "metrics": [
+      "gpu__time_duration.sum",
+      "dram__bytes_read.sum",
+      "dram__bytes_write.sum",
+      "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum",
+      "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum",
+      "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum",
+      "sm__ops_path_tensor_src_bf16_dst_fp32.sum",
+      "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__pipe_tensor_cycles_active_v2.avg.pct_of_peak_sustained_elapsed"
+    ],
+    "memory": {
+      "level": "dram",
+      "metrics": [
+        "dram__bytes_read.sum",
+        "dram__bytes_write.sum"
+      ],
+      "note": "L2 requested bytes are not DRAM bytes; use a matching memory-level bandwidth roof."
+    },
+    "domains": {
+      "bf16_tensor": {
+        "terms": [
+          {
+            "metric": "sm__ops_path_tensor_src_bf16_dst_fp32.sum",
+            "weight": 1
+          }
+        ]
+      },
+      "fp32_simt": {
+        "terms": [
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum",
+            "weight": 1
+          },
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum",
+            "weight": 1
+          },
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    "evidence_metrics": [
+      "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__pipe_tensor_cycles_active_v2.avg.pct_of_peak_sustained_elapsed"
+    ]
+  },
+  "status": "captured",
+  "finished_at": "2026-09-14T17:07:32+08:00",
+  "clock_after": {
+    "observed_at": "2026-09-14T17:07:32+08:00",
+    "devfreq": {}
+  }
+}

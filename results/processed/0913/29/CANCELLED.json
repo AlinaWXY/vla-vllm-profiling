@@ -1,7 +1,0 @@
-{
-  "experiment_id": "0913/29",
-  "cancelled_at": "2026-09-13T20:20:50+08:00",
-  "reason": "User requested cancellation because this NCU experiment is too slow. Do not automatically resume or launch the queued capture.",
-  "state_at_cancellation": "Never started; sequential controller exited before this capture",
-  "thor_gpu_processes_at_verification": []
-}

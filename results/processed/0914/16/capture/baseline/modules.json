@@ -1,0 +1,5322 @@
+[
+  {
+    "name": "",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.Pi05CoreModel",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PaliGemmaWithExpertModel",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PaliGemmaForConditionalGenerationWithPiGemma",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PaliGemmaModelWithPiGemma",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.Pi05SiglipVisionModel",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model",
+    "class": "sglang.srt.models.siglip.SiglipVisionTransformer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings",
+    "class": "sglang.srt.models.siglip.SiglipVisionEmbeddings",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding",
+    "class": "sglang.srt.layers.conv.Conv2dLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.position_embedding",
+    "class": "sglang.srt.layers.vocab_parallel_embedding.VocabParallelEmbedding",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder",
+    "class": "sglang.srt.models.siglip.SiglipEncoder",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers",
+    "class": "torch.nn.modules.container.ModuleList",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.0.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.1.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.2.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.3.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.4.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.5.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.6.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.7.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.8.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.9.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.10.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.11.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.12.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.13.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.14.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.15.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.16.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.17.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.18.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.19.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.20.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.21.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.22.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.23.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.24.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.25.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26",
+    "class": "sglang.srt.models.siglip.SiglipEncoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.layer_norm1",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.layer_norm2",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn",
+    "class": "sglang.srt.layers.attention.vision.VisionAttention",
+    "family": "Vision attention",
+    "backend": "sdpa",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn.qkv_backend",
+    "class": "sglang.srt.layers.attention.vision.VisionSdpaAttention",
+    "family": "Vision attention",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn.qkv_proj",
+    "class": "sglang.srt.layers.linear.QKVParallelLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.self_attn.proj",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.mlp",
+    "class": "sglang.srt.models.siglip.SiglipMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.mlp.fc1",
+    "class": "sglang.srt.layers.linear.ColumnParallelLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.mlp.act",
+    "class": "torch.nn.modules.activation.GELU",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.encoder.layers.26.mlp.fc2",
+    "class": "sglang.srt.layers.linear.RowParallelLinear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.vision_tower.vision_model.post_layernorm",
+    "class": "torch.nn.modules.normalization.LayerNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.multi_modal_projector",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PaliGemmaMultiModalProjector",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.multi_modal_projector.linear",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaModel",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.embed_tokens",
+    "class": "torch.nn.modules.sparse.Embedding",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers",
+    "class": "torch.nn.modules.container.ModuleList",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.0.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.1.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.2.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.3.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.4.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.5.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.6.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.7.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.8.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.9.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.10.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.11.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.12.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.13.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.14.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.15.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.16.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.layers.17.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.norm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.rotary_emb",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRotaryEmbedding",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.paligemma.model.language_model.rotary_emb.rope",
+    "class": "sglang.multimodal_gen.runtime.layers.rotary_embedding.base.RotaryEmbedding",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaForCausalLM",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaModel",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers",
+    "class": "torch.nn.modules.container.ModuleList",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.0.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.1.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.2.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.3.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.4.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.5.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.6.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.7.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.8.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.9.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.10.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.11.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.12.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.13.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.14.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.15.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.16.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaDecoderLayer",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.self_attn",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaAttention",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.self_attn.qkv_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": "QKV",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.self_attn.o_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "O projection",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.self_attn.attn",
+    "class": "sglang.multimodal_gen.runtime.layers.attention.layer.LocalAttention",
+    "family": "Attention (fused)",
+    "backend": "fa",
+    "impl": "FlashAttentionImpl"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.mlp",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaMLP",
+    "family": "FFN up",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.mlp.gate_up_proj",
+    "class": "sglang.multimodal_gen.runtime.layers.linear.MergedReplicatedLinear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.mlp.down_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "FFN down",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.mlp.act_fn",
+    "class": "sglang.srt.layers.activation.GeluAndMul",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.input_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.input_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.post_attention_layernorm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.layers.17.post_attention_layernorm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.norm",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRMSNorm",
+    "family": "Norm / residual",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.norm.dense",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.rotary_emb",
+    "class": "sglang.multimodal_gen.runtime.models.vlas.pi05_core.PiGemmaRotaryEmbedding",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "paligemma_with_expert.gemma_expert.model.rotary_emb.rope",
+    "class": "sglang.multimodal_gen.runtime.layers.rotary_embedding.base.RotaryEmbedding",
+    "family": null,
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "action_in_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "Action IO",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "action_out_proj",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "Action IO",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "time_mlp_in",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "Action IO",
+    "backend": "None",
+    "impl": "NoneType"
+  },
+  {
+    "name": "time_mlp_out",
+    "class": "torch.nn.modules.linear.Linear",
+    "family": "Action IO",
+    "backend": "None",
+    "impl": "NoneType"
+  }
+]

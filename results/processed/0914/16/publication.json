@@ -1,0 +1,502 @@
+{
+  "source_result": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16",
+  "source_capture": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12",
+  "files": [
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/README.md",
+      "path": "README.md",
+      "encoding": "identity",
+      "original_bytes": 4881,
+      "original_sha256": "5b41a8da4b8a5f93ad2f0ebec9e008deaa93a23c74f43e801ade4c8cd8d2ce03",
+      "published_sha256": "eb794f3c840b05d03fb8cd7f7efa190951beec0a27cc2bfbdf2939aa2344542d",
+      "publication_edit": "Updated relative documentation links; removed obsolete result-navigation references. Measurements and figure bytes unchanged."
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/experiment.json",
+      "path": "experiment.json",
+      "encoding": "identity",
+      "original_bytes": 220,
+      "original_sha256": "9be744e5b2b6cef530847777841e52bc92d4673c65a816ea2a50aa74fa535acd",
+      "published_sha256": "9be744e5b2b6cef530847777841e52bc92d4673c65a816ea2a50aa74fa535acd"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/kernels.csv",
+      "path": "kernels.csv",
+      "encoding": "identity",
+      "original_bytes": 3689544,
+      "original_sha256": "58d3198700b32f0231b44de43ef29a4d38d5def4eb77a3137388ba129fccace0",
+      "published_sha256": "58d3198700b32f0231b44de43ef29a4d38d5def4eb77a3137388ba129fccace0"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/major_operators.pdf",
+      "path": "major_operators.pdf",
+      "encoding": "identity",
+      "original_bytes": 37636,
+      "original_sha256": "11488c346a6769b4f836434bbf5e860570ae8e2ac7fa70eeedd0e49cdae7c221",
+      "published_sha256": "11488c346a6769b4f836434bbf5e860570ae8e2ac7fa70eeedd0e49cdae7c221"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/major_operators.plot.json",
+      "path": "major_operators.plot.json",
+      "encoding": "identity",
+      "original_bytes": 1436,
+      "original_sha256": "ddc36080149be06e3e04aa0a260de4e7589c0c65f4c1cd5038655de340f6d975",
+      "published_sha256": "ddc36080149be06e3e04aa0a260de4e7589c0c65f4c1cd5038655de340f6d975"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/major_operators.png",
+      "path": "major_operators.png",
+      "encoding": "identity",
+      "original_bytes": 327228,
+      "original_sha256": "eae82bdf0ae5e99ed84eef3730c4fe26ddf3d3ffd6a1b0734a134eba4dc54736",
+      "published_sha256": "eae82bdf0ae5e99ed84eef3730c4fe26ddf3d3ffd6a1b0734a134eba4dc54736"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/nvtx_parent_audit.json",
+      "path": "nvtx_parent_audit.json",
+      "encoding": "identity",
+      "original_bytes": 3345,
+      "original_sha256": "09877d6d41e7940908e98e5ea7c93a6c2bd2793d55e0f641d6727438e42eeb98",
+      "published_sha256": "09877d6d41e7940908e98e5ea7c93a6c2bd2793d55e0f641d6727438e42eeb98"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/operators.csv",
+      "path": "operators.csv",
+      "encoding": "identity",
+      "original_bytes": 5276,
+      "original_sha256": "f14fe10b661aa15adcc234c844aafb81fc7d7a9d7184322e0941a183ba3a6543",
+      "published_sha256": "f14fe10b661aa15adcc234c844aafb81fc7d7a9d7184322e0941a183ba3a6543"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/replot.py",
+      "path": "provenance/original_replot.py",
+      "encoding": "identity",
+      "original_bytes": 3504,
+      "original_sha256": "8227bb9c046e154948230abaa35e1180d3edd0fbde147395db8e51b776378db7",
+      "published_sha256": "8227bb9c046e154948230abaa35e1180d3edd0fbde147395db8e51b776378db7"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/summary.json",
+      "path": "summary.json",
+      "encoding": "identity",
+      "original_bytes": 38125,
+      "original_sha256": "78c9a16e01771658cd400222d7d712491057f1b8a760bf5dadb4a0fa42c65b2e",
+      "published_sha256": "78c9a16e01771658cd400222d7d712491057f1b8a760bf5dadb4a0fa42c65b2e"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/verification.json",
+      "path": "verification.json",
+      "encoding": "identity",
+      "original_bytes": 368,
+      "original_sha256": "54cfb60ce05b606be5cc5c5964af62d7b599c19e464467bee707e5c6fa900815",
+      "published_sha256": "54cfb60ce05b606be5cc5c5964af62d7b599c19e464467bee707e5c6fa900815"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/16/render_source/coarse_roofline.py",
+      "path": "render_source/coarse_roofline.py",
+      "encoding": "identity",
+      "original_bytes": 23893,
+      "original_sha256": "3c09d235bac22dd4361598ebc4881c4f33bf3361fd0beb1467d29e92918b6ef3",
+      "published_sha256": "3c09d235bac22dd4361598ebc4881c4f33bf3361fd0beb1467d29e92918b6ef3"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/experiment.json",
+      "path": "capture/experiment.json",
+      "encoding": "identity",
+      "original_bytes": 261,
+      "original_sha256": "125641339c14535f0182844861940815f775de325566329efc085ff1f7ade9b9",
+      "published_sha256": "125641339c14535f0182844861940815f775de325566329efc085ff1f7ade9b9"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/metrics.json",
+      "path": "capture/metrics.json",
+      "encoding": "identity",
+      "original_bytes": 1567,
+      "original_sha256": "8eeac2238b456f444e6908479410240b9463a6bd6630d9e9b7fa0c79a8529d9d",
+      "published_sha256": "8eeac2238b456f444e6908479410240b9463a6bd6630d9e9b7fa0c79a8529d9d"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/ceilings.json",
+      "path": "capture/ceilings.json",
+      "encoding": "identity",
+      "original_bytes": 3525,
+      "original_sha256": "82e3203cb802a17e62b97e83fa3a2c4a3376a97e0771968290b7fd0cf7aeedff",
+      "published_sha256": "82e3203cb802a17e62b97e83fa3a2c4a3376a97e0771968290b7fd0cf7aeedff"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/source.json",
+      "path": "capture/source.json",
+      "encoding": "identity",
+      "original_bytes": 11889,
+      "original_sha256": "c2ddecc6f368fa2f46edaa8e953ff019a4cd9e220871eff2d1564c456d38f2f4",
+      "published_sha256": "c2ddecc6f368fa2f46edaa8e953ff019a4cd9e220871eff2d1564c456d38f2f4"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/suite.json",
+      "path": "capture/suite.json",
+      "encoding": "identity",
+      "original_bytes": 5703,
+      "original_sha256": "77ad33d6eceba18af398b3fbd79bc7d38b8c9e383bf2508088f065bddcf4697d",
+      "published_sha256": "77ad33d6eceba18af398b3fbd79bc7d38b8c9e383bf2508088f065bddcf4697d"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/run.slurm",
+      "path": "capture/run.slurm",
+      "encoding": "identity",
+      "original_bytes": 732,
+      "original_sha256": "a7b7650a687a3c99b77d4a329a7c02635da26c6271a018de994794399d29be37",
+      "published_sha256": "a7b7650a687a3c99b77d4a329a7c02635da26c6271a018de994794399d29be37"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/compute_workload.json",
+      "path": "capture/compute_workload.json",
+      "encoding": "identity",
+      "original_bytes": 467,
+      "original_sha256": "b1563e7ec7d0b8eac37dcca5fb17d7c40c9e43649d82d548d2aa331b711aa1c4",
+      "published_sha256": "b1563e7ec7d0b8eac37dcca5fb17d7c40c9e43649d82d548d2aa331b711aa1c4"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/slurm_accounting.txt",
+      "path": "capture/slurm_accounting.txt",
+      "encoding": "identity",
+      "original_bytes": 208,
+      "original_sha256": "2f03d945824ecdfb12af42316cda9ad62295b83fc05bbac1e969f73ed7071908",
+      "published_sha256": "2f03d945824ecdfb12af42316cda9ad62295b83fc05bbac1e969f73ed7071908"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/environment.json",
+      "path": "capture/environment.json",
+      "encoding": "identity",
+      "original_bytes": 6720,
+      "original_sha256": "d68eb21128059c6766d6849885145ca30596f743d6d0589331db84bb79a31037",
+      "published_sha256": "d68eb21128059c6766d6849885145ca30596f743d6d0589331db84bb79a31037"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/requirements.freeze.txt",
+      "path": "capture/requirements.freeze.txt",
+      "encoding": "identity",
+      "original_bytes": 4460,
+      "original_sha256": "d37a3e70de6ccbd5b44756cc67bd70758df989d96b5fd98f1a553b4db0fe9a10",
+      "published_sha256": "d37a3e70de6ccbd5b44756cc67bd70758df989d96b5fd98f1a553b4db0fe9a10"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/sglang_env.sh",
+      "path": "capture/sglang_env.sh",
+      "encoding": "identity",
+      "original_bytes": 1022,
+      "original_sha256": "0b8c449f48b726022b96637ce76bf10c4db4773f66650f8829639b906253ff3a",
+      "published_sha256": "0b8c449f48b726022b96637ce76bf10c4db4773f66650f8829639b906253ff3a"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/audit_preprocessing.py",
+      "path": "capture/audit_preprocessing.py",
+      "encoding": "identity",
+      "original_bytes": 2344,
+      "original_sha256": "6174b7152d975c28945d0d79466675ad3f1506922f91d11bbf0143e024eb0c13",
+      "published_sha256": "6174b7152d975c28945d0d79466675ad3f1506922f91d11bbf0143e024eb0c13"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/preprocessing_comparison.json",
+      "path": "capture/preprocessing_comparison.json",
+      "encoding": "identity",
+      "original_bytes": 1918,
+      "original_sha256": "8ac091245d854a1acbcd4f50201e810933a5d87f727eb94bf0fa641a381de1ce",
+      "published_sha256": "8ac091245d854a1acbcd4f50201e810933a5d87f727eb94bf0fa641a381de1ce"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/gpu_before.log",
+      "path": "capture/gpu_before.log",
+      "encoding": "identity",
+      "original_bytes": 14862,
+      "original_sha256": "ff926a6bb3ab8045544bfc4f6ebbbccf3b6d76b2ad75abaed8245721cc3683e0",
+      "published_sha256": "ff926a6bb3ab8045544bfc4f6ebbbccf3b6d76b2ad75abaed8245721cc3683e0"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/gpu_after.log",
+      "path": "capture/gpu_after.log",
+      "encoding": "identity",
+      "original_bytes": 14861,
+      "original_sha256": "761473aad590c83ac5ff1e7b4e8d73ab312a7c7ecfb2ef7b2c7ec69fb9ea3fb4",
+      "published_sha256": "761473aad590c83ac5ff1e7b4e8d73ab312a7c7ecfb2ef7b2c7ec69fb9ea3fb4"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/baseline/actions.npz",
+      "path": "capture/baseline/actions.npz",
+      "encoding": "identity",
+      "original_bytes": 26604,
+      "original_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1",
+      "published_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/baseline/modules.json",
+      "path": "capture/baseline/modules.json",
+      "encoding": "identity",
+      "original_bytes": 183410,
+      "original_sha256": "4455cad196c7cf5245831e1a81b618a1ef3cbe9e1e562bb1c2f8ed30c045932e",
+      "published_sha256": "4455cad196c7cf5245831e1a81b618a1ef3cbe9e1e562bb1c2f8ed30c045932e"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/baseline/preprofile.json",
+      "path": "capture/baseline/preprofile.json",
+      "encoding": "identity",
+      "original_bytes": 15220,
+      "original_sha256": "d5b7a88376b774bc786c460cea070ee86d2b0a404b6b3af3ad52f9245499d8e0",
+      "published_sha256": "d5b7a88376b774bc786c460cea070ee86d2b0a404b6b3af3ad52f9245499d8e0"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/baseline/report.json",
+      "path": "capture/baseline/report.json",
+      "encoding": "identity",
+      "original_bytes": 1000050,
+      "original_sha256": "c70a6df7da896fd0133e5502f9292c876cca02f5376a07db36ac807089e15655",
+      "published_sha256": "c70a6df7da896fd0133e5502f9292c876cca02f5376a07db36ac807089e15655"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/workload/actions.npz",
+      "path": "capture/workload/actions.npz",
+      "encoding": "identity",
+      "original_bytes": 26604,
+      "original_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1",
+      "published_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/workload/modules.json",
+      "path": "capture/workload/modules.json",
+      "encoding": "identity",
+      "original_bytes": 183410,
+      "original_sha256": "4455cad196c7cf5245831e1a81b618a1ef3cbe9e1e562bb1c2f8ed30c045932e",
+      "published_sha256": "4455cad196c7cf5245831e1a81b618a1ef3cbe9e1e562bb1c2f8ed30c045932e"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/workload/preprofile.json",
+      "path": "capture/workload/preprofile.json",
+      "encoding": "identity",
+      "original_bytes": 15220,
+      "original_sha256": "0e907d66adc9e13d5bfb873a8061e2a472fdd99cce98006f1e56285b63298fda",
+      "published_sha256": "0e907d66adc9e13d5bfb873a8061e2a472fdd99cce98006f1e56285b63298fda"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/workload/report.json",
+      "path": "capture/workload/report.json",
+      "encoding": "identity",
+      "original_bytes": 993501,
+      "original_sha256": "7bad0b2f6b833655d3c4439b2054677ebaf767699deec7306dad8ec0e3dafbe8",
+      "published_sha256": "7bad0b2f6b833655d3c4439b2054677ebaf767699deec7306dad8ec0e3dafbe8"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/compute_ncu/collection.json",
+      "path": "capture/compute_ncu/collection.json",
+      "encoding": "identity",
+      "original_bytes": 3644,
+      "original_sha256": "1c34c3b862a1c4fce06f85360ff525c4df02123f61fb60d6493220939b65d8b5",
+      "published_sha256": "1c34c3b862a1c4fce06f85360ff525c4df02123f61fb60d6493220939b65d8b5"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/compute_ncu/operators.csv",
+      "path": "capture/compute_ncu/operators.csv",
+      "encoding": "identity",
+      "original_bytes": 17832,
+      "original_sha256": "4f743cebc10267e2dd4052cc3cafec08237c4e4d3018112be5c9bf694a65ab6e",
+      "published_sha256": "4f743cebc10267e2dd4052cc3cafec08237c4e4d3018112be5c9bf694a65ab6e"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/compute_ncu/raw.csv",
+      "path": "capture/compute_ncu/raw.csv",
+      "encoding": "identity",
+      "original_bytes": 17810,
+      "original_sha256": "c9f19bda8c6ea44e608e4f8f6bff33257002a75a079177209d60141f7d6abdc6",
+      "published_sha256": "c9f19bda8c6ea44e608e4f8f6bff33257002a75a079177209d60141f7d6abdc6"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/ncu/collection.json",
+      "path": "capture/ncu/collection.json",
+      "encoding": "identity",
+      "original_bytes": 3807,
+      "original_sha256": "ea8e60c580e75b4e6c5b5c5eb31ed5b37c3edf2e20dec2c6e96bff8360f305d3",
+      "published_sha256": "ea8e60c580e75b4e6c5b5c5eb31ed5b37c3edf2e20dec2c6e96bff8360f305d3"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/ncu/raw.csv",
+      "path": "capture/ncu/raw.csv.gz",
+      "encoding": "gzip",
+      "original_bytes": 25501547,
+      "original_sha256": "40986f7c318d1793e2f59bf3b556241636e8ff5debd265baf35064755e33a73d",
+      "published_sha256": "2355596653ae040c59e0b79161a51558494bb7662fa1c362f32fe6d142b818e8"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/ncu/operators.csv",
+      "path": "capture/ncu/operators.csv.gz",
+      "encoding": "gzip",
+      "original_bytes": 26532227,
+      "original_sha256": "ef1b9bd9d6e75e4aff40b30e5601235b64bf89c2aa4d7b883783435cb0cacf83",
+      "published_sha256": "6dbcdaefe564f992d2fd544d68af89df12ba7bde4b0181725b95545fd2445f4e"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/00/report.json",
+      "path": "capture/passes/00/report.json.gz",
+      "encoding": "gzip",
+      "original_bytes": 993501,
+      "original_sha256": "7bad0b2f6b833655d3c4439b2054677ebaf767699deec7306dad8ec0e3dafbe8",
+      "published_sha256": "5a094eb37d60d50eebc746139597a829c5feed0e05d5cc5b76620594f00b713f"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/00/actions.npz",
+      "path": "capture/passes/00/actions.npz",
+      "encoding": "identity",
+      "original_bytes": 26604,
+      "original_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1",
+      "published_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/01/report.json",
+      "path": "capture/passes/01/report.json.gz",
+      "encoding": "gzip",
+      "original_bytes": 993501,
+      "original_sha256": "2646fe9f564b88c852665672d4cc3e677cdc8eb02f58b4e4b3b7979e0fa83e83",
+      "published_sha256": "f14a2adcb2ee0d2591faae40ce51f66785840ab76a0a45a26170db3b9cece448"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/01/actions.npz",
+      "path": "capture/passes/01/actions.npz",
+      "encoding": "identity",
+      "original_bytes": 26604,
+      "original_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1",
+      "published_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/02/report.json",
+      "path": "capture/passes/02/report.json.gz",
+      "encoding": "gzip",
+      "original_bytes": 993501,
+      "original_sha256": "55168b69b03ac995e08fac5103f45e5754f4388548acdf8c7a8a841e983a94b9",
+      "published_sha256": "23a62791d3567212ad5df7286f68f1143d66191f9651368f66e625566ad4f6e8"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/02/actions.npz",
+      "path": "capture/passes/02/actions.npz",
+      "encoding": "identity",
+      "original_bytes": 26604,
+      "original_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1",
+      "published_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/03/report.json",
+      "path": "capture/passes/03/report.json.gz",
+      "encoding": "gzip",
+      "original_bytes": 993501,
+      "original_sha256": "a4dc51999dd94eecdd608e70673e656c69ecab0a7c03aab0577ccdf048086b7f",
+      "published_sha256": "b49994cccb8f894f82b00093edf6cfb85d003afc4e452f48ccdccd7e9ca1e43d"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/03/actions.npz",
+      "path": "capture/passes/03/actions.npz",
+      "encoding": "identity",
+      "original_bytes": 26604,
+      "original_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1",
+      "published_sha256": "90744f406d29c1fd641fd0c971b3964a3a0216e4bd9428efe505b2ea622923c1"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/__init__.py",
+      "path": "capture/harness/profiling/__init__.py",
+      "encoding": "identity",
+      "original_bytes": 75,
+      "original_sha256": "dfe78d3c3806378aec218aa5a2623fe036d4b28ab6a89396219da3dd15e3ac13",
+      "published_sha256": "dfe78d3c3806378aec218aa5a2623fe036d4b28ab6a89396219da3dd15e3ac13"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/calibrate.py",
+      "path": "capture/harness/profiling/calibrate.py",
+      "encoding": "identity",
+      "original_bytes": 5281,
+      "original_sha256": "ff110e899597e63ff917c67fc9b76d75dd19137e2ae7a5da33c273274e3a60f0",
+      "published_sha256": "ff110e899597e63ff917c67fc9b76d75dd19137e2ae7a5da33c273274e3a60f0"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/experiments.py",
+      "path": "capture/harness/profiling/experiments.py",
+      "encoding": "identity",
+      "original_bytes": 3220,
+      "original_sha256": "4a6242c6dd4f20720665e241d42e3051270ca1d11c86fdaafdb95d078b5f21a3",
+      "published_sha256": "4a6242c6dd4f20720665e241d42e3051270ca1d11c86fdaafdb95d078b5f21a3"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/memory_kernels.py",
+      "path": "capture/harness/profiling/memory_kernels.py",
+      "encoding": "identity",
+      "original_bytes": 456,
+      "original_sha256": "b1c8466621d5e9e5354e94dc73136ffba20689390e3dd5a3d671edb2231dc586",
+      "published_sha256": "b1c8466621d5e9e5354e94dc73136ffba20689390e3dd5a3d671edb2231dc586"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/model_fingerprint.py",
+      "path": "capture/harness/profiling/model_fingerprint.py",
+      "encoding": "identity",
+      "original_bytes": 787,
+      "original_sha256": "2d30d5dd30d6c20e427750c4f69e8c529479d42955cd141bd1f50bc90e982d09",
+      "published_sha256": "2d30d5dd30d6c20e427750c4f69e8c529479d42955cd141bd1f50bc90e982d09"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/ncu.py",
+      "path": "capture/harness/profiling/ncu.py",
+      "encoding": "identity",
+      "original_bytes": 8580,
+      "original_sha256": "0432cc27cbb3cd166bfa22d3087cf6b529c28e052a20bc65b4d6b968ac6dea25",
+      "published_sha256": "0432cc27cbb3cd166bfa22d3087cf6b529c28e052a20bc65b4d6b968ac6dea25"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/roofline.py",
+      "path": "capture/harness/profiling/roofline.py",
+      "encoding": "identity",
+      "original_bytes": 20704,
+      "original_sha256": "0c6aae15eb79c34d85c754790267ea9eb5d11c3c726c34b0c5fcd7002eaafdb8",
+      "published_sha256": "0c6aae15eb79c34d85c754790267ea9eb5d11c3c726c34b0c5fcd7002eaafdb8"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/runtime.py",
+      "path": "capture/harness/profiling/runtime.py",
+      "encoding": "identity",
+      "original_bytes": 4947,
+      "original_sha256": "18afd146d6a0457366c68e169c7ce26bcc18fd466ad82be71b743ad2d06055b5",
+      "published_sha256": "18afd146d6a0457366c68e169c7ce26bcc18fd466ad82be71b743ad2d06055b5"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/sglang_pi05.py",
+      "path": "capture/harness/profiling/sglang_pi05.py",
+      "encoding": "identity",
+      "original_bytes": 13503,
+      "original_sha256": "320f146249f00c37ccc655bd30faa42367c98ab18b851b9beec5791ef9d2b088",
+      "published_sha256": "320f146249f00c37ccc655bd30faa42367c98ab18b851b9beec5791ef9d2b088"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/sglang_suite.py",
+      "path": "capture/harness/profiling/sglang_suite.py",
+      "encoding": "identity",
+      "original_bytes": 6233,
+      "original_sha256": "5bc50ca92dde47460c9b2e67f05090515274323d53b07509422b7e3d1131ec05",
+      "published_sha256": "5bc50ca92dde47460c9b2e67f05090515274323d53b07509422b7e3d1131ec05"
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/harness/profiling/validate_compute_counters.py",
+      "path": "capture/harness/profiling/validate_compute_counters.py",
+      "encoding": "identity",
+      "original_bytes": 3905,
+      "original_sha256": "7975c2f04bc4ecb280aa3259c247eeae659b0c5fc30d752f76d93b068530c311",
+      "published_sha256": "7975c2f04bc4ecb280aa3259c247eeae659b0c5fc30d752f76d93b068530c311"
+    }
+  ],
+  "local_binary_reports": [
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/ncu/vla.ncu-rep",
+      "bytes": 496393711,
+      "sha256": "c77f2b9939912b598843806bc70a130c69ab2208232a31b21743b38f6e07020b",
+      "availability": "Retained in local experiment archive; not committed to GitHub."
+    },
+    {
+      "original_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/compute_ncu/compute.ncu-rep",
+      "bytes": 7660932,
+      "sha256": "f9bdd911a33ec0b029d6566945de0f4997a9817325450441255114040655a932",
+      "availability": "Retained in local experiment archive; not committed to GitHub."
+    }
+  ],
+  "packaged_at": "2026-09-14T19:44:15+08:00"
+}

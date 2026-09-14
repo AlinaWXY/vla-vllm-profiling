@@ -1,7 +1,0 @@
-{
-  "experiment_id": "0913/24",
-  "created_at": "2026-09-13T18:49:51+08:00",
-  "timezone": "Asia/Hong_Kong",
-  "purpose": "NCU 整图采集验证：原生 BF16 GEMM + JIT FP32，graph-profiling graph，保留图内缓存",
-  "host": "deep-space"
-}

@@ -1,0 +1,122 @@
+{
+  "command": [
+    "/opt/nvidia/nsight-compute/2025.1.1/ncu",
+    "--target-processes",
+    "all",
+    "--nvtx",
+    "--graph-profiling",
+    "node",
+    "--replay-mode",
+    "application",
+    "--clock-control",
+    "none",
+    "--cache-control",
+    "all",
+    "--metrics",
+    "gpu__time_duration.sum,dram__bytes_read.sum,dram__bytes_write.sum,smsp__sass_thread_inst_executed_op_fadd_pred_on.sum,smsp__sass_thread_inst_executed_op_fmul_pred_on.sum,smsp__sass_thread_inst_executed_op_ffma_pred_on.sum,sm__ops_path_tensor_src_bf16_dst_fp32.sum,dram__throughput.avg.pct_of_peak_sustained_elapsed,sm__throughput.avg.pct_of_peak_sustained_elapsed,lts__throughput.avg.pct_of_peak_sustained_elapsed,sm__pipe_tensor_cycles_active_v2.avg.pct_of_peak_sustained_elapsed,sm__warps_active.avg.pct_of_peak_sustained_active,smsp__issue_active.avg.pct_of_peak_sustained_active,sm__ops_path_tensor_src_bf16_dst_fp32.sum.pct_of_peak_sustained_elapsed,sm__ops_path_tensor_src_bf16_dst_fp32.sum.peak_sustained_elapsed,dram__bytes_read.sum.peak_sustained_elapsed,lts__t_bytes.sum",
+    "--export",
+    "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/compute_ncu/compute",
+    "--profile-from-start",
+    "off",
+    "--app-replay-mode",
+    "strict",
+    "--app-replay-match",
+    "grid",
+    "--app-replay-buffer",
+    "file",
+    "--nvtx-include",
+    "compute_reference/",
+    "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/bin/python",
+    "-m",
+    "profiling.validate_compute_counters",
+    "--output",
+    "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/compute_workload.json"
+  ],
+  "slurm_job_id": "1506597",
+  "host": "einstein",
+  "collection": "application replay; cache-control=all; NCU clock control disabled.",
+  "cache_caveat": "Kernel replay with cache-control=none does not recreate application cache state between passes. Range replay preserves reuse within the range.",
+  "launch_count_limit": null,
+  "started_at": "2026-09-14T15:37:01+08:00",
+  "clock_before": {
+    "observed_at": "2026-09-14T15:37:01+08:00",
+    "devfreq": {}
+  },
+  "scope": "Known-work BF16 and FP32 GEMMs, n=8192, TF32 disabled",
+  "graph_profiling": "node",
+  "metrics_contract": {
+    "schema_version": 2,
+    "note": "Dense BF16 Tensor and FP32 add/mul/FMA are separate roofs; transcendental and integer ops excluded.",
+    "metrics": [
+      "gpu__time_duration.sum",
+      "dram__bytes_read.sum",
+      "dram__bytes_write.sum",
+      "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum",
+      "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum",
+      "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum",
+      "sm__ops_path_tensor_src_bf16_dst_fp32.sum",
+      "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__throughput.avg.pct_of_peak_sustained_elapsed",
+      "lts__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__pipe_tensor_cycles_active_v2.avg.pct_of_peak_sustained_elapsed",
+      "sm__warps_active.avg.pct_of_peak_sustained_active",
+      "smsp__issue_active.avg.pct_of_peak_sustained_active",
+      "sm__ops_path_tensor_src_bf16_dst_fp32.sum.pct_of_peak_sustained_elapsed",
+      "sm__ops_path_tensor_src_bf16_dst_fp32.sum.peak_sustained_elapsed",
+      "dram__bytes_read.sum.peak_sustained_elapsed",
+      "lts__t_bytes.sum"
+    ],
+    "memory": {
+      "level": "dram",
+      "metrics": [
+        "dram__bytes_read.sum",
+        "dram__bytes_write.sum"
+      ],
+      "note": "L2 requested bytes are not DRAM bytes; use a matching memory-level bandwidth roof."
+    },
+    "domains": {
+      "bf16_tensor": {
+        "terms": [
+          {
+            "metric": "sm__ops_path_tensor_src_bf16_dst_fp32.sum",
+            "weight": 1
+          }
+        ]
+      },
+      "fp32_simt": {
+        "terms": [
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum",
+            "weight": 1
+          },
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum",
+            "weight": 1
+          },
+          {
+            "metric": "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    "evidence_metrics": [
+      "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__throughput.avg.pct_of_peak_sustained_elapsed",
+      "lts__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__pipe_tensor_cycles_active_v2.avg.pct_of_peak_sustained_elapsed",
+      "sm__warps_active.avg.pct_of_peak_sustained_active",
+      "smsp__issue_active.avg.pct_of_peak_sustained_active",
+      "sm__ops_path_tensor_src_bf16_dst_fp32.sum.pct_of_peak_sustained_elapsed",
+      "sm__ops_path_tensor_src_bf16_dst_fp32.sum.peak_sustained_elapsed",
+      "dram__bytes_read.sum.peak_sustained_elapsed",
+      "lts__t_bytes.sum"
+    ]
+  },
+  "status": "captured",
+  "finished_at": "2026-09-14T15:37:27+08:00",
+  "clock_after": {
+    "observed_at": "2026-09-14T15:37:27+08:00",
+    "devfreq": {}
+  }
+}

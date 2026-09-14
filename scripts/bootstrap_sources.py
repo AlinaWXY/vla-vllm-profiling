@@ -13,7 +13,7 @@ def git(*args):
 
 def main():
     sources = json.loads((ROOT / "sources.lock.json").read_text())
-    for name in ("vllm", "vllm-omni", "vllm-omni-reference"):
+    for name in ("vllm", "vllm-omni", "sglang"):
         spec = sources[name]
         path = ROOT / name
         if path.exists():

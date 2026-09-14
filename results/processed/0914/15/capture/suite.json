@@ -1,0 +1,243 @@
+{
+  "started_at": "2026-09-14T15:36:53+08:00",
+  "slurm_job_id": "1506597",
+  "phases": [
+    {
+      "name": "gpu_before",
+      "started_at": "2026-09-14T15:36:54+08:00",
+      "command": [
+        "nvidia-smi",
+        "-q"
+      ],
+      "finished_at": "2026-09-14T15:36:54+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "discovery",
+      "started_at": "2026-09-14T15:36:54+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/bin/python",
+        "-m",
+        "profiling.ncu",
+        "--ncu",
+        "/opt/nvidia/nsight-compute/2025.1.1/ncu",
+        "discover",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/inventory",
+        "--memory-level",
+        "dram"
+      ],
+      "finished_at": "2026-09-14T15:36:56+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "calibration",
+      "started_at": "2026-09-14T15:36:57+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/bin/python",
+        "-m",
+        "profiling.calibrate",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/ceilings.json",
+        "--memory-level",
+        "dram",
+        "--iterations",
+        "30",
+        "--power-clock-note",
+        "Same Slurm L20 allocation; default clocks/power; gpu_before.log and gpu_after.log; no clock changes"
+      ],
+      "finished_at": "2026-09-14T15:37:01+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "compute_validation",
+      "started_at": "2026-09-14T15:37:01+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/bin/python",
+        "-m",
+        "profiling.ncu",
+        "--ncu",
+        "/opt/nvidia/nsight-compute/2025.1.1/ncu",
+        "capture",
+        "--contract",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/metrics.json",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/compute_ncu",
+        "--report-name",
+        "compute",
+        "--replay-mode",
+        "application",
+        "--nvtx-scope",
+        "compute_reference",
+        "--scope-description",
+        "Known-work BF16 and FP32 GEMMs, n=8192, TF32 disabled",
+        "--",
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/bin/python",
+        "-m",
+        "profiling.validate_compute_counters",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/compute_workload.json"
+      ],
+      "finished_at": "2026-09-14T15:37:28+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "baseline",
+      "started_at": "2026-09-14T15:37:29+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/bin/python",
+        "-u",
+        "-m",
+        "profiling.bench_pi05",
+        "--checkpoint",
+        "/scratch/xinyaowang/vla-vllm-profiling/assets/pi05_base/b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+        "--tokenizer",
+        "/scratch/xinyaowang/vla-vllm-profiling/assets/paligemma_tokenizer",
+        "--buffered-original",
+        "--cameras",
+        "3",
+        "--steps",
+        "10",
+        "--warmup",
+        "3",
+        "--iterations",
+        "30",
+        "--scope",
+        "all",
+        "--launch-config",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/launch_config.json",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/baseline"
+      ],
+      "finished_at": "2026-09-14T15:38:20+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "capture",
+      "started_at": "2026-09-14T15:38:20+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/bin/python",
+        "-u",
+        "-m",
+        "profiling.ncu",
+        "--ncu",
+        "/opt/nvidia/nsight-compute/2025.1.1/ncu",
+        "capture",
+        "--contract",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/metrics.json",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/ncu",
+        "--report-name",
+        "vla",
+        "--cache-control",
+        "all",
+        "--replay-mode",
+        "application",
+        "--nvtx-scope",
+        "vla",
+        "--scope-description",
+        "VLM and Action Expert all kernels; batch 1, 3 valid cameras, 10 denoising steps; static setup/preprocessing excluded",
+        "--",
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-numerics-x86-cu130/bin/python",
+        "-u",
+        "-m",
+        "profiling.application_replay",
+        "--output-root",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes",
+        "--checkpoint",
+        "/scratch/xinyaowang/vla-vllm-profiling/assets/pi05_base/b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+        "--tokenizer",
+        "/scratch/xinyaowang/vla-vllm-profiling/assets/paligemma_tokenizer",
+        "--buffered-original",
+        "--cameras",
+        "3",
+        "--steps",
+        "10",
+        "--warmup",
+        "3",
+        "--iterations",
+        "30",
+        "--scope",
+        "all",
+        "--launch-config",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/launch_config.json",
+        "--profile",
+        "--profile-kind",
+        "kernels",
+        "--expected-fingerprint",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/baseline/full_scopes.json"
+      ],
+      "finished_at": "2026-09-14T15:51:27+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "gpu_after",
+      "started_at": "2026-09-14T15:51:27+08:00",
+      "command": [
+        "nvidia-smi",
+        "-q"
+      ],
+      "finished_at": "2026-09-14T15:51:27+08:00",
+      "returncode": 0
+    }
+  ],
+  "state": "completed",
+  "application_passes": [
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/00",
+      "status": "identical",
+      "started_at": "2026-09-14T15:38:56+08:00",
+      "finished_at": "2026-09-14T15:39:30+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/01",
+      "status": "identical",
+      "started_at": "2026-09-14T15:40:09+08:00",
+      "finished_at": "2026-09-14T15:41:15+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/02",
+      "status": "identical",
+      "started_at": "2026-09-14T15:41:49+08:00",
+      "finished_at": "2026-09-14T15:42:53+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/03",
+      "status": "identical",
+      "started_at": "2026-09-14T15:43:28+08:00",
+      "finished_at": "2026-09-14T15:44:24+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/04",
+      "status": "identical",
+      "started_at": "2026-09-14T15:45:02+08:00",
+      "finished_at": "2026-09-14T15:45:57+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/05",
+      "status": "identical",
+      "started_at": "2026-09-14T15:46:32+08:00",
+      "finished_at": "2026-09-14T15:47:10+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/06",
+      "status": "identical",
+      "started_at": "2026-09-14T15:47:46+08:00",
+      "finished_at": "2026-09-14T15:48:26+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/07",
+      "status": "identical",
+      "started_at": "2026-09-14T15:49:02+08:00",
+      "finished_at": "2026-09-14T15:49:43+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/passes/08",
+      "status": "identical",
+      "started_at": "2026-09-14T15:50:18+08:00",
+      "finished_at": "2026-09-14T15:50:53+08:00"
+    }
+  ],
+  "baseline_vs_profile_max_abs": 0.0,
+  "finished_at": "2026-09-14T15:51:27+08:00"
+}

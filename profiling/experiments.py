@@ -28,7 +28,11 @@ def allocate(root, purpose):
     day = datetime.fromisoformat(created).strftime("%m%d")
     parent = Path(root) / day
     parent.mkdir(parents=True, exist_ok=True)
-    for index in range(10000):
+    # Publication may remove older directories; never reuse a gap before the
+    # highest retained experiment number.
+    existing = [int(path.name) for path in parent.iterdir()
+                if path.is_dir() and path.name.isdecimal()]
+    for index in range(max(existing, default=-1) + 1, 10000):
         output = parent / f"{index:02d}"
         try:
             output.mkdir()

@@ -1,0 +1,55 @@
+stage,semantic_label,coarse_operator,kernel_calls
+action_expert,Expert: Action head + Euler update,Action IO,10
+action_expert,Expert: Action input projection + bias,Action IO,10
+action_expert,Expert: AdaRMS (final),Norm / residual,10
+action_expert,Expert: AdaRMS (pre-FFN),Norm / residual,180
+action_expert,Expert: AdaRMS (pre-attention),Norm / residual,180
+action_expert,Expert: Attention P × V,PV,180
+action_expert,Expert: Attention QKᵀ + scale,QK,180
+action_expert,Expert: Attention output + gated residual,O projection,180
+action_expert,Expert: BF16 conversion,Other,1
+action_expert,Expert: FFN down + gated residual,FFN down,180
+action_expert,Expert: FFN gate/up + GELU product,FFN up,180
+action_expert,Expert: Prefix/suffix masked softmax,Softmax,180
+action_expert,Expert: QKV projection + Gemma RoPE,QKV,180
+action_expert,Expert: copy,Other,2
+action_expert,Expert: integer fill,Other,1
+vlm,Prefix FFN: GELU product,FFN up,17
+vlm,Prefix FFN: down + residual,FFN down,17
+vlm,Prefix FFN: gate/up projection,FFN up,17
+vlm,Prefix: Attention P × V,PV,17
+vlm,Prefix: Attention QKᵀ + scale,QK,17
+vlm,Prefix: Attention output + residual,O projection,17
+vlm,Prefix: Prefix RoPE table,Other,1
+vlm,Prefix: Prefix masked softmax,Softmax,17
+vlm,Prefix: QKV projection + Gemma RoPE,QKV,18
+vlm,Prefix: RMSNorm (pre-FFN),Norm / residual,17
+vlm,Prefix: RMSNorm (pre-attention),Norm / residual,18
+vlm,Prefix: concatenate image/text embeddings,Other,1
+vlm,Prefix: copy,Other,1
+vlm,Prefix: integer fill,Other,1
+vlm,Text: embedding lookup,Other,1
+vlm,Text: embedding scale,Other,1
+vlm,Vision: FFN down + bias,FFN down,81
+vlm,Vision: FFN up + bias + GELU,FFN up,81
+vlm,Vision: FlashAttention split-KV attention,Vision attention,81
+vlm,Vision: FlashAttention split-KV combine,Vision attention,81
+vlm,Vision: K projection + bias,QKV,81
+vlm,"Vision: NCHW to NHWC layout (1568, 1, 1)",Other,3
+vlm,"Vision: NCHW to NHWC layout (7, 1, 1152)",Other,3
+vlm,Vision: NHWC to NCHW layout,Other,3
+vlm,Vision: Q projection + bias,QKV,81
+vlm,Vision: V projection + bias,QKV,81
+vlm,Vision: attention output projection + bias,O projection,81
+vlm,Vision: image-to-text projection + bias + scale,Other,3
+vlm,Vision: input cast/layout,Other,3
+vlm,Vision: patch embedding / LayerNorm part 1,Norm / residual,3
+vlm,Vision: patch embedding / LayerNorm part 2,Norm / residual,3
+vlm,Vision: patch embedding / LayerNorm part 3,Norm / residual,3
+vlm,Vision: patch embedding convolution,Other,3
+vlm,Vision: residual / LayerNorm variant 10,Norm / residual,3
+vlm,Vision: residual / LayerNorm variant 4,Norm / residual,3
+vlm,Vision: residual / LayerNorm variant 6,Norm / residual,39
+vlm,Vision: residual / LayerNorm variant 7,Norm / residual,39
+vlm,Vision: residual / LayerNorm variant 8,Norm / residual,39
+vlm,Vision: residual / LayerNorm variant 9,Norm / residual,39

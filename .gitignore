@@ -1,21 +1,22 @@
 __pycache__/
 *.py[cod]
 .venv*/
+.python*/
 .pytest_cache/
 .DS_Store
-slurm-task-dispatch/
-results/raw/
+.env
 logs/
+slurm-task-dispatch/
 *.ncu-rep
-!results/processed/environment_sm110a/probe_sm110a.ncu-rep
-!results/processed/environment_sm110a/probe_sm110a_l2.ncu-rep
-!results/processed/compute_counter_validation/compute_application.ncu-rep
-!results/processed/compute_counter_validation/l2_copy.ncu-rep
-!results/processed/thor_pi05_20260913/ncu/action_expert.ncu-rep
 *.pt
 *.safetensors
-.env
 
-!results/processed/0913/24/range_probe/range.ncu-rep
-!results/processed/0913/28/ncu/vla.ncu-rep
-!results/processed/0913/29/ncu/vla.ncu-rep
+# Publish only the two approved L20 DRAM results.
+/results/*
+!/results/README.md
+!/results/processed/
+/results/processed/*
+!/results/processed/0914/
+/results/processed/0914/*
+!/results/processed/0914/15/
+!/results/processed/0914/16/

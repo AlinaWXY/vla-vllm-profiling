@@ -1,0 +1,74 @@
+[
+  {
+    "kernel_id": "367",
+    "kernel": "void at_cuda_detail::DeviceScanInitKernel<at_cuda_detail::ScanTileState<long, 1>>(T1, int)",
+    "cli_label": "cub::DeviceScan::InclusiveScan/void at_cuda_detail::cub::detail::scan::DeviceScanInitKernel<at_cuda_detail::cub::ScanTileState<long, (bool)1>>(T1, int)",
+    "resolved_label": "vlm|Other|prefix",
+    "recorded_stacks": {
+      "<default domain>": [
+        "vla",
+        "vlm|Other|prefix"
+      ],
+      "NCCL": [
+        "ncclCommInitRankConfig"
+      ],
+      "CCCL": [
+        "cub::DeviceScan::InclusiveScan"
+      ]
+    }
+  },
+  {
+    "kernel_id": "368",
+    "kernel": "void at_cuda_detail::DeviceScanKernel<at_cuda_detail::policy_hub<long, long, long, unsigned int, std::plus<long>>::Policy1000, const long *, long *, at_cuda_detail::ScanTileState<long, 1>, std::plus<long>, at_cuda_detail::NullType, unsigned int, long, 0, at_cuda_detail::NullType>(T2, T3, T4, int, T5, T6, T7)",
+    "cli_label": "cub::DeviceScan::InclusiveScan/void at_cuda_detail::cub::detail::scan::DeviceScanKernel<at_cuda_detail::cub::detail::scan::policy_hub<long, long, long, unsigned int, std::plus<long>>::Policy1000, const long *, long *, at_cuda_detail::cub::ScanTileState<long, (bool)1>, std::plus<long>, at_cuda_detail::cub::NullType, unsigned int, long, (bool)0, at_cuda_detail::cub::NullType>(T2, T3, T4, int, T5, T6, T7)",
+    "resolved_label": "vlm|Other|prefix",
+    "recorded_stacks": {
+      "<default domain>": [
+        "vla",
+        "vlm|Other|prefix"
+      ],
+      "NCCL": [
+        "ncclCommInitRankConfig"
+      ],
+      "CCCL": [
+        "cub::DeviceScan::InclusiveScan"
+      ]
+    }
+  },
+  {
+    "kernel_id": "897",
+    "kernel": "void at_cuda_detail::DeviceScanInitKernel<at_cuda_detail::ScanTileState<long, 1>>(T1, int)",
+    "cli_label": "cub::DeviceScan::InclusiveScan/void at_cuda_detail::cub::detail::scan::DeviceScanInitKernel<at_cuda_detail::cub::ScanTileState<long, (bool)1>>(T1, int)",
+    "resolved_label": "action_expert|Other|denoise",
+    "recorded_stacks": {
+      "<default domain>": [
+        "vla",
+        "action_expert|Other|denoise"
+      ],
+      "NCCL": [
+        "ncclCommInitRankConfig"
+      ],
+      "CCCL": [
+        "cub::DeviceScan::InclusiveScan"
+      ]
+    }
+  },
+  {
+    "kernel_id": "898",
+    "kernel": "void at_cuda_detail::DeviceScanKernel<at_cuda_detail::policy_hub<long, long, long, unsigned int, std::plus<long>>::Policy1000, const long *, long *, at_cuda_detail::ScanTileState<long, 1>, std::plus<long>, at_cuda_detail::NullType, unsigned int, long, 0, at_cuda_detail::NullType>(T2, T3, T4, int, T5, T6, T7)",
+    "cli_label": "cub::DeviceScan::InclusiveScan/void at_cuda_detail::cub::detail::scan::DeviceScanKernel<at_cuda_detail::cub::detail::scan::policy_hub<long, long, long, unsigned int, std::plus<long>>::Policy1000, const long *, long *, at_cuda_detail::cub::ScanTileState<long, (bool)1>, std::plus<long>, at_cuda_detail::cub::NullType, unsigned int, long, (bool)0, at_cuda_detail::cub::NullType>(T2, T3, T4, int, T5, T6, T7)",
+    "resolved_label": "action_expert|Other|denoise",
+    "recorded_stacks": {
+      "<default domain>": [
+        "vla",
+        "action_expert|Other|denoise"
+      ],
+      "NCCL": [
+        "ncclCommInitRankConfig"
+      ],
+      "CCCL": [
+        "cub::DeviceScan::InclusiveScan"
+      ]
+    }
+  }
+]

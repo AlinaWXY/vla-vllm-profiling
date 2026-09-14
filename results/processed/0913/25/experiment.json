@@ -1,7 +1,0 @@
-{
-  "experiment_id": "0913/25",
-  "created_at": "2026-09-13T19:02:22+08:00",
-  "timezone": "Asia/Hong_Kong",
-  "purpose": "非 Thor 准备 BF16 权重缓存，减小 NFS 读取量；用原始模型参数哈希验证等价",
-  "host": "deep-space"
-}

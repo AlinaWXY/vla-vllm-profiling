@@ -1,0 +1,173 @@
+{
+  "started_at": "2026-09-14T16:46:28+08:00",
+  "slurm_job_id": "1506879",
+  "phases": [
+    {
+      "name": "gpu_before",
+      "started_at": "2026-09-14T16:46:28+08:00",
+      "command": [
+        "nvidia-smi",
+        "-q"
+      ],
+      "finished_at": "2026-09-14T16:46:28+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "discovery",
+      "started_at": "2026-09-14T16:46:28+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-sglang-pi05/bin/python",
+        "-m",
+        "profiling.ncu",
+        "--ncu",
+        "/opt/nvidia/nsight-compute/2025.1.1/ncu",
+        "discover",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/inventory"
+      ],
+      "finished_at": "2026-09-14T16:46:30+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "calibration",
+      "started_at": "2026-09-14T16:46:30+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-sglang-pi05/bin/python",
+        "-m",
+        "profiling.calibrate",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/ceilings.json",
+        "--memory-level",
+        "dram",
+        "--iterations",
+        "30",
+        "--power-clock-note",
+        "Same L20 allocation; default clocks; no clock changes"
+      ],
+      "finished_at": "2026-09-14T16:46:34+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "counter_validation",
+      "started_at": "2026-09-14T16:46:34+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-sglang-pi05/bin/python",
+        "-m",
+        "profiling.ncu",
+        "--ncu",
+        "/opt/nvidia/nsight-compute/2025.1.1/ncu",
+        "capture",
+        "--contract",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/metrics.json",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/compute_ncu",
+        "--report-name",
+        "compute",
+        "--replay-mode",
+        "application",
+        "--nvtx-scope",
+        "compute_reference",
+        "--",
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-sglang-pi05/bin/python",
+        "-m",
+        "profiling.validate_compute_counters",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/compute_workload.json"
+      ],
+      "finished_at": "2026-09-14T16:46:53+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "baseline",
+      "started_at": "2026-09-14T16:46:53+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-sglang-pi05/bin/python",
+        "-u",
+        "-m",
+        "profiling.sglang_pi05",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/baseline"
+      ],
+      "finished_at": "2026-09-14T16:47:37+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "capture",
+      "started_at": "2026-09-14T16:47:37+08:00",
+      "command": [
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-sglang-pi05/bin/python",
+        "-u",
+        "-m",
+        "profiling.ncu",
+        "--ncu",
+        "/opt/nvidia/nsight-compute/2025.1.1/ncu",
+        "capture",
+        "--contract",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/metrics.json",
+        "--output",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/ncu",
+        "--report-name",
+        "vla",
+        "--cache-control",
+        "all",
+        "--replay-mode",
+        "application",
+        "--nvtx-scope",
+        "vla",
+        "--scope-description",
+        "SGLang native fused operators; VLM and 10 Expert steps; eager dispatch for NVTX; independent native graph latency in baseline",
+        "--",
+        "/fact_data/xinyaowang/vla_vllm_profiling/.venv-sglang-pi05/bin/python",
+        "-u",
+        "-m",
+        "profiling.sglang_pi05",
+        "--profile",
+        "--output-root",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes",
+        "--expected",
+        "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/baseline/report.json"
+      ],
+      "finished_at": "2026-09-14T17:08:15+08:00",
+      "returncode": 0
+    },
+    {
+      "name": "gpu_after",
+      "started_at": "2026-09-14T17:08:15+08:00",
+      "command": [
+        "nvidia-smi",
+        "-q"
+      ],
+      "finished_at": "2026-09-14T17:08:15+08:00",
+      "returncode": 0
+    }
+  ],
+  "state": "completed",
+  "counter_validation_bf16_exact": true,
+  "application_passes": [
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/00",
+      "status": "exact model/input/actions/manifest match",
+      "started_at": "2026-09-14T16:47:38+08:00",
+      "finished_at": "2026-09-14T16:51:36+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/01",
+      "status": "exact model/input/actions/manifest match",
+      "started_at": "2026-09-14T16:51:39+08:00",
+      "finished_at": "2026-09-14T16:57:08+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/02",
+      "status": "exact model/input/actions/manifest match",
+      "started_at": "2026-09-14T16:57:11+08:00",
+      "finished_at": "2026-09-14T17:02:11+08:00"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/12/passes/03",
+      "status": "exact model/input/actions/manifest match",
+      "started_at": "2026-09-14T17:02:16+08:00",
+      "finished_at": "2026-09-14T17:07:05+08:00"
+    }
+  ],
+  "finished_at": "2026-09-14T17:08:15+08:00"
+}

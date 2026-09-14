@@ -1,0 +1,309 @@
+{
+  "started_at": "2026-09-14T15:38:06+08:00",
+  "clock_before": {
+    "observed_at": "2026-09-14T15:38:12+08:00",
+    "devfreq": {}
+  },
+  "model_parameter_fingerprint": {
+    "sha256": "a1a0b85c81588a70b3ee0af5905f6dea15e6fbee639c16c0d19e3353ca624bb2",
+    "parameter_names": 813,
+    "method": "sorted names, shapes, dtypes and actual raw parameter bytes; outside timing"
+  },
+  "scopes": {
+    "vlm": "3 image encoders, text embedding, concatenation and prefix Transformer",
+    "action_expert": "Action input projection, 10 denoising steps (or configured count), action head/Euler",
+    "vla": "Combined VLM and Action Expert GPU computation"
+  },
+  "excluded_from_gpu_scopes": "Observation preprocessing, tokenization, output D2H copy and static timestep/AdaRMS setup",
+  "pipeline_wall_scope": "Original Pi05Pipeline.forward, including preprocessing and output copy; no service transport",
+  "framework": {
+    "path": "/fact_data/xinyaowang/vllm-omni-pi05-numerical-fixes",
+    "commit": "6bdbf97e357232b8aa3b6caf5a6c8b0fed713c25",
+    "preserve_camera_outputs": true
+  },
+  "upstream_semantics": "Selected framework source; no numerical substitutions by the profiling harness",
+  "scope_graph_structure": "VLM/Expert/VLA graphs recapture the selected source's compiled kernels, static image input copies and camera output clones; original pipeline wall time is measured separately",
+  "input_audit": {
+    "camera_masks": [
+      true,
+      true,
+      true
+    ],
+    "prefix_len": 918,
+    "language_valid_tokens": 150,
+    "metadata": {
+      "prefix_valid_len": 918,
+      "prefix_masks_contiguous": true
+    }
+  },
+  "scoped_direct_vs_pipeline_max_abs": 0.0,
+  "scoped_graph_vs_pipeline_max_abs": 0.0,
+  "profiled": false,
+  "profile_kind": null,
+  "range_order": [
+    "vlm",
+    "action_expert",
+    "vla"
+  ],
+  "operator_manifest": [],
+  "fixed_launch_policy": {
+    "selected_configurations": 14,
+    "all_used": true,
+    "all_match_recording": true
+  },
+  "pipeline_wall": {
+    "count": 30,
+    "mean_ms": 65.38390859786887,
+    "p50_ms": 65.38306099537294,
+    "p95_ms": 65.69656033097999,
+    "samples_ms": [
+      66.07994699152187,
+      65.49277700833045,
+      65.17268699826673,
+      65.0910779950209,
+      65.05704700248316,
+      65.0695789954625,
+      65.24937000358477,
+      65.33566297730431,
+      65.29984500957653,
+      65.25155701092444,
+      65.37352901068516,
+      65.15403601224534,
+      65.04820598638617,
+      65.4517330112867,
+      65.71110297227278,
+      65.4190240020398,
+      65.43909400352277,
+      65.67878599162214,
+      65.61378299375065,
+      65.55628299247473,
+      65.36487399716862,
+      65.39259298006073,
+      65.49751397687942,
+      65.23995700990781,
+      65.45588001608849,
+      65.46230200910941,
+      65.43246199726127,
+      65.41416599065997,
+      65.34660398028791,
+      65.3657790098805
+    ]
+  },
+  "gpu_graph_timings": {
+    "vlm": {
+      "count": 30,
+      "mean_ms": 47.11048126220703,
+      "p50_ms": 47.04460906982422,
+      "p95_ms": 47.56623229980469,
+      "samples_ms": [
+        47.06099319458008,
+        46.88896179199219,
+        47.00979232788086,
+        47.22380828857422,
+        46.97600173950195,
+        47.02822494506836,
+        46.99852752685547,
+        46.869503021240234,
+        46.880767822265625,
+        46.89897537231445,
+        46.864383697509766,
+        46.82649612426758,
+        46.889984130859375,
+        46.876670837402344,
+        47.02492904663086,
+        46.88780975341797,
+        47.19615936279297,
+        47.64665603637695,
+        47.18182373046875,
+        47.35776138305664,
+        47.63024139404297,
+        47.165409088134766,
+        47.264766693115234,
+        47.307777404785156,
+        47.1357421875,
+        47.487998962402344,
+        47.252479553222656,
+        47.257598876953125,
+        47.261505126953125,
+        46.96268844604492
+      ]
+    },
+    "action_expert": {
+      "count": 30,
+      "mean_ms": 16.8604918162028,
+      "p50_ms": 16.861599922180176,
+      "p95_ms": 16.880126667022704,
+      "samples_ms": [
+        16.855039596557617,
+        16.878591537475586,
+        16.870399475097656,
+        16.871423721313477,
+        16.875520706176758,
+        16.876384735107422,
+        16.877248764038086,
+        16.880544662475586,
+        16.880640029907227,
+        16.862207412719727,
+        16.873472213745117,
+        16.860992431640625,
+        16.875520706176758,
+        16.8723201751709,
+        16.879615783691406,
+        16.877567291259766,
+        16.874496459960938,
+        16.8591365814209,
+        16.84275245666504,
+        16.849760055541992,
+        16.848896026611328,
+        16.84566307067871,
+        16.847871780395508,
+        16.84275245666504,
+        16.83660888671875,
+        16.84783935546875,
+        16.84172821044922,
+        16.839616775512695,
+        16.829439163208008,
+        16.8407039642334
+      ]
+    },
+    "vla": {
+      "count": 30,
+      "mean_ms": 63.73634745279948,
+      "p50_ms": 63.74348831176758,
+      "p95_ms": 63.83354454040527,
+      "samples_ms": [
+        63.471614837646484,
+        63.57708740234375,
+        63.78188705444336,
+        63.732574462890625,
+        63.719425201416016,
+        63.72966384887695,
+        63.75321578979492,
+        63.80748748779297,
+        63.80851364135742,
+        63.67942428588867,
+        63.67113494873047,
+        63.73683166503906,
+        63.82659149169922,
+        63.76038360595703,
+        63.687679290771484,
+        63.69996643066406,
+        63.75526428222656,
+        63.81158447265625,
+        63.776512145996094,
+        63.75312042236328,
+        63.680511474609375,
+        63.676414489746094,
+        63.74809646606445,
+        63.82592010498047,
+        63.737728118896484,
+        63.676414489746094,
+        63.7388801574707,
+        63.8474235534668,
+        63.8392333984375,
+        63.77983856201172
+      ]
+    }
+  },
+  "finished_at": "2026-09-14T15:38:18+08:00",
+  "clock_after": {
+    "observed_at": "2026-09-14T15:38:18+08:00",
+    "devfreq": {}
+  },
+  "cuda_peak_allocated_bytes": 15576361984,
+  "cuda_peak_reserved_bytes": 15961423872,
+  "sources": [
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/harness/profiling/full_vla.py",
+      "bytes": 16158,
+      "sha256": "1e86c4a61e4657dcbe27b7a12b4baa39c2fb97ebd0fede7226e1c9ba5ede6457"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vllm-omni-pi05-numerical-fixes/vllm_omni/diffusion/models/pi05/realtime_triton.py",
+      "bytes": 80319,
+      "sha256": "5aee47e85c07df3e6762d5953d094644c2a275b10da02f7b35a9fd2b45139a54"
+    }
+  ],
+  "compiled_code": [
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/baseline/compiled_code/c6wmndrwz3rgqgduqidvmuusnhuqtozdmkljrsqzcmnzegxc3idd.py",
+      "bytes": 5617,
+      "sha256": "ec50eff979b68b64806d2098f7a3b73201327e4a7b811287271d9576a8356ca4",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/6w/c6wmndrwz3rgqgduqidvmuusnhuqtozdmkljrsqzcmnzegxc3idd.py"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/baseline/compiled_code/can6wdlirwbxcke6r5wfyc7mey7acb4rviqlil6jy5jxspnpjslj.py",
+      "bytes": 2974,
+      "sha256": "ecb66d1bb6a5468a33c6c6258a56d3e6d67c13c1d8d212fe69fcc5d996cde758",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/an/can6wdlirwbxcke6r5wfyc7mey7acb4rviqlil6jy5jxspnpjslj.py"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/baseline/compiled_code/cd7ve5ltolxndxp7kukq4vp56gp4rw2axbmcyatsywooqvrfarkz.py",
+      "bytes": 15294,
+      "sha256": "143f0b7942302209cfd49cfc0278fe4c9b82db1338680ebcfd1513fdab0df138",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/d7/cd7ve5ltolxndxp7kukq4vp56gp4rw2axbmcyatsywooqvrfarkz.py"
+    },
+    {
+      "path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/baseline/compiled_code/cyh4chmspjld4xiz5g262wnhcvxm6n5gqwgwyeifc6rokrfw7y3p.py",
+      "bytes": 321985,
+      "sha256": "a5cde3dca7e4f31c3e17b5e96941b473bba436f730425c5def342a45b4e99f97",
+      "original_path": "/scratch/xinyaowang/vla-vllm-profiling/inductor-numerics-x86/yh/cyh4chmspjld4xiz5g262wnhcvxm6n5gqwgwyeifc6rokrfw7y3p.py"
+    }
+  ],
+  "load_audit": {
+    "loaded_parameter_names": 813,
+    "missing_parameter_names": []
+  },
+  "input_audit_preflight": {
+    "provided_keys": [
+      "observation.images.base_0_rgb",
+      "observation.images.left_wrist_0_rgb",
+      "observation.images.right_wrist_0_rgb"
+    ],
+    "required_keys": [
+      "observation.images.base_0_rgb",
+      "observation.images.left_wrist_0_rgb",
+      "observation.images.right_wrist_0_rgb"
+    ],
+    "matched_camera_count": 3,
+    "all_requested_cameras_present": true,
+    "image_masks": [
+      true,
+      true,
+      true
+    ],
+    "prefix_metadata": {
+      "prefix_valid_len": 918,
+      "prefix_masks_contiguous": true
+    },
+    "language_valid_tokens": 150
+  },
+  "checkpoint": "/scratch/xinyaowang/vla-vllm-profiling/assets/pi05_base/b211f3d44c36b6acfcf7ae94a64e8e96f75a64ba",
+  "seed": 17,
+  "steps": 10,
+  "packages": {
+    "vllm": "0.22.0",
+    "vllm-omni": null,
+    "transformers": "5.8.1",
+    "triton": "3.6.0"
+  },
+  "torch": "2.11.0+cu130",
+  "cuda": "13.0",
+  "host": "einstein",
+  "memory_before": {
+    "host_available_bytes": 425893228544,
+    "cgroup_limits": [
+      {
+        "path": "/sys/fs/cgroup/system.slice/einstein_slurmstepd.scope/job_1506597/step_batch/user",
+        "available_bytes": 67390431232
+      },
+      {
+        "path": "/sys/fs/cgroup/system.slice/einstein_slurmstepd.scope/job_1506597",
+        "available_bytes": 67388973056
+      }
+    ],
+    "available_bytes": 67388973056
+  },
+  "launch_config_path": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/07/launch_config.json",
+  "weight_cache": null
+}

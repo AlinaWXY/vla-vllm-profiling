@@ -1,8 +1,0 @@
-{
-  "started_at": "2026-09-13T11:16:21.096620+00:00",
-  "finished_at": "2026-09-13T11:17:18.050476+00:00",
-  "start_offset": 12359135984,
-  "bytes": 2108029888,
-  "seconds": 55.416646614001365,
-  "method": "read remaining F32 checkpoint sequentially to warm existing OS page cache; no persistent copy"
-}

@@ -1,0 +1,13 @@
+{
+  "axis_base": 10,
+  "data_identical_to": "/fact_data/xinyaowang/vla_vllm_profiling/results/processed/0914/14",
+  "measurements_unchanged": true,
+  "copied_artifacts": [
+    "operators.csv",
+    "kernels.csv",
+    "nvtx_parent_audit.json"
+  ],
+  "verified_at": "2026-09-14T17:21:04+08:00",
+  "render_inputs_match_recorded_sha256": true,
+  "visually_checked": true
+}

@@ -1,7 +1,0 @@
-{
-  "experiment_id": "0913/04",
-  "created_at": "2026-09-13T15:27:38+08:00",
-  "timezone": "Asia/Hong_Kong",
-  "purpose": "数值正确性优先：RoPE 语义最小复现；停止性能采集直至数值验证通过",
-  "host": "deep-space"
-}

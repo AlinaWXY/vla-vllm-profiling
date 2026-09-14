@@ -6,7 +6,7 @@
 	path = vllm-omni
 	url = https://github.com/AlinaWXY/vllm-omni.git
 	shallow = true
-[submodule "vllm-omni-reference"]
-	path = vllm-omni-reference
-	url = https://github.com/vllm-project/vllm-omni.git
+[submodule "sglang"]
+	path = sglang
+	url = https://github.com/sgl-project/sglang.git
 	shallow = true

@@ -1,2 +1,0 @@
-==ERROR== Metric smsp__sass_thread_inst_executed_op_fadd_pred_on.sum is not supported in range replay.
-==ERROR== See https://docs.nvidia.com/nsight-compute/ProfilingGuide/#compatibility

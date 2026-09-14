@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-09-13",
+  "checked_at": "2026-09-14",
   "vllm": {
     "url": "https://github.com/vllm-project/vllm.git",
     "commit": "0b3ba88f165976e77ca5e6a7a3f5bba4562b80af",
-    "role": "v0.22.0 matches the optimized Omni Docker base; ARM64 runtime validated on Thor.",
+    "role": "Omni L20 runtime dependency, v0.22.0.",
     "ref": "refs/tags/v0.22.0"
   },
   "vllm-omni": {
@@ -13,12 +13,6 @@
     "role": "PR4419 derivative correcting Gemma rotary pairing/model frequencies and preserving per-camera CUDA Graph outputs; residual numeric error remains.",
     "upstream_commit": "1826509403bfa3d378d3476a4a341b78640165ea",
     "upstream_url": "https://github.com/vllm-project/vllm-omni.git"
-  },
-  "vllm-omni-reference": {
-    "url": "https://github.com/vllm-project/vllm-omni.git",
-    "ref": "refs/pull/6950/head",
-    "commit": "41a6da68fcb2da7c2717dda32069ef9541797bbe",
-    "role": "Functional pi05 reference, open and unmerged PR 6950; use a separate environment."
   },
   "checkpoint": {
     "repo_id": "lerobot/pi05_base",
@@ -38,5 +32,10 @@
     "matching_hf_repo": "google/paligemma-3b-pt-224",
     "matching_hf_revision": "35e4f46485b4d07967e7e9935bc3786aad50687c",
     "role": "Public OpenPI tokenizer; identical SHA256 to the pinned HF tokenizer.model. Reconstruct text tokenizer config locally and verify token IDs."
+  },
+  "sglang": {
+    "url": "https://github.com/sgl-project/sglang.git",
+    "commit": "5200508b0fd25733752c2c5e3af5539508023c27",
+    "role": "Native optimized pi0.5 used for L20 capture 1506879."
   }
 }

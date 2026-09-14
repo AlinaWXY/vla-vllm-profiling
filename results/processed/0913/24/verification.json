@@ -1,8 +1,0 @@
-{
-  "verified_at": "2026-09-13T19:20:22+08:00",
-  "expected_bf16_tensor_flops": 2147483648,
-  "measured_bf16_tensor_flops": 2147483648.0,
-  "all_output_checks_passed": true,
-  "graph_counter_validation": "passed",
-  "fp32_sass": "unsupported in graph mode; no zero substitution"
-}

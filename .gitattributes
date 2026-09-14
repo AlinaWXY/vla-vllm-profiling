@@ -1,4 +1,6 @@
-# Preserve standard CSV CRLF endings in measured exports; accept CR at EOL.
-*.csv whitespace=trailing-space,space-before-tab,cr-at-eol
-# Preserve the captured compiler/autotuner output byte for byte.
-results/processed/thor_pi05_20260913/baseline.log -whitespace
+# Preserve measured CSV bytes and their original CRLF line endings.
+*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+*.gz binary
+*.npz binary
+# nvidia-smi exports retain their original spaces and final blank line.
+results/processed/0914/*/capture/gpu_*.log -text -whitespace

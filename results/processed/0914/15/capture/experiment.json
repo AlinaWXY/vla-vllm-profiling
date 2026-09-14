@@ -1,0 +1,7 @@
+{
+  "experiment_id": "0914/07",
+  "created_at": "2026-09-14T15:36:32+08:00",
+  "timezone": "Asia/Hong_Kong",
+  "purpose": "L20 coarse QK/PV/FFN DRAM roofline with utilization evidence; same fixed Omni workload via Slurm",
+  "host": "deep-space"
+}
